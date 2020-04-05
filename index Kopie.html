@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Example</title>
+</head>
+<body>
+  <textarea id="recipes"></textarea>
+  <script type="text/javascript">
+
+    let recipes = 
+  `[
+    { 
+      "name": "Spagehtthi Bollo",
+      "type": "Noodles",
+      "severity": 3.8,
+      "rating": 4.2,
+      "description": "First you have to..."
+    },
+    {
+      "name": "Mushroom Risotto",
+      "type": "Rice",
+      "severity": 4.5,
+      "rating": 4.8,
+      "description": "First you have to..."
+    }
+  ]`
+
+  var content = JSON.parse(recipes)
+  console.log(content[0].name)
+
+
+  
+  document.getElementById('recipes').append(content[1].type);
+  
+  </script>
+
+</body>
+
+</html>
