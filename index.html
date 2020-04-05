@@ -6,32 +6,88 @@
   <link rel="stylesheet" href="style.css">
   <title>Index</title>
 </head>
+
 <body>
   <div class="header">
+    <h1>Food stuff</h1>
+<div class="nav_bar">
+
     <div class="nav_bar">
+      <ul>
       <li><a class="actual" href="index.html">Home</a></li>
-      <li><a href="add.html">add recipe</a></li>
-      <li><a href="edit.html">edit recipe</a></li>
-      <li><a href="add_c.html">add category</a></li>
+      <li><a href="add.html"><img src="/image/plus.png" alt="Rezept hinzufuegen"></a></li>
+      <li><a href="hauptspeise.html"><img scr="file:///C:/Users/mplaw/Downloads/essen.svg" alt="Hauptspeise"></a></li>
+      <li><a href="dessert.html"><img scr="file:///C:/Users/mplaw/Downloads/muffin.svg" alt="Dessert"></a></li>
+      <li><a href="drinks.html"><img scr="file:///C:/Users/mplaw/Downloads/alkohol.svg" alt="Drinks"></a></li>
+
+      <!--
+      <li><a href="edit.html">Dessert</a></li>
+      <li><a href="add_c.html">Drinks</a></li> -->
+
+      </ul>
     </div>
   </div>
   
-  <h1>Food stuff</h1>
-
+  
   <div class="buttons">
     <a href="add.html"><button class="edit">Add</button></a>
     <a href="edit.html"><button class="edit">Edit</button></a>
   </div>
 
 
-  <div class="food_of_the_day">
-      <div class="recipe">
-      <h3>Food of the day</h3>
-      <a href="#"><button class="edit">Edit</button></a>
+  <div class="rezepte_des_tages"> <!-- Div um alle Rezepte des Tages-->
+  
+  <div class="flex_container_spalte"> <!-- Spalte für essen und getränke-->
+    <div class="flex_container_reihe">
+      <div class="felx_container_spalte">
+        <div class="hauptgericht_of_the_day">
+          <div class="rezept">
+            <div class="hauptgericht">
+            <h3>Rezept des Tages: Hauptgericht </h3>
+            <a href="#"><button class="edit">Edit</button></a>
+            </div>
+          </div>
+        </div>
+      </div> <!-- endet spalte von hauptspeise-->
+    </div> <!-- endet flex_container_reihe nur Hauptspeise-->
+
+    <div class="flex.container_reihe">
+      <div class="flex_container_spalte">
+        <div class="vorspeise_of_the_day">
+          <div class="rezept">
+            <div class="vorspeise">
+            <h3>Rezept des Tages: Vorspeise</h3>
+            <a href="#"><button class="edit">Edit</button></a>
+            </div>
+          </div>
+        </div>
+      </div> <!-- endet spalte Vorspeise-->
+      <div class="flex_container_spalte">
+        <div class="dessert_of_the_day">
+          <div class="rezept">
+            <div class="dessert">
+            <h3>Rezept des Tages: Dessert</h3>
+            <a href="#"><button class="edit">Edit</button></a>
+            </div>
+        </div>
+      </div>
+    </div> <!-- endet spalte dessert-->
+  </div> <!-- endet Reihe von Vor- und Nachspeise-->
+</div> <!-- ende von Essen -->
+
+<div class="drink_of_the_day">
+  <div class="rezept">
+    <div class="drink">
+    <h3>Rezept des Tages: Drink</h3>
+    <a href="#"><button class="edit">Edit</button></a>
     </div>
   </div>
+</div>
+ 
+</div> <!-- endet div um alle Tagesgerichte-->
 
 
+</div>
 
   <div class="footer">
     

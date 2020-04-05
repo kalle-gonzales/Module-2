@@ -1,20 +1,93 @@
 body{
-    background: white;
+    background-image: url('./images/background2.jpg') ;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-attachment: fixed;
 }
 
-.food_of_the_day{
-    margin: 50px 50px;
+.header{
+    padding: 50px;
+    filter: brightness(50%);
+    
 }
 
-.recipes{
-    display: flex;
-    margin-bottom: 50px;
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    
 }
+    
+li {
+        float: left;
+      }
 
-.recipe{
-    width: 30%;
+ a {
+        display: block;
+        padding: 8px;
+        text-align: center;
+        
+    }
+
+.navbar {
+
+  }
+
+
+
+
+.rezept{
     border: 2px;
+    background-color: grey;
     border-style: solid;
     margin-bottom: 30px;
     padding-bottom: 50px;
 }
+
+
+/* Startseite mit Rezepten des Tages */
+
+.rezepte_des_tages{
+    /*text-align: center;*/
+    align-items: center;
+    margin: auto;
+    padding: 50px 50px;
+}
+
+.flex_container_reihe{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.flex.container_spalte{
+    flex-basis: 90%;
+    max-width: 80%;
+}
+
+@media screen and (min-width 800x){
+    .flex_container_spalte{
+        flex:1;
+    }
+}
+
+.hauptgericht_of_the_day{
+    
+}
+
+.drink_of_the_day{
+    
+}
+
+.dessert_of_the_day{
+    
+}
+
+.vorspeise_of_the_day{
+    
+}
+
