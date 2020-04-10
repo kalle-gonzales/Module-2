@@ -2,19 +2,123 @@ body{
     background: white;
 }
 
+h3{
+    background-color: white;
+    opacity: 0.5;
+    filter: blur();
+}
+
 .food_of_the_day{
-    margin: 50px 50px;
+    padding: 50px;
 }
 
-.recipes{
+.rezept {
+    margin: 5px; 
     display: flex;
-    margin-bottom: 50px;
-}
-
-.recipe{
-    width: 30%;
+    flex: 1;
+    flex-direction: column;
+    box-sizing: border-box;
     border: 2px;
     border-style: solid;
-    margin-bottom: 30px;
-    padding-bottom: 50px;
 }
+
+
+/* Startseite mit Rezepten des Tages */
+
+.hauptgericht_of_the_day{
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+    height: 200px;
+    align-self: start;
+}
+
+.hauptgericht{
+    background-image: url("./images/nudel_tomate.png");
+    background-size: cover;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+}
+
+.drink_of_the_day{
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    justify-content: flex-start;  
+
+}
+
+.drink{
+    background-image: url("./images/white_russin.jpg"); 
+    background-size: cover;
+    background-position: center center; 
+    height: 100%;
+    width: 100%;  
+}
+
+.dessert_of_the_day{
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    height: 200px;   
+}
+
+.dessert{
+    background-image: url("./images/tera.jpg");
+    background-size: cover;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+}
+
+.vorspeise_of_the_day{
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    height: 200px;  
+}
+
+.vorspeise{
+    background-image: url("./images/tomatensuppe.jpg");
+    background-size: cover;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+}
+
+.flex_container_reihe{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.double_row {
+    display: flex;
+    flex-direction: row;
+}
+
+.double_col {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 800px){
+    .drink_of_the_day{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 60vw;   
+        height: 200px; 
+    }
+}
+
+
+
+
+
+
+
+
