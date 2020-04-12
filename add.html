@@ -36,7 +36,7 @@
     </div>
     <div class="input box">
         <label for="severity">Severity</label>
-        <input type="float" id="severity" placeholder="severity rating">
+        <input type="number" id="severity" placeholder="severity rating">
     </div>
     <div class="input box">
         <label for="ingrediants">Ingrediants</label>
@@ -55,16 +55,19 @@
 </form>
 <script>
    
-    let recipes = 
+    var Spagehtthi_Bollo =
 [
-    
   { 
     "name": "Spagehtthi Bollo",
     "type": "Noodles",
     "severity": 3.8,
     "ingrediants": "Spagetthi, Tomatoes",
     "description": "First you have to..."
-  },
+  }
+]
+
+var Pilz =
+[
   {
     "name": "Mushroom Risotto",
     "type": "Rice",
@@ -72,24 +75,49 @@
     "ingrediants": "Spagetthi, Tomatoes",
     "description": "First you have to..."
   }
+]
 
+var Pizza =
+[
+    {
+    "name": "Pizza",
+    "type": "n/a",
+    "severity": 2.5,
+    "ingrediants": "Cheese, Tomatoes",
+    "description": "First you have to..."
+  }
+]
 
-    ]
+    
+    var neeu = [];
     const addRecipe = (ev)=>{
         ev.preventDefault(); //stop the form submitting
-        let recipe = {
+        let add = {
             name: document.getElementById('name').value,
             type: document.getElementById('type').value,
             severity: document.getElementById('severity').value,
             ingrediants: document.getElementById('ingrediants').value,
             description: document.getElementById('description').value
         }
-        recipes.push(recipe);
+        neeu.push(add)
         document.forms[0].reset(); //clear form for next entries   
+        localStorage.setItem(name.value, JSON.stringify(neeu));
+        
     }
+
+   
     document.addEventListener('DOMContentLoaded', ()=>{
         document.getElementById('btn').addEventListener('click', addRecipe);
+        
     }); 
+
+    localStorage.setItem('Spagehtthi Bollo', JSON.stringify(Spagehtthi_Bollo));
+    localStorage.setItem('Pilz', JSON.stringify(Spagehtthi_Bollo));
+    localStorage.setItem('Pizza', JSON.stringify(Pizza));
+  
+    
+    
+
 
 </script>
 
