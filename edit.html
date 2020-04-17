@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   
+<form>
+    <div class="input box">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Name">
+    </div>
+    <div class="input box">
+        <label for="type">Type</label>
+        <input type="text" id="type" placeholder="Appetizer, Lunch, Desert, Drink">
+    </div>
+    <div class="input box">
+        <label for="severity">Severity</label>
+        <input type="number" id="severity" placeholder="severity rating">
+    </div>
+    <div class="input box">
+        <label for="ingrediants">Ingrediants</label>
+        <input type="text" id="ingrediants" placeholder="What's needed">
+    </div>
+    <div class="input box">
+        <label for="description">Description</label>
+        <input type="text" id="description" placeholder="What to do">
+    </div>
+    <div class="input box">
+        <button id="btn" onclick="javascript:alert('Saved!');">Save!</button>
+    </div>
+
+
+</form>
+<script>
+  
+    var recipe = JSON.parse(localStorage.getItem('Pizza'));
+    var name = recipe["0"].name;
+    document.getElementById('name').value = name;
+    var type = recipe["0"].type;
+    document.getElementById('type').value = type;
+    var severity = recipe["0"].severity;
+    document.getElementById('severity').value = severity;
+    var ingrediants = recipe["0"].ingrediants;
+    document.getElementById('ingrediants').value = ingrediants;
+    var description = recipe["0"].description;
+    document.getElementById('description').value = description;
+
+
+    var edit = [];
+   
+    const addRecipe = (ev)=>{
+        ev.preventDefault(); //stop the form submitting
+        let add = {
+            name: document.getElementById('name').value,
+            type: document.getElementById('type').value,
+            severity: document.getElementById('severity').value,
+            ingrediants: document.getElementById('ingrediants').value,
+            description: document.getElementById('description').value
+        }
+        var name_k = document.getElementById('name').value;
+        edit.push(add)
+        localStorage.setItem(name_k, JSON.stringify(edit));
+       
+
+        
+    }
+
+   
+    document.addEventListener('DOMContentLoaded', ()=>{
+        document.getElementById('btn').addEventListener('click', addRecipe);
+        
+    }); 
+
+ 
+    
+    
+
+
+</script>
+
+</body>
+
+</html>
+
