@@ -7,28 +7,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="nav_bar">
-        <li><a class="actual" href="index.html">Home</a></li>
-        <li><a href="add.html">add recipe</a></li>
-        <li><a href="edit.html">edit recipe</a></li>
-        <li><a href="Store.html">Product</a></li>     
-    </div>
-
-    <div class="search_box">
-        <input type="text" placeholder="Search Here" id="search_text">
-        <i class="fas fa-search"></i>   
-    </div>
-
-    <p id="search_text_stored"></p>
-
-<div class="add_recipe">
-    <label for="base">Chose your base:</label>
-    <option value="'Noodles','Rice','Potatoes'" selected="">Noodles</option>
-</div>
+   
 <form>
     <div class="input box">
         <label for="name">Name</label>
-        <input type="text" id="name" placeholder="name of recipe">
+        <input type="text" id="name" placeholder="Name">
     </div>
     <div class="input box">
         <label for="type">Type</label>
@@ -47,49 +30,27 @@
         <input type="text" id="description" placeholder="What to do">
     </div>
     <div class="input box">
-        <button id="btn">Add!</button>
+        <button id="btn" onclick="javascript:alert('Saved!');">Save!</button>
     </div>
-
 
 
 </form>
 <script>
-   
-    var Spagehtthi_Bollo =
-[
-  { 
-    "name": "Spagehtthi Bollo",
-    "type": "Noodles",
-    "severity": 3.8,
-    "ingrediants": "Spagetthi, Tomatoes",
-    "description": "First you have to..."
-  }
-]
+  
+    var recipe = JSON.parse(localStorage.getItem('Pizza'));
+    var name = recipe["0"].name;
+    document.getElementById('name').value = name;
+    var type = recipe["0"].type;
+    document.getElementById('type').value = type;
+    var severity = recipe["0"].severity;
+    document.getElementById('severity').value = severity;
+    var ingrediants = recipe["0"].ingrediants;
+    document.getElementById('ingrediants').value = ingrediants;
+    var description = recipe["0"].description;
+    document.getElementById('description').value = description;
 
-var Pilz =
-[
-  {
-    "name": "Mushroom Risotto",
-    "type": "Rice",
-    "severity": 4.5,
-    "ingrediants": "Spagetthi, Tomatoes",
-    "description": "First you have to..."
-  }
-]
 
-var Pizza =
-[
-    {
-    "name": "Pizza",
-    "type": "n/a",
-    "severity": 2.5,
-    "ingrediants": "Cheese, Tomatoes",
-    "description": "First you have to..."
-  }
-]
-
-    
-    var neeu = [];
+    var edit = [];
    
     const addRecipe = (ev)=>{
         ev.preventDefault(); //stop the form submitting
@@ -101,9 +62,8 @@ var Pizza =
             description: document.getElementById('description').value
         }
         var name_k = document.getElementById('name').value;
-        neeu.push(add)
-        document.forms[0].reset(); //clear form for next entries   
-        localStorage.setItem(name_k, JSON.stringify(neeu));
+        edit.push(add)
+        localStorage.setItem(name_k, JSON.stringify(edit));
        
 
         
@@ -115,10 +75,7 @@ var Pizza =
         
     }); 
 
-    localStorage.setItem('Spagehtthi Bollo', JSON.stringify(Spagehtthi_Bollo));
-    localStorage.setItem('Pilz Risotto', JSON.stringify(Pilz));
-    localStorage.setItem('Pizza', JSON.stringify(Pizza));
-  
+ 
     
     
 

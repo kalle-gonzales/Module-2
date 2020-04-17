@@ -42,11 +42,14 @@
   
     <div class="recipe">
       <div class="noodles">
-          <div class="cabonara">
+          <div class="cabonara" id="Carbonara">
             <h3>cabonara</h3>
               <!-- Link zu Rezept Java script ?!-->
+              <div class="deleterecipe">
+                <button id="delete">Delete!</button>
+            </div>
           </div>
-          <a href="#"><button class="edit">Edit</button></a>
+          <a href="edit.html"><button class="edit">Edit</button></a>
       </div>
     </div>
   
@@ -92,12 +95,23 @@
 </div>
 </body>
 <script> 
-  //var bollo = localStorage.getItem('Spagehtthi Bollo');
-  //var bolloreal = JSON.parse(bollo);
+  
+
+
+   const deleteRecipe = (ev)=>{
+       
+       var name_k = 'Carbonara';
+       localStorage.removeItem(name_k);
+      
+   }
 
   
-  var bolloreal = JSON.parse(localStorage.getItem('Spagehtthi Bollo'));
-  
-  
+   document.addEventListener('DOMContentLoaded', ()=>{
+       document.getElementById('delete').addEventListener('click', deleteRecipe);
+       
+   }); 
+
+ 
+
   </script>
 </html>
