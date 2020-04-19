@@ -1,0 +1,293 @@
+body{
+    background-image: url("/images/wood.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: repeat;
+    width: 100%;
+    position: absolute;
+}
+
+h1{
+    background: white;
+    padding: 20px;
+    display: inline-block;
+}
+
+h3{
+    background-color: white;
+    opacity: 0.5;
+    filter: blur();
+}
+
+a:link{
+    color: white;
+    text-decoration-line: none;
+}
+
+a:visited{
+    color: white;
+}
+
+a:hover{
+    position: absolute;
+    font-size: 20px;
+    background: black;
+    display: inline-block;
+}
+
+/* +++++++++++++++++++++++++++++++++ */
+/* Startseite mit Rezepten des Tages */
+/* +++++++++++++++++++++++++++++++++ */
+
+.food_of_the_day{
+    padding: 50px;
+}
+
+.rezept_des_tages {
+    margin: 5px; 
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    box-sizing: border-box;
+    border: 2px;
+    border-style: solid;
+}
+
+.hauptgericht_of_the_day{
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+    height: 200px;
+    align-self: start;
+}
+
+.hauptgericht{
+    background-image: url("/images/nudel_tomate.jpg");
+    background-size: cover;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+}
+
+.drink_of_the_day{
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    justify-content: flex-start;  
+}
+
+.drink{
+    background-image: url("/images/white_russin.jpg"); 
+    background-size: cover;
+    background-position: center center; 
+    height: 100%;
+    width: 100%;  
+}
+
+.dessert_of_the_day{
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    height: 200px;   
+}
+
+.dessert{
+    background-image: url("/images/tera.jpg");
+    background-size: cover;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+}
+
+.vorspeise_of_the_day{
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    height: 200px;  
+}
+
+.vorspeise{
+    background-image: url("/images/tomatensuppe.jpg");
+    background-size: cover;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+}
+
+.flex_container_reihe{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.double_row {
+    display: flex;
+    flex-direction: row;
+}
+
+.double_col {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 800px){
+    .drink_of_the_day{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 60vw;   
+        height: 200px; 
+    }
+}
+
+
+/* +++++++++++++++++++++++++++++++++ */
+/*          Alle Rezepte             */
+/* +++++++++++++++++++++++++++++++++ */
+
+.header{
+    padding: 50px;
+    text-align: center;
+    align-items: center;
+}
+
+
+.alle_rezepte{
+    padding: 50px;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90vw;
+    text-align: center;
+}
+
+.rezept{
+    margin: 5px; 
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    border: 2px;
+    border-style: solid; 
+    width: 20vw;
+    height: 10vw;
+    background-color: grey;
+}
+
+
+
+/* +++++++++++++++++++++++++++++++++ */
+/*          Rezept Hinzufügen        */
+/* +++++++++++++++++++++++++++++++++ */
+
+.search_box {
+    margin: auto;
+    text-align: center;
+    align-items: center;
+}
+
+.neues_Rezept{
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background-image: url("/images/cutting_board.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.input_box{
+    padding: 5px;
+    margin: 5px;
+    box-sizing: border-box;
+}
+.input_box_zubereitung{
+    padding: 5px;
+    height: 200px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+label{
+    position: initial;
+    text-align: right;
+    display: inline-block;
+}
+
+select, input{
+    box-sizing:border-box;
+}
+
+
+/* +++++++++++++++++++++++++++++++++ */
+/*          Rezept                   */
+/* +++++++++++++++++++++++++++++++++ */
+
+
+.show_Rezept{
+    padding: 50px;
+    margin: auto;
+    display: flex;
+    width: 60vw;
+    height: 40vw;
+    background-image: url("/images/cutting_board.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.flex_container_reihe{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.show_Rezept {
+    display: flex;
+    flex-direction: column;
+}
+
+.zubereitung{
+    margin: 5px; 
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    border: 2px;
+    border-style: solid; 
+    width: 30vw;
+    height: 30vw;
+}
+
+
+.edit_bar {
+    margin: 5px; 
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    border: 2px;
+    border-style: solid; 
+    width: 30vw;
+    height: 10vw;
+}
+
+.zutaten {
+    margin: 5px; 
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    border: 2px;
+    border-style: solid; 
+    width: 10vw;
+}

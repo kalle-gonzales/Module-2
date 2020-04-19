@@ -1,0 +1,158 @@
+.input-wrapper {
+  display:inline-block;
+  position: relative;
+}
+
+.input-wrapper:after {
+  font-family: 'FontAwesome';
+  content: '\f002';
+  color: var(--color_hover_nav_icon);
+  position: absolute;
+  right: 6px;
+}
+
+input[type=text] {
+  border-radius: 50px;
+  border: 1px solid red;
+  padding: .2rem 1rem;
+}
+
+.menu_item_text {
+  display: none;
+}
+
+.fa {
+  color: var(--color_normal_nav_icon);
+}
+
+#home {
+  margin-right: 1rem;
+  display: inline;
+}
+
+#home_icon:hover {
+  color: var(--color_hover_nav_icon);
+}
+
+#home_icon:active {
+  color: var(--color_active_nav_icon);
+}
+
+.nav_item:hover,
+#home:hover{
+  color: var(--color_hover_nav_icon);
+  background-color: white;
+  font-size: 16px;
+  margin-right: 1rem;
+  position: relative;
+}
+
+nav {
+  width: 80%;
+  margin: auto;
+}
+
+#flex_container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.menu {
+  display: inline-block;
+  width: 60%;
+}
+
+.right {
+  float: right;
+  padding: 0 1rem;
+}
+
+@keyframes slidein_add_recipe {
+  from { transform: translateX(-5038%); } /* -290% */
+  to   { transform: translateX(    0%); }
+}
+
+@keyframes slidein_cookbook {
+  from { transform: translateX(-3640%); } /* -225% */
+  to   { transform: translateX(    0%); }
+}
+
+@keyframes slidein_drinks {
+  from { transform: translateX(-2440%); } /* -325% */
+  to   { transform: translateX(    0%); }
+}
+
+@keyframes slidein_main {
+  from { transform: translateX(-1850%); } /* -110% */
+  to   { transform: translateX(    0%); }
+}
+
+@keyframes slidein_first {
+  from { transform: translateX(-1380%); } /* -20% */
+  to   { transform: translateX(    0%); }
+}
+
+#burger_menu {
+  display: inline-block;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+.menu_item {
+  visibility: hidden;
+}
+
+.slidein_add_recipe {
+  visibility: visible;
+  animation-duration: var(--slide_in_time);
+  animation-name: slidein_add_recipe;
+}
+
+.slidein_cookbook {
+  visibility: visible;
+  animation-duration: var(--slide_in_time);
+  animation-name: slidein_cookbook;
+}
+
+.slidein_drinks {
+  visibility: visible;
+  animation-duration: var(--slide_in_time);
+  animation-name: slidein_drinks;
+}
+
+.slidein_main {
+  visibility: visible;
+  animation-duration: var(--slide_in_time);
+  animation-name: slidein_main;
+}
+
+.slidein_first {
+  visibility: visible;
+  animation-duration: var(--slide_in_time);
+  animation-name: slidein_first;
+}
+
+a {
+  display: inline-block;    /* to make slidein on work on <a> */
+  text-decoration: none;
+}
+
+:root {
+  --slide_in_time: .5s;
+  --color_normal_nav_icon: green;
+  --color_normal_nav_text: green;
+  --color_active_nav_text: yellow;
+  --color_hover_nav_icon: red;
+  --color_hover_nav_text: red;
+}
+
+#logout,
+#logout_text,
+#login_text,
+#search_text {
+  display: none;
+}
+
+.login_out_text {
+  color: var(--color_hover_nav_text);
+}
