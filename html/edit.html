@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rezept Bearbeiten</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  
+  <div class="nav_bar">
+    <li><a class="actual" href="index.html">Tagesgerichte</a></li>
+    <li><a href="alleRezepte.html">Alle Rezepte</a></li>
+    <li><a href="add.html">Rezept Hinzufügen</a></li>
+    <li><a href="edit.html">Rezept Bearbeiten</a></li>
+    <li><a href="contact.html">Kontakt</a></li>
+  </div>
+
+  <div class="header">
+    <h1>Rezept Bearbeiten</h1>
+</div>
+
+<div class="search_box">
+    <p>Suche ein Rezept:</p><input type="text" placeholder="Search Here" id="search_text">
+    <i class="fas fa-search"></i>   
+</div>
+
+<p id="search_text_stored"></p>
+
+
+
+<div class="neues_Rezept">
+    <form>
+        <div class="input_box">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="name of recipe">
+        </div>
+        <div class="input_box">
+            <label for="type">Type</label>
+            <select id="type" placeholder="Wähle aus">
+                <option value="Hauptspeise">Hauptspeise</option>
+                <option value="Vorspeise">Vorspeise</option>
+                <option value="Dessert">Dessert</option>
+                <option value="Drink">Drink</option>
+            </select>
+        </div>
+        <div class="input_box">
+            <label for="severity">Severity</label>
+            <input type="number" id="severity" placeholder="severity rating">
+        </div>
+        <div class="input_box">
+            <label for="ingrediants">Ingrediants</label>
+            <input type="text" id="ingrediants" placeholder="What's needed">
+        </div>
+        <div class="input_box_zubereitung">
+            <label for="description">Description</label>
+            <input type="text" id="description" placeholder="What to do" class="input_box_zubereitung">
+        </div>
+        <div class="input_box">
+            <button id="btn">Add!</button>
+        </div>
+    </form>
+</div>
+</body>
+<script src="/javascript/edit.js"></script>
+</html>
