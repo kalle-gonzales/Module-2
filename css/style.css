@@ -1,22 +1,35 @@
-body{
-    background-image: url("/images/wood.jpg");
+body, html {
+  height: 100%;
+}
+
+.background_image {
+    background-image: url("../images/wood.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: repeat;
+    height: 100%;
     width: 100%;
     position: absolute;
+    z-index: -1;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
 }
 
 h1{
-    background: white;
-    padding: 20px;
+    font-family: "Gayathri", sans-serif;
+    padding: 6rem 0 0 1rem;
     display: inline-block;
+    color: #eef;
 }
 
 h3{
-    background-color: white;
-    opacity: 0.5;
-    filter: blur();
+    background-image: linear-gradient(to right, #555, #eff);
+    /* background-color: white; */
+    color: #bcf;
+    opacity: 0.8;
+    background-blend-mode: screen;
+    padding: .1rem 1rem;
+    -webkit-border-image: -webkit-gradient(linear, left, right, from(#eff), to(#555)) 10 0 repeat repeat; /*, color-stop(0.5, #fff), color-stop(0.5, #66cc00)) 21 30 30 21 repeat repeat;*/
 }
 
 a:link{
@@ -40,7 +53,7 @@ a:hover{
 /* +++++++++++++++++++++++++++++++++ */
 
 .food_of_the_day{
-    padding: 50px;
+    padding: 0 50px;
 }
 
 .rezept_des_tages {
@@ -48,9 +61,9 @@ a:hover{
     display: flex;
     flex: 1;
     flex-direction: column;
-    box-sizing: border-box;
+    /* box-sizing: border-box;
     border: 2px;
-    border-style: solid;
+    border-style: solid; */
 }
 
 .hauptgericht_of_the_day{
@@ -62,7 +75,7 @@ a:hover{
 }
 
 .hauptgericht{
-    background-image: url("/images/nudel_tomate.jpg");
+    background-image: url("../images/nudel_tomate.jpg");
     background-size: cover;
     background-position: center center;
     height: 100%;
@@ -77,7 +90,7 @@ a:hover{
 }
 
 .drink{
-    background-image: url("/images/white_russin.jpg"); 
+    background-image: url("../images/white_russin.jpg"); 
     background-size: cover;
     background-position: center center; 
     height: 100%;
@@ -92,7 +105,7 @@ a:hover{
 }
 
 .dessert{
-    background-image: url("/images/tera.jpg");
+    background-image: url("../images/tera.jpg");
     background-size: cover;
     background-position: center center;
     height: 100%;
@@ -107,7 +120,7 @@ a:hover{
 }
 
 .vorspeise{
-    background-image: url("/images/tomatensuppe.jpg");
+    background-image: url("../images/tomatensuppe.jpg");
     background-size: cover;
     background-position: center center;
     height: 100%;
@@ -148,8 +161,9 @@ a:hover{
 /* +++++++++++++++++++++++++++++++++ */
 
 .header{
-    padding: 50px;
-    text-align: center;
+    padding: 0;
+    margin-left: 10%;
+    text-align: left;
     align-items: center;
 }
 
@@ -195,7 +209,7 @@ a:hover{
     justify-content: center;
     text-align: center;
     align-items: center;
-    background-image: url("/images/cutting_board.png");
+    background-image: url("../images/cutting_board.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -239,7 +253,7 @@ select, input{
     display: flex;
     width: 60vw;
     height: 40vw;
-    background-image: url("/images/cutting_board.png");
+    background-image: url("../images/cutting_board.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -290,4 +304,22 @@ select, input{
     border: 2px;
     border-style: solid; 
     width: 10vw;
+}
+
+
+/* Fonts */
+@font-face {
+  font-family: Dosis;
+  src: url(https://fonts.googleapis.com/css2?family=Dosis:wght@200&display=swap);
+}
+
+@font-face {
+  font-family: Gayathri;
+  src: URL('../fonts/Gayathri-Thin.ttf') format('truetype');
+  /* src: url("https://fonts.googleapis.com/css?family=Gayathri:100,400&display=swap&subset=malayalam"); */
+}
+
+@font-face {
+  font-family: Tradewinds;
+  src: url(https://fonts.gstatic.com/s/tradewinds/v8/AYCPpXPpYNIIT7h8-QenM0Jt5vM.woff2);
 }

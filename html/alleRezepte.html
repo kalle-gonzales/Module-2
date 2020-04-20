@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alle Rezepte</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+
+  <div class="background_image" id="background_image_all_recipes"></div>
 
   <div class="nav_bar">
     <li><a class="actual" href="index.html">Tagesgerichte</a></li>
@@ -20,8 +22,10 @@
 <div class="header">
   <h1>Alle Rezepte</h1>
   <div class="search_box">
-    <p>Finde dein Wunschessen: <input type="text" placeholder="z.B. Bollo"></p>
-    <i class="fas fa-search"></i>   
+    <p>Finde dein Wunschessen:
+      <input type="text" placeholder="z.B. Bollo">
+    </p>
+    <i class="fas fa-search"></i>
   </div>
   <div class="first_choice">
     <div class="buttons">
@@ -36,7 +40,6 @@
     </div>
   </div>
 </div>
-
 
 <div class="alle_rezepte">
   <div class="rezept" data-kathegorie="Hauptspeise" onclick="window.location.href ='/html/Rezept.html';">
@@ -157,5 +160,5 @@
   
   
   </script>
-  <script type="text/javascript" src="/javascript/alleRezepte.js">  </script>
+  <script type="text/javascript" src="../javascript/alleRezepte.js"></script>
 </html>

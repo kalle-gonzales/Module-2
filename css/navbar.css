@@ -1,3 +1,12 @@
+:root {
+  --slide_in_time: .5s;
+  --color_normal_nav_icon: #eef;
+  --color_normal_nav_text: #eef;
+  --color_active_nav_text: #bcf;
+  --color_hover_nav_icon: #fbb;
+  --color_hover_nav_text: #fbb;
+}
+
 .input-wrapper {
   display:inline-block;
   position: relative;
@@ -25,6 +34,10 @@ input[type=text] {
   color: var(--color_normal_nav_icon);
 }
 
+.fa:hover {
+  color: var(--color_hover_nav_icon);
+}
+
 #home {
   margin-right: 1rem;
   display: inline;
@@ -38,11 +51,10 @@ input[type=text] {
   color: var(--color_active_nav_icon);
 }
 
-.nav_item:hover,
-#home:hover{
+.nav_item:hover {
   color: var(--color_hover_nav_icon);
-  background-color: white;
-  font-size: 16px;
+  background-color: transparent;
+  font-size: 20px;
   margin-right: 1rem;
   position: relative;
 }
@@ -137,15 +149,6 @@ a {
   text-decoration: none;
 }
 
-:root {
-  --slide_in_time: .5s;
-  --color_normal_nav_icon: green;
-  --color_normal_nav_text: green;
-  --color_active_nav_text: yellow;
-  --color_hover_nav_icon: red;
-  --color_hover_nav_text: red;
-}
-
 #logout,
 #logout_text,
 #login_text,
@@ -155,4 +158,10 @@ a {
 
 .login_out_text {
   color: var(--color_hover_nav_text);
+}
+
+nav {
+  padding-top: 2rem;
+  font-size: 20px;
+  min-height: 30px;
 }

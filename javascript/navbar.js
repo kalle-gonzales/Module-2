@@ -53,12 +53,12 @@ function add_hover_listeners(element) {
   console.log(element);
   document.getElementById(element).addEventListener("mouseover", function(){
     document.getElementById("menu_item_text_" + element).style.display = "inline";
-    document.getElementById("menu_item_text_" + element).style.color   = "var(--color_hover_nav_icon)";
+    // document.getElementById("menu_item_text_" + element).style.display = "inline";
     document.getElementById("menu_item_icon_" + element).style.color   = "var(--color_hover_nav_text)";
   });
   document.getElementById(element).addEventListener("mouseout", function(){
   document.getElementById("menu_item_text_" + element).style.display = "none";
-  document.getElementById("menu_item_text_" + element).style.color   = "var(--color_normal_nav_icon)";
+  // document.getElementById("menu_item_text_" + element).style.color   = "var(--color_normal_nav_icon)";
   document.getElementById("menu_item_icon_" + element).style.color   = "var(--color_normal_nav_text)";
   });
 }
@@ -66,11 +66,11 @@ function add_hover_listeners(element) {
 function add_hover_listeners_login_logout(element) {
   document.getElementById(element).addEventListener("mouseover", function(){
     document.getElementById(element + "_text").style.display = "inline";
-    document.getElementById(element + "_icon").style.color   = "var(--color_hover_nav_icon)";
+    // document.getElementById(element + "_icon").style.color   = "var(--color_hover_nav_icon)";
   });
 
   document.getElementById(element).addEventListener("mouseout", function(){
     document.getElementById(element + "_text").style.display = "none";
-    document.getElementById(element + "_icon").style.color   = "var(--color_normal_nav_icon)";
+    // document.getElementById(element + "_icon").style.color   = "var(--color_normal_nav_icon)";
   });
 }
