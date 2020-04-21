@@ -29,7 +29,6 @@ h3{
     opacity: 0.8;
     background-blend-mode: screen;
     padding: .1rem 1rem;
-    -webkit-border-image: -webkit-gradient(linear, left, right, from(#eff), to(#555)) 10 0 repeat repeat; /*, color-stop(0.5, #fff), color-stop(0.5, #66cc00)) 21 30 30 21 repeat repeat;*/
 }
 
 a:link{

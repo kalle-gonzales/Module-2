@@ -6,7 +6,6 @@ let menu_items = ["add_recipe", "cookbook", "drinks", "main", "first"]
 document.getElementById("burger_menu").onclick = function(){
   showing_menu = !showing_menu;
   console.log(showing_menu);
-  var x = document.getElementById("menu");
   document.getElementById("menu").classList.toggle("show");
   if (showing_menu) {
     menu_items.forEach(function (item) {
@@ -16,7 +15,7 @@ document.getElementById("burger_menu").onclick = function(){
     menu_items.forEach(function (item) {
       document.getElementById(item).classList.remove("slidein_" + item);
     });
-  };
+  }
 };
 
 document.getElementById("login").onclick = function(){
@@ -50,15 +49,12 @@ menu_items.forEach(function (item) {
 });
 
 function add_hover_listeners(element) {
-  console.log(element);
   document.getElementById(element).addEventListener("mouseover", function(){
     document.getElementById("menu_item_text_" + element).style.display = "inline";
-    // document.getElementById("menu_item_text_" + element).style.display = "inline";
     document.getElementById("menu_item_icon_" + element).style.color   = "var(--color_hover_nav_text)";
   });
   document.getElementById(element).addEventListener("mouseout", function(){
   document.getElementById("menu_item_text_" + element).style.display = "none";
-  // document.getElementById("menu_item_text_" + element).style.color   = "var(--color_normal_nav_icon)";
   document.getElementById("menu_item_icon_" + element).style.color   = "var(--color_normal_nav_text)";
   });
 }
@@ -66,11 +62,9 @@ function add_hover_listeners(element) {
 function add_hover_listeners_login_logout(element) {
   document.getElementById(element).addEventListener("mouseover", function(){
     document.getElementById(element + "_text").style.display = "inline";
-    // document.getElementById(element + "_icon").style.color   = "var(--color_hover_nav_icon)";
   });
 
   document.getElementById(element).addEventListener("mouseout", function(){
     document.getElementById(element + "_text").style.display = "none";
-    // document.getElementById(element + "_icon").style.color   = "var(--color_normal_nav_icon)";
   });
 }
