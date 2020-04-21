@@ -25,7 +25,7 @@
 
 
 function loadRecipe(){
-    return fetch("/JSON_files/recipes.json")
+    return fetch("../JSON_files/recipes.json")
     .then(function(response) {
         //console.log(response)
         return response.json()
