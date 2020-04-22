@@ -1,4 +1,4 @@
-var showing_menu = false
+var showing_menu = false;
 let menu_items = ["add_recipe", "cookbook", "drink", "dessert", "main", "first"]
 
 document.getElementById("burger_menu").onclick = function(){

@@ -117,7 +117,7 @@ nav {
 }
 
 .menu_item {
-  visibility: hidden;
+  visibility: visible;     /* <------ Hier stimmt irgendwas nicht war ursprünglich hidden, wechselt aber nicht mehr bei onlick */
 }
 
 .slidein_add_recipe {
