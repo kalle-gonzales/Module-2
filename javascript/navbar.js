@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-var showing_menu = false
-let menu_items = ["add_recipe", "cookbook", "drink", "dessert", "main", "first"]
-=======
 const body            = document.getElementById("body"),
       login_modal     = document.getElementById("login_modal" ),
       logout_modal    = document.getElementById("logout_modal"),
@@ -18,7 +14,6 @@ const body            = document.getElementById("body"),
 
 var showing_menu = false
 let menu_items = ["add_recipe", "cookbook", "drinks", "main", "first"]
->>>>>>> changes add, edit, delete
 
 document.getElementById("burger_menu").onclick = function(){
   showing_menu = !showing_menu;
@@ -34,27 +29,6 @@ document.getElementById("burger_menu").onclick = function(){
   }
 };
 
-<<<<<<< HEAD
-document.getElementById("login").onclick = function(){
-  this.style.display = "none";
-  document.getElementById("logout").style.display = "inline";
-};
-
-document.getElementById("logout").onclick = function(){
-  this.style.display = "none";
-  document.getElementById("login").style.display = "inline";
-};
-
-document.getElementById("search").addEventListener("mouseover", function(){
-  document.getElementById("search_text").style.display = "inline";
-  document.getElementById("search_icon").style.display = "none";
-});
-
-document.getElementById("search").addEventListener("mouseout", function(){
-  document.getElementById("search_text").style.display = "none";
-  document.getElementById("search_icon").style.display = "inline";
-
-=======
 nav_search.addEventListener("mouseover", function(){
   nav_search_icon.style.display = "none";
   nav_search_text.style.display = "inline";
@@ -63,34 +37,19 @@ nav_search.addEventListener("mouseover", function(){
 nav_search.addEventListener("mouseout", function(){
   nav_search_icon.style.display = "inline";
   nav_search_text.style.display = "none";
->>>>>>> changes add, edit, delete
 });
 
 // add listeners for hover and de-hover events to all menu_item
 menu_items.forEach(function (item) {
-<<<<<<< HEAD
-  add_hover_listeners(item);
-});
-
-["login", "logout"].forEach(function (item) {
-=======
-  console.log(item);
   add_hover_listeners(item);
 });
 
 ["nav_login", "nav_logout"].forEach(function (item) {
->>>>>>> changes add, edit, delete
   add_hover_listeners_login_logout(item);
 });
 
 function add_hover_listeners(element) {
-<<<<<<< HEAD
   document.getElementById(element).addEventListener("mouseover", function(){
-=======
-  console.log(element);
-  document.getElementById(element).addEventListener("mouseover", function(){
-    console.log("hiver")
->>>>>>> changes add, edit, delete
     document.getElementById("menu_item_text_" + element).style.display = "inline";
     document.getElementById("menu_item_icon_" + element).style.color   = "var(--color_hover_nav_text)";
   });
@@ -108,8 +67,6 @@ function add_hover_listeners_login_logout(element) {
   document.getElementById(element).addEventListener("mouseout", function(){
     document.getElementById(element + "_text").style.display = "none";
   });
-<<<<<<< HEAD
-=======
 }
 
 /**********
@@ -161,5 +118,4 @@ function showModal(modal, close_dom) {
 function hideModal(modal) {
   modal.style.display = "none";
   page_wrapper.classList.remove("grey_out"); 
->>>>>>> changes add, edit, delete
 }

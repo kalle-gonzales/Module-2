@@ -64,11 +64,7 @@ nav {
   margin: auto;
 }
 
-<<<<<<< HEAD
 #flex_container {
-=======
-.flex_container {
->>>>>>> changes add, edit, delete
   display: flex;
   justify-content: space-around;
 }
@@ -93,7 +89,6 @@ nav {
   to   { transform: translateX(    0%); }
 }
 
-<<<<<<< HEAD
 
 @keyframes slidein_drink {
   from { transform: translateX(-2440%); } /* -325% */
@@ -101,9 +96,6 @@ nav {
 }
 
 @keyframes slidein_dessert {
-=======
-@keyframes slidein_drinks {
->>>>>>> changes add, edit, delete
   from { transform: translateX(-2440%); } /* -325% */
   to   { transform: translateX(    0%); }
 }
@@ -140,7 +132,6 @@ nav {
   animation-name: slidein_cookbook;
 }
 
-<<<<<<< HEAD
 .slidein_drink {
   visibility: visible;
   animation-duration: var(--slide_in_time);
@@ -151,12 +142,6 @@ nav {
   visibility: visible;
   animation-duration: var(--slide_in_time);
   animation-name: slidein_dessert;
-=======
-.slidein_drinks {
-  visibility: visible;
-  animation-duration: var(--slide_in_time);
-  animation-name: slidein_drinks;
->>>>>>> changes add, edit, delete
 }
 
 .slidein_main {
@@ -176,7 +161,6 @@ a {
   text-decoration: none;
 }
 
-<<<<<<< HEAD
 #logout,
 #logout_text,
 #login_text,
@@ -185,16 +169,6 @@ a {
 }
 
 .login_out_text {
-=======
-#nav_logout,
-#nav_logout_text,
-#nav_login_text,
-#nav_search_text {
-  display: none;
-}
-
-.nav_login_out_text {
->>>>>>> changes add, edit, delete
   color: var(--color_hover_nav_text);
 }
 
@@ -202,8 +176,6 @@ nav {
   padding-top: 2rem;
   font-size: 20px;
   min-height: 30px;
-<<<<<<< HEAD
-=======
 }
 
 
@@ -264,5 +236,4 @@ fieldset > div > input {
   margin: 5px 0 0 5px;
   background-color: var(--color_active_nav_text);
   max-width: 40%;
->>>>>>> changes add, edit, delete
 }

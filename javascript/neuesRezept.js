@@ -22,9 +22,7 @@
 // localStorage.setItem('Spagehtthi Bollo', JSON.stringify(Spagehtthi_Bollo));
 // localStorage.setItem('Pilz', JSON.stringify(Spagehtthi_Bollo));
 // localStorage.setItem('Pizza', JSON.stringify(Pizza));
-<<<<<<< HEAD
 
-=======
 recipes = [
     { 
       "name": "Spagehtthi Bollo",
@@ -93,7 +91,7 @@ recipes = [
   ]
 
 localStorage.setItem('recipes', JSON.stringify(recipes));
->>>>>>> changes add, edit, delete
+
 
 function loadRecipe(){
     return fetch("../JSON_files/recipes.json")
@@ -119,15 +117,9 @@ async function getRecipes(){
 getRecipes()
 
 
-<<<<<<< HEAD
-const addRecipe = async (ev) => {
-    ev.preventDefault(); //stop the form submitting
-    const recipes = await getRecipes()
-=======
 const addRecipe = (ev) => {
     ev.preventDefault(); //stop the form submitting
     //const recipes = await getRecipes()
->>>>>>> changes add, edit, delete
     let add = {
         name: document.getElementById('name').value,
         type: document.getElementById('type').value,
@@ -143,13 +135,8 @@ const addRecipe = (ev) => {
     document.forms[0].reset(); //clear form for next entries   
     localStorage.setItem('recipes', JSON.stringify(recipes));
     
-<<<<<<< HEAD
-    var actual = JSON.parse(localStorage.getItem("recipes"));
-    console.log(actual)  
-=======
     //var actual = JSON.parse(localStorage.getItem("recipes"));
     //console.log(actual)  
->>>>>>> changes add, edit, delete
 }
 
 document.addEventListener('DOMContentLoaded', ()=>{

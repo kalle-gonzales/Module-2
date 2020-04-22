@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
     recipes = [
         { 
           "name": "Spagehtthi Bollo",
@@ -69,7 +67,6 @@
     
     localStorage.setItem('recipes', JSON.stringify(recipes));
 
->>>>>>> changes add, edit, delete
     function loadRecipe(){
         return fetch("../JSON_files/recipes.json")
         .then(function(response) {
@@ -110,11 +107,6 @@
 
 
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> changes add, edit, delete
 // const output_Hauptspeise_otd = document.getElementById("output_Hauptspeise_otd")
 // const output_Vorspeise_otd = document.getElementById("output_Vorspeise_otd")
 // const output_Dessert_otd = document.getElementById("output_Dessert_otd")
