@@ -89,7 +89,13 @@ nav {
   to   { transform: translateX(    0%); }
 }
 
-@keyframes slidein_drinks {
+
+@keyframes slidein_drink {
+  from { transform: translateX(-2440%); } /* -325% */
+  to   { transform: translateX(    0%); }
+}
+
+@keyframes slidein_dessert {
   from { transform: translateX(-2440%); } /* -325% */
   to   { transform: translateX(    0%); }
 }
@@ -126,10 +132,16 @@ nav {
   animation-name: slidein_cookbook;
 }
 
-.slidein_drinks {
+.slidein_drink {
   visibility: visible;
   animation-duration: var(--slide_in_time);
-  animation-name: slidein_drinks;
+  animation-name: slidein_drink;
+}
+
+.slidein_dessert {
+  visibility: visible;
+  animation-duration: var(--slide_in_time);
+  animation-name: slidein_dessert;
 }
 
 .slidein_main {
