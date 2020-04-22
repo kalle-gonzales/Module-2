@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>Rezept des Tages</title>
 </head>
+<<<<<<< HEAD
 <body>
 
   <div class="background_image" id="background_image_index"></div>
@@ -133,6 +134,172 @@
 
 
 
+=======
+
+<body id="body">
+  <!-- vvvvv Login Modal vvvvv -->
+  <div id="login_modal" class="modal">
+
+    <!-- vvvv Login Maske vvvvv -->
+    <div class="modal-content">
+      <span class="modal_close" id="login_modal_close">&times;</span>
+      <form id="login" action="">
+        <fieldset>
+          <legend>Login</legend>
+          <div>
+            <label for="user-name">Emailadresse:</label>
+            <input name="user-name" type="email" placeholder="Max.Mustermann@mail.de" required autofocus>
+          </div>
+          <div>
+            <label for="password">Password:</label>
+            <input name="password" type="password" placeholder="******" required>
+          </div>
+          <div>
+            <input class="submit_button" name="login" value="Login">
+            <input class="submit_button" name="register" value="Registrieren">
+          </div>
+        </fieldset>
+      </form>
+    </div> 
+    <!-- ^^^^^ Login Maske ^^^^^ -->
+  </div> 
+  <!-- ^^^^^ Login Modal ^^^^^ -->
+
+  <!-- vvvvv Logout Modal vvvvv -->
+  <div id="logout_modal" class="modal">
+
+    <!-- vvvv Logout Dialog vvvvv -->
+    <div class="modal-content">
+      <span class="modal_close" id="logout_modal_close">&times;</span>
+        <fieldset>
+          <legend>Wollen Sie sich auslogen?</legend>
+          <div>
+            <button class="submit_button" id="no">Nein</button>
+            <button class="submit_button" id="yes">Ja</button>
+          </div>
+        </fieldset>
+    </div> 
+    <!-- ^^^^^ Logout Dialog ^^^^^ -->
+  </div> 
+  <!-- ^^^^^ Logout Modal ^^^^^ -->
+
+  <div id="page_wrapper">
+    <div class="background_image" id="background_image_index"></div>
+
+    <nav>
+      <a href="index.html" class="nav_item" id="home">
+        <i class="fa fa-home" id="home_icon" aria-hidden="true"></i>
+      </a>
+
+      <div id="burger_menu" class="nav_item">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </div>
+    
+      <div class="drop_right menu nav_item" id="menu">
+        <div class="flex_container">
+
+          <a href="#" class="flex_item menu_item nav_item" id="first"> <!-- not working -->
+            <i class="fa fa-spoon" aria-hidden="true" id="menu_item_icon_first"></i>
+            <div class="menu_item_text" id="menu_item_text_first">
+              Vorspeise
+            </div>
+          </a>
+          
+          <a href="#" class="flex_item menu_item nav_item" id="main"> <!-- not working -->
+            <i class="fa fa-cutlery" aria-hidden="true" id="menu_item_icon_main"></i>
+            <div class="menu_item_text" id="menu_item_text_main">
+              Hauptspeise
+            </div>
+          </a>
+    
+          
+          <a href="#" class="flex_item menu_item nav_item" id="drinks"> <!-- not working -->
+            <i class="fa fa-glass" aria-hidden="true" id="menu_item_icon_drinks"></i>
+            <div class="menu_item_text" id="menu_item_text_drinks">
+              Drinks
+            </div>
+          </a>
+          
+          <a href="#" class="flex_item menu_item nav_item" id="cookbook"> <!-- not working -->
+            <i class="fa fa-book" aria-hidden="true" id="menu_item_icon_cookbook"></i>
+            <div class="menu_item_text" id="menu_item_text_cookbook">
+              Mein Kochbuch
+            </div>
+          </a>
+    
+          <a href="add.html" class="flex_item menu_item nav_item" id="add_recipe">
+            <i class="fa fa-plus-circle" aria-hidden="true" id="menu_item_icon_add_recipe"></i>
+            <div class="menu_item_text" id="menu_item_text_add_recipe">
+              Rezept hinzufügen
+            </div>
+          </a>
+        </div>
+      </div>  
+    
+      <div class="right" id="nav_logout"> 
+        <i class="fa fa-sign-out" aria-hidden="true" id="nav_logout_icon"></i>
+        <div class="nav_login_out_text" id="nav_logout_text">Logout</div>
+      </div>
+    
+      <div class="right" id="nav_login"> 
+        <i class="fa fa-sign-in" aria-hidden="true" id="nav_login_icon"></i>
+        <div class="nav_login_out_text" id="nav_login_text">Login</div>
+      </div>
+    
+      <div class="right" id="nav_search">
+        <i class="fa fa-search" aria-hidden="true" id="nav_search_icon"></i>
+        <div class="input-wrapper" id="nav_search_text">
+        <input type="text" placeholder="Suche" />
+        </div>
+      </div>
+    </nav>
+
+    <div class="header">
+      <h1>Empfehlungen des Tages</h1>
+    </div>
+
+    <div class="food_of_the_day">
+      <div class="flex_container_reihe">  <!-- Initiiere Flexbox Reihendarstellung-->
+        <div class="double_col">    <!-- Initiiere Doppelte Spalte in der ersten Position der Reihen --> 
+          <div class="hauptgericht_of_the_day" onclick="window.location.href ='/html/Rezept.html';">
+            <div class="rezept_des_tages">
+              <div class="hauptgericht">
+                <div class="module-border-wrap"><h3>Hauptgericht</h3></div>
+                  <div id="output_Hauptspeise_otd"></div>
+              </div>
+            </div> 
+          </div>   <!-- Hauptpeise--> 
+          <div class="double_row"> <!-- Inittiere Doppelte Reihe für erstes Spaltenelement in unterer Spaltenposition -->
+            <div class="vorspeise_of_the_day" onclick="window.location.href ='/html/Rezept.html';">
+              <div class="rezept_des_tages">
+                <div class="vorspeise">
+                <h3>Vorspeise</h3>
+                  <div id="output_Vorspeise_otd"></div>
+                </div>
+              </div>
+            </div><!-- Vorspeise--> 
+            <div class="dessert_of_the_day" onclick="window.location.href ='/html/Rezept.html';">
+              <div class="rezept_des_tages">
+                <div class="dessert">
+                <h3>Dessert</h3>
+                  <div id="output_Dessert_otd"></div>
+                </div>
+              </div>
+            </div><!-- Nachpeise--> 
+          </div> <!-- ende von Essen -->
+        </div>    
+        <div class="drink_of_the_day" onclick="window.location.href ='/html/Rezept.html';">
+          <div class="rezept_des_tages">
+            <div class="drink">
+            <h3>Drink</h3>
+              <div id="output_Drink_otd"></div>
+            </div>
+          </div>
+        </div>  <!-- Getränk              -->
+      </div>    <!-- Flexbox Reihe zuende -->
+    </div>      <!-- Food of the day      -->
+  </div>        <!-- page_wrapper         -->
+>>>>>>> changes add, edit, delete
 
 </body>
 <script src="../javascript/index.js"></script>

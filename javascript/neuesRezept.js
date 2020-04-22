@@ -22,7 +22,78 @@
 // localStorage.setItem('Spagehtthi Bollo', JSON.stringify(Spagehtthi_Bollo));
 // localStorage.setItem('Pilz', JSON.stringify(Spagehtthi_Bollo));
 // localStorage.setItem('Pizza', JSON.stringify(Pizza));
+<<<<<<< HEAD
 
+=======
+recipes = [
+    { 
+      "name": "Spagehtthi Bollo",
+      "base": "Noodles",
+      "type": "Hauptspeise",
+      "severity": 3.8,
+      "ingrediants": ["Spagetthi", "Tomaten"],
+      "description": "First you have to..."
+    },
+    {
+      "name": "Mushroom Risotto",
+      "base": "Rice",
+      "type": "Hauptspeise",
+      "severity": 4.5,
+      "ingredients": ["Pilze", "Reis"],
+      "description": "First you have to..."
+    },
+    {
+      "name": "Vodka Martini",
+      "base": "Vodka",
+      "type": "Drink",
+      "severity": 4.5,
+      "ingredients": ["Vodka", "Martini"],
+      "description": "First you have to..."
+    },
+    {
+      "name": "Tomatensuppe",
+      "base": "Tomaten",
+      "type": "Vorspeise",
+      "severity": 4.5,
+      "ingredients": ["Tomaten", "Wasser"],
+      "description": "First you have to..."
+    },
+    {
+      "name": "Spargelsuppe",
+      "base": "Spargel",
+      "type": "Vorspeise",
+      "severity": 4.5,
+      "ingredients": ["Spargel", "Wasser"],
+      "description": "First you have to..."
+    },
+    {
+      "name": "Bier",
+      "base": "Bier",
+      "type": "Drink",
+      "severity": 4.5,
+      "ingredients": ["Hefe", "Wasser", "Hopfen"],
+      "description": "First you have to..."
+    },
+    {
+      "name": "Mamorkuchen",
+      "base": "Teig",
+      "type": "Dessert",
+      "severity": 4.5,
+      "ingredients": ["Hefe", "Wasser", "Schoko"],
+      "description": "First you have to..."
+    },
+    {
+      "name": "Teramisu",
+      "base": "Teig",
+      "type": "Dessert",
+      "severity": 4.5,
+      "ingredients": ["Hefe", "Wasser", "KaFFEE"],
+      "description": "First you have to..."
+    }
+  ]
+
+localStorage.setItem('recipes', JSON.stringify(recipes));
+>>>>>>> changes add, edit, delete
 
 function loadRecipe(){
     return fetch("../JSON_files/recipes.json")
@@ -48,9 +119,15 @@ async function getRecipes(){
 getRecipes()
 
 
+<<<<<<< HEAD
 const addRecipe = async (ev) => {
     ev.preventDefault(); //stop the form submitting
     const recipes = await getRecipes()
+=======
+const addRecipe = (ev) => {
+    ev.preventDefault(); //stop the form submitting
+    //const recipes = await getRecipes()
+>>>>>>> changes add, edit, delete
     let add = {
         name: document.getElementById('name').value,
         type: document.getElementById('type').value,
@@ -66,8 +143,13 @@ const addRecipe = async (ev) => {
     document.forms[0].reset(); //clear form for next entries   
     localStorage.setItem('recipes', JSON.stringify(recipes));
     
+<<<<<<< HEAD
     var actual = JSON.parse(localStorage.getItem("recipes"));
     console.log(actual)  
+=======
+    //var actual = JSON.parse(localStorage.getItem("recipes"));
+    //console.log(actual)  
+>>>>>>> changes add, edit, delete
 }
 
 document.addEventListener('DOMContentLoaded', ()=>{
