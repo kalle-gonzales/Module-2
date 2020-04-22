@@ -18,10 +18,9 @@
         <div class="menu_item_text" id="menu_item_text_main">Hauptspeise</div>
       </a>
 
-      
-      <a href="#" class="flex_item menu_item" id="drinks">
-        <i class="fa fa-glass" aria-hidden="true" id="menu_item_icon_drinks"></i>
-        <div class="menu_item_text" id="menu_item_text_drinks">Drinks</div>
+      <a href="#" class="flex_item menu_item" id="drink">
+        <i class="fa fa-glass" aria-hidden="true" id="menu_item_icon_drink"></i>
+        <div class="menu_item_text" id="menu_item_text_drink">Drink</div>
       </a>
       
       <a href="#" class="flex_item menu_item" id="cookbook">
@@ -57,8 +56,8 @@
 
 <script>
   var showing_menu = false
-  let menu_items = ["add_recipe", "cookbook", "drinks", "main", "first"]
-  // let menu_items = ["add_recipe"]//, "menu_cookbook"]//, "menu_drinks"]//, "menu_main"]//, "menu_first"]
+  let menu_items = ["add_recipe", "cookbook", "drink", "main", "first"]
+  // let menu_items = ["add_recipe"]//, "menu_cookbook"]//, "menu_drink"]//, "menu_main"]//, "menu_first"]
   // let menu_items = ["menu_first"]//, "menu_main"]//, "menu_first"]
 
   document.getElementById("burger_menu").onclick = function(){
@@ -185,7 +184,7 @@
     to   { transform: translateX(    0%); }
   }
 
-  @keyframes slidein_drinks {
+  @keyframes slidein_drink {
     from { transform: translateX(-2440%); } /* -325% */
     to   { transform: translateX(    0%); }
   }
@@ -221,10 +220,10 @@
     animation-name: slidein_cookbook;
   }
 
-  .slidein_drinks {
+  .slidein_drink {
     visibility: visible;
     animation-duration: var(--slide_in_time);
-    animation-name: slidein_drinks;
+    animation-name: slidein_drink;
   }
 
   .slidein_main {

@@ -1,11 +1,8 @@
 var showing_menu = false
-let menu_items = ["add_recipe", "cookbook", "drinks", "main", "first"]
-// let menu_items = ["add_recipe"]//, "menu_cookbook"]//, "menu_drinks"]//, "menu_main"]//, "menu_first"]
-// let menu_items = ["menu_first"]//, "menu_main"]//, "menu_first"]
+let menu_items = ["add_recipe", "cookbook", "drink", "dessert", "main", "first"]
 
 document.getElementById("burger_menu").onclick = function(){
   showing_menu = !showing_menu;
-  console.log(showing_menu);
   document.getElementById("menu").classList.toggle("show");
   if (showing_menu) {
     menu_items.forEach(function (item) {
