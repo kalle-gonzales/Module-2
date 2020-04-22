@@ -13,7 +13,7 @@
 
     async function getRecipes(){
         const data = await loadRecipe();
-        console.log(data[0]["ingrediants"]);
+        //console.log(data[0]["ingrediants"]);
         numberRezepte = data.length;
 
         // const Liste_Hauptspeisen = 

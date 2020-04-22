@@ -1,26 +1,51 @@
 const btnAlle = document.getElementById("Alle");
-const btnHauptspeise = document.getElementById("Hauptspeise");
-const btnVorspeise = document.getElementById("Vorspeise");
-const btnDessert = document.getElementById("Dessert");
-const btnDrink = document.getElementById("Drink");
+const btnHauptspeise = document.getElementById("main");
+const btnVorspeise = document.getElementById("first");
+//const btnDessert = document.getElementById("Dessert");
+const btnDrink = document.getElementById("drinks");
 
 const alleRezepte = document.querySelectorAll(".rezept");
 
 btnAlle.addEventListener("click", foodFilter);
 btnHauptspeise.addEventListener("click", foodFilter);
 btnVorspeise.addEventListener("click", foodFilter);
-btnDessert.addEventListener("click", foodFilter);
+//btnDessert.addEventListener("click", foodFilter);
 btnDrink.addEventListener("click", foodFilter);
 
+//LOAD.addEventlistener("onload", foodFilter);
+
+let targetId = localStorage.getItem("food_filter_id_from_index");
+
+// function foodFilter_from_index(){
+//     console.log(targetId);
+//     if (!targetId) {
+//         alleRezepte.forEach(function(rezept) {
+//             if (targetId === "Alle"){
+//                 rezept.style.display = "block";
+//             } else if (rezept.dataset.kathegorie != targetId) {
+//                 rezept.style.display = "none";
+//             } else {
+//                 rezept.style.display = "block";
+//             }
+//         });
+//     }
+// }
+
+// foodFilter(window.onload)
 
 function foodFilter(event) {
-    //console.log(event.target);
-    const targetId = event.target.id;
+    if (!targetId){
+        targetId = localStorage.getItem("food_filter_id_from_index");
+        console.log(targetId)
+    } else {
+        //console.log(event.target);
+        targetId = event.target.dataset.kathegorie;
+        //console.log(targetId)
+        localStorage.setItem("food_filter_id_from_index", targetId);
+        //console.log(alleRezepte)
+        //console.log
 
-    //console.log(alleRezepte)
-
-
-    alleRezepte.forEach(function(rezept) {
+        alleRezepte.forEach(function(rezept) {
         if (targetId === "Alle"){
             rezept.style.display = "block";
         } else if (rezept.dataset.kathegorie !== targetId) {
@@ -28,6 +53,11 @@ function foodFilter(event) {
         } else {
             rezept.style.display = "block";
         }
-    });
-    
+        });
+    }
 }
+
+
+
+// if (!localStorage.getItem("food_filter_id_from_index")):
+//     targetId = localStorage.getItem("food_filter_id_from_index")
