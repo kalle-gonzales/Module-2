@@ -1,15 +1,15 @@
-const btnAlle = document.getElementById("Alle");
+const btncookbok = document.getElementById("cookbook");
 const btnHauptspeise = document.getElementById("main");
 const btnVorspeise = document.getElementById("first");
-//const btnDessert = document.getElementById("dessert");
-const btnDrink = document.getElementById("drinks");
+const btnDessert = document.getElementById("dessert");
+const btnDrink = document.getElementById("drink");
 
 const alleRezepte = document.querySelectorAll(".rezept");
 
-btnAlle.addEventListener("click", foodFilter);
+btncookbok.addEventListener("click", foodFilter);
 btnHauptspeise.addEventListener("click", foodFilter);
 btnVorspeise.addEventListener("click", foodFilter);
-//btnDessert.addEventListener("click", foodFilter);
+btnDessert.addEventListener("click", foodFilter);
 btnDrink.addEventListener("click", foodFilter);
 
 //LOAD.addEventlistener("onload", foodFilter);
@@ -46,7 +46,7 @@ function foodFilter(event) {
         //console.log
 
         alleRezepte.forEach(function(rezept) {
-        if (targetId === "Alle"){
+        if (targetId === "cookbook"){
             rezept.style.display = "block";
         } else if (rezept.dataset.kathegorie !== targetId) {
             rezept.style.display = "none";
