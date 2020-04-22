@@ -41,10 +41,8 @@ a:visited{
 }
 
 a:hover{
-    position: absolute;
-    font-size: 20px;
-    background: black;
-    display: inline-block;
+    
+    color: grey;
 }
 
 /* +++++++++++++++++++++++++++++++++ */
@@ -190,7 +188,11 @@ a:hover{
     background-color: grey;
 }
 
-
+.btn_choice{
+    font-family: "Gayathri", sans-serif;
+    padding-top: 50px;
+    color: #eef;
+}
 
 /* +++++++++++++++++++++++++++++++++ */
 /*          Rezept Hinzufügen        */

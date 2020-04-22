@@ -1,11 +1,7 @@
 const btnAlle = document.getElementById("Alle");
 const btnHauptspeise = document.getElementById("main");
 const btnVorspeise = document.getElementById("first");
-<<<<<<< Updated upstream
-//const btnDessert = document.getElementById("Dessert");
-=======
-const btnDessert = document.getElementById("dessert");
->>>>>>> Stashed changes
+//const btnDessert = document.getElementById("dessert");
 const btnDrink = document.getElementById("drinks");
 
 const alleRezepte = document.querySelectorAll(".rezept");
@@ -18,11 +14,7 @@ btnDrink.addEventListener("click", foodFilter);
 
 //LOAD.addEventlistener("onload", foodFilter);
 
-<<<<<<< Updated upstream
 let targetId = localStorage.getItem("food_filter_id_from_index");
-=======
-// let targetId = localStorage.getItem("food_filter_id_from_index");
->>>>>>> Stashed changes
 
 // function foodFilter_from_index(){
 //     console.log(targetId);
@@ -42,7 +34,6 @@ let targetId = localStorage.getItem("food_filter_id_from_index");
 // foodFilter(window.onload)
 
 function foodFilter(event) {
-<<<<<<< Updated upstream
     if (!targetId){
         targetId = localStorage.getItem("food_filter_id_from_index");
         console.log(targetId)
@@ -50,15 +41,6 @@ function foodFilter(event) {
         //console.log(event.target);
         targetId = event.target.dataset.kathegorie;
         //console.log(targetId)
-=======
-    // if (!targetId){
-    //     targetId = localStorage.getItem("food_filter_id_from_index");
-    //     console.log(targetId)
-    // } else {
-        console.log(event.target);
-        targetId = event.target.dataset.kathegorie;
-        console.log(targetId)
->>>>>>> Stashed changes
         localStorage.setItem("food_filter_id_from_index", targetId);
         //console.log(alleRezepte)
         //console.log
@@ -73,11 +55,7 @@ function foodFilter(event) {
         }
         });
     }
-<<<<<<< Updated upstream
 }
-=======
-
->>>>>>> Stashed changes
 
 
 
