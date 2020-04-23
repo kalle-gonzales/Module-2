@@ -242,3 +242,15 @@ fieldset > div > input {
   background-color: var(--color_active_nav_text);
   max-width: 40%;
 }
+
+
+
+/***********
+ * preview *
+ ***********/
+
+
+.preview {
+  visibility: hidden;
+}
+

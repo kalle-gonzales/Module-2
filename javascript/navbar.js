@@ -122,3 +122,24 @@ function hideModal(modal) {
   modal.style.display = "none";
   page_wrapper.classList.remove("grey_out"); 
 }
+
+
+
+/***********
+ * preview *
+ ***********/
+
+Array.from(document.getElementsByClassName("daily")).forEach(function (item) {
+  preview_add_hover_listeners(item);
+});
+
+function preview_add_hover_listeners(element) {
+  console.log(element)
+  element.addEventListener("mouseover", function(){
+    document.getElementById("preview_first").style.visibility = "visible";
+  });
+
+  element.addEventListener("mouseout", function(){
+    document.getElementById("preview_first").style.visibility = "hidden";
+  });
+}
