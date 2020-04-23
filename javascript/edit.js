@@ -81,7 +81,7 @@ var description = recipe["0"].description;
 document.getElementById('description').value = description;
 
 
-var edit = [];
+//var edit = [];
 
 const addRecipe = (ev)=>{
     ev.preventDefault(); //stop the form submitting
