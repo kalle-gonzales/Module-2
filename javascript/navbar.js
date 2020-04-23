@@ -1,4 +1,4 @@
-var showing_menu = false
+var showing_menu = false;
 let menu_items = ["add_recipe", "cookbook", "drink", "dessert", "main", "first"]
 
 document.getElementById("burger_menu").onclick = function(){
@@ -51,8 +51,8 @@ function add_hover_listeners(element) {
     document.getElementById("menu_item_icon_" + element).style.color   = "var(--color_hover_nav_text)";
   });
   document.getElementById(element).addEventListener("mouseout", function(){
-  document.getElementById("menu_item_text_" + element).style.display = "none";
-  document.getElementById("menu_item_icon_" + element).style.color   = "var(--color_normal_nav_text)";
+    document.getElementById("menu_item_text_" + element).style.display = "none";
+    document.getElementById("menu_item_icon_" + element).style.color   = "var(--color_normal_nav_text)";
   });
 }
 
