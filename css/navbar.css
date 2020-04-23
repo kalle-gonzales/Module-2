@@ -81,32 +81,32 @@ nav {
 }
 
 @keyframes slidein_add_recipe {
-  from { transform: translateX(-5038%); } /* -290% */
+  from { transform: translateX(-3700%); } /* -5038% -290% */
   to   { transform: translateX(    0%); }
 }
 
 @keyframes slidein_cookbook {
-  from { transform: translateX(-3640%); } /* -225% */
+  from { transform: translateX(-2800%); } /* -3640% -225% */
   to   { transform: translateX(    0%); }
 }
 
 @keyframes slidein_drink {
-  from { transform: translateX(-2440%); } /* -325% */
+  from { transform: translateX(-2000%); } /* -2440% -325% */
   to   { transform: translateX(    0%); }
 }
 
 @keyframes slidein_dessert {
-  from { transform: translateX(-2440%); } /* -325% */
+  from { transform: translateX(-1430%); } /* -2440% -325% */
   to   { transform: translateX(    0%); }
 }
 
 @keyframes slidein_main {
-  from { transform: translateX(-1850%); } /* -110% */
+  from { transform: translateX(-1060%); } /* -1850% -110% */
   to   { transform: translateX(    0%); }
 }
 
 @keyframes slidein_first {
-  from { transform: translateX(-1380%); } /* -20% */
+  from { transform: translateX(-800%); } /* -1380% -20% */
   to   { transform: translateX(    0%); }
 }
 
