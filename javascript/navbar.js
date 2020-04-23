@@ -134,12 +134,11 @@ Array.from(document.getElementsByClassName("daily")).forEach(function (item) {
 });
 
 function preview_add_hover_listeners(element) {
-  console.log(element)
   element.addEventListener("mouseover", function(){
-    document.getElementById("preview_first").style.visibility = "visible";
+    document.getElementById("preview_" + element.id).style.visibility = "visible";
   });
 
   element.addEventListener("mouseout", function(){
-    document.getElementById("preview_first").style.visibility = "hidden";
+    document.getElementById("preview_" + element.id).style.visibility = "hidden";
   });
 }
