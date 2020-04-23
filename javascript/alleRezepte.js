@@ -1,18 +1,33 @@
-const btncookbok = document.getElementById("cookbook");
-const btnHauptspeise = document.getElementById("main");
-const btnVorspeise = document.getElementById("first");
-const btnDessert = document.getElementById("dessert");
-const btnDrink = document.getElementById("drink");
+const btn_cookbook = document.getElementById("cookbook" ),
+      btn_main     = document.getElementById("main"     ),
+      btn_first    = document.getElementById("first"    ),
+      btn_dessert  = document.getElementById("dessert"  ),
+      btn_drink    = document.getElementById("drink"    ),
+      alleRezepte  = document.querySelectorAll(".rezept");
 
-const alleRezepte = document.querySelectorAll(".rezept");
-
-btncookbok.addEventListener("click", foodFilter);
-btnHauptspeise.addEventListener("click", foodFilter);
-btnVorspeise.addEventListener("click", foodFilter);
-btnDessert.addEventListener("click", foodFilter);
-btnDrink.addEventListener("click", foodFilter);
+btn_cookbook.addEventListener("click", foodFilter);
+btn_main.    addEventListener("click", foodFilter);
+btn_first.   addEventListener("click", foodFilter);
+btn_dessert. addEventListener("click", foodFilter);
+btn_drink.   addEventListener("click", foodFilter);
 
 //LOAD.addEventlistener("onload", foodFilter);
+
+let url =  window.location.href
+if (url.includes("#")) {
+  let filter = url.split("#")[1]; // is empty when there only is a # at the end of the url, which should not be happing, however we are safe anyways.
+  alleRezepte.forEach(function(rezept) {
+    if (filter === "cookbook"){
+        rezept.style.display = "block";
+    } else if (rezept.dataset.kathegorie !== filter) {
+        rezept.style.display = "none";
+    } else {
+        rezept.style.display = "block";
+    }
+  });
+}
+
+// btn_cookbook.click();
 
 let targetId = localStorage.getItem("food_filter_id_from_index");
 
@@ -34,10 +49,10 @@ let targetId = localStorage.getItem("food_filter_id_from_index");
 // foodFilter(window.onload)
 
 function foodFilter(event) {
-    if (!targetId){
-        targetId = localStorage.getItem("food_filter_id_from_index");
-        console.log(targetId)
-    } else {
+    // if (!targetId){
+        // targetId = localStorage.getItem("food_filter_id_from_index");
+        // console.log(targetId)
+    // } else {
         //console.log(event.target);
         targetId = event.target.dataset.kathegorie;
         //console.log(targetId)
@@ -46,15 +61,15 @@ function foodFilter(event) {
         //console.log
 
         alleRezepte.forEach(function(rezept) {
-        if (targetId === "cookbook"){
-            rezept.style.display = "block";
-        } else if (rezept.dataset.kathegorie !== targetId) {
-            rezept.style.display = "none";
-        } else {
-            rezept.style.display = "block";
-        }
+          if (targetId === "cookbook"){
+              rezept.style.display = "block";
+          } else if (rezept.dataset.kathegorie !== targetId) {
+              rezept.style.display = "none";
+          } else {
+              rezept.style.display = "block";
+          }
         });
-    }
+    // }
 }
 
 
