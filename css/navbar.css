@@ -34,10 +34,6 @@ input[type=text] {
   color: var(--color_normal_nav_icon);
 }
 
-.fa:hover {
-  color: var(--color_hover_nav_icon);
-}
-
 #home {
   margin-right: 1rem;
   display: inline;
@@ -52,7 +48,7 @@ input[type=text] {
 }
 
 .nav_item:hover {
-  color: var(--color_hover_nav_icon);
+  color: var(--color_hover_nav_text);
   background-color: transparent;
   font-size: 20px;
   margin-right: 1rem;
@@ -89,13 +85,7 @@ nav {
   to   { transform: translateX(    0%); }
 }
 
-
-@keyframes slidein_drink {
-  from { transform: translateX(-2440%); } /* -325% */
-  to   { transform: translateX(    0%); }
-}
-
-@keyframes slidein_dessert {
+@keyframes slidein_drinks {
   from { transform: translateX(-2440%); } /* -325% */
   to   { transform: translateX(    0%); }
 }
@@ -132,16 +122,10 @@ nav {
   animation-name: slidein_cookbook;
 }
 
-.slidein_drink {
+.slidein_drinks {
   visibility: visible;
   animation-duration: var(--slide_in_time);
-  animation-name: slidein_drink;
-}
-
-.slidein_dessert {
-  visibility: visible;
-  animation-duration: var(--slide_in_time);
-  animation-name: slidein_dessert;
+  animation-name: slidein_drinks;
 }
 
 .slidein_main {
@@ -168,7 +152,15 @@ a {
   display: none;
 }
 
+.nav_log:hover {
+  cursor: pointer;
+}
+
 .nav_login_out_text {
+  color: var(--color_hover_nav_text);
+}
+
+.nav_log:hover{
   color: var(--color_hover_nav_text);
 }
 
