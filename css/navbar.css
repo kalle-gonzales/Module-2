@@ -17,7 +17,12 @@
   content: '\f002';
   color: var(--color_hover_nav_icon);
   position: absolute;
-  right: 6px;
+  right: .5rem;
+  top: 10%;
+}
+
+#nav_search_text > input[type=text] {
+  height: 1.7rem;
 }
 
 input[type=text] {
