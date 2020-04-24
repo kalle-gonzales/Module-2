@@ -1,5 +1,9 @@
-body, html, .page_wrapper {
+body, html, #page_wrapper {
   height: 100%;
+}
+
+body {
+  background-color: black;
 }
 
 .grey_out {
@@ -11,7 +15,7 @@ body, html, .page_wrapper {
     background-image: url("../images/wood.jpg");
     background-size: cover;
     background-position: center center;
-    background-repeat: repeat;
+    background-repeat: no-repeat;
     height: 100%;
     width: 100%;
     position: absolute;
@@ -77,7 +81,7 @@ a:hover{
 }
 
 .hauptgericht{
-    background-image: url("../images/nudel_tomate.jpg");
+    /* background-image: url("../images/nudel_tomate.jpg"); */
     background-size: cover;
     background-position: center center;
     height: 100%;
@@ -92,7 +96,7 @@ a:hover{
 }
 
 .drink{
-    background-image: url("../images/white_russin.jpg"); 
+    /* background-image: url("../images/white_russin.jpg");  */
     background-size: cover;
     background-position: center center; 
     height: 100%;
@@ -107,7 +111,7 @@ a:hover{
 }
 
 .dessert{
-    background-image: url("../images/tera.jpg");
+    /* background-image: url("../images/tera.jpg"); */
     background-size: cover;
     background-position: center center;
     height: 100%;
@@ -122,7 +126,7 @@ a:hover{
 }
 
 .vorspeise{
-    background-image: url("../images/tomatensuppe.jpg");
+    /* background-image: url("../images/tomatensuppe.jpg"); */
     background-size: cover;
     background-position: center center;
     height: 100%;
@@ -312,6 +316,9 @@ select, input{
     width: 10vw;
 }
 
+.fa_hidden {
+  display: none !important;
+}
 
 /* Fonts */
 @font-face {
