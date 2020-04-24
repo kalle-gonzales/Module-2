@@ -4,7 +4,7 @@
     "base": "Noodles",
     "type": "Hauptspeise",
     "severity": 3.8,
-    "ingrediants": ["Spagetthi", "Tomaten"],
+    "ingredients": ["Spagetthi", "Tomaten"],
     "description": "First you have to..."
   },
   {

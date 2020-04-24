@@ -23,9 +23,6 @@
 
 #nav_search_text > input[type=text] {
   height: 1.7rem;
-}
-
-input[type=text] {
   border-radius: 50px;
   border: 1px solid red;
   padding: .2rem 1rem;

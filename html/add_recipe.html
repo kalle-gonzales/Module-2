@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/navbar.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>Rezept des Tages</title>
-</head>
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Alle Rezepte</title>
+      <link rel="stylesheet" href="../css/style.css">
+      <link rel="stylesheet" href="../css/navbar.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
 
-<body id="body">
+  <div class="background_image" id="background_image_add"></div>
+
   <!-- vvvvv Login Modal vvvvv -->
   <div id="login_modal" class="modal">
 
@@ -134,53 +136,71 @@
     </nav>
 
     <div class="header">
-      <h1>Empfehlungen des Tages</h1>
+        <h1>Rezept Hinzufügen</h1>
     </div>
 
-    <div class="food_of_the_day">
-      <div class="flex_container_reihe">  <!-- Initiiere Flexbox Reihendarstellung-->
-        <div class="double_col">    <!-- Initiiere Doppelte Spalte in der ersten Position der Reihen --> 
-          <div class="hauptgericht_of_the_day" onclick="window.location.href ='Rezept.html';">
-            <div class="rezept_des_tages">
-              <div class="hauptgericht">
-                <div class="module-border-wrap"><h3>Hauptgericht</h3></div>
-                  <div id="output_Hauptspeise_otd"></div>
-              </div>
-            </div> 
-          </div>   <!-- Hauptpeise--> 
-          <div class="double_row"> <!-- Inittiere Doppelte Reihe für erstes Spaltenelement in unterer Spaltenposition -->
-            <div class="vorspeise_of_the_day" onclick="window.location.href ='Rezept.html';">
-              <div class="rezept_des_tages">
-                <div class="vorspeise">
-                <h3>Vorspeise</h3>
-                  <div id="output_Vorspeise_otd"></div>
-                </div>
-              </div>
-            </div><!-- Vorspeise--> 
-            <div class="dessert_of_the_day" onclick="window.location.href ='Rezept.html';">
-              <div class="rezept_des_tages">
-                <div class="dessert">
-                <h3>Dessert</h3>
-                  <div id="output_Dessert_otd"></div>
-                </div>
-              </div>
-            </div><!-- Nachpeise--> 
-          </div> <!-- ende von Essen -->
-        </div>    
-        <div class="drink_of_the_day" onclick="window.location.href ='Rezept.html';">
-          <div class="rezept_des_tages">
-            <div class="drink">
-            <h3>Drink</h3>
-              <div id="output_Drink_otd"></div>
-              </div>
-          </div>
-        </div>  <!-- Getränk              -->
-      </div>    <!-- Flexbox Reihe zuende -->
-    </div>      <!-- Food of the day      -->
-  </div>        <!-- page_wrapper         -->
+    <div class="neues_Rezept">
+      <form name="new_recipe" action="#">
+        <div class="input_box">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Wie heißt es?">
+        </div>
+        <div class="input_box">
+          <label for="type">Kategorie</label>
+          <select id="type" placeholder="Was ist es?">
+            <option value="Hauptspeise"> Hauptspeise </option>
+            <option value="Vorspeise">   Vorspeise   </option>
+            <option value="Dessert">     Dessert     </option>
+            <option value="Drink">       Drink       </option>
+          </select>
+        </div>
+        <div class="input_box">
+          <label for="severity">Schwierigkeitsgrad</label>
+          <input type="number" min="1" max="5" id="severity" placeholder="Wie schwer ist es?">
+        </div>
+        <div class="input_box">
+          <label for="base">Grundzutat</label>
+          <input type="text" id="base" placeholder="Worauf basiert es?">
+        </div>
+        <div class="input_box">
+          <label for="servings">Portionen</label>
+          <input type="text" id="servings" placeholder="Wie viele werden satt?">
+        </div>
 
-</body>
-<script src="../javascript/index.js"></script>
-<script src="../javascript/navbar.js"></script>
-<script src="../javascript/alleRezepte.js"></script>
+        <h5>Zutaten</h5>
+        <div class="input_box" id="input_box_ingredient_0">
+          <label for="ingredient_0">Zutat 1</label>
+          <input type="text" class="ingredient" id="ingredient_0" placeholder="Was wird gebraucht?">
+          <i class="fa fa-plus"  id="ingredient_add_btn_0" aria-hidden="true"></i>
+          <i class="fa fa-minus ingredient_remove fa_hidden" id="ingredient_remove_btn_0" aria-hidden="true"></i>
+        </div>
+
+        <div class="input_box">
+          <label for="prep_time">Zubereitungszeit</label>
+          <input type="number" min="1" max="300" id="prep_time" placeholder="Wie lange dauert es?">
+        </div>
+
+        <h5>Zubereitung</h5>
+        <div class="input_box" id="input_box_zubereitung_0">
+          <label for="step_0">Schritt 1</label>
+          <input type="text" class="instruction" id="step_0" placeholder="Was ist zu tun?">
+          <i class="fa fa-plus"  id="step_add_btn_0" aria-hidden="true"></i>
+          <i class="fa fa-minus step_remove fa_hidden" id="step_remove_btn_0" aria-hidden="true"></i>
+        </div>
+
+        <div class="input_box">
+          <label for="pic">Bild</label>
+          <input type="text" id="pic" placeholder="Link zu Bild" placeholder="Wie sieht es aus?">
+        </div>
+        <div class="input box">
+          <input type="submit" id="add_btn" value="Einreichen">
+        </div> 
+      </form>
+    </div>  <!-- neues_Rezept -->
+
+
+  </body>
+  <script src="../javascript/add_recipe.js"></script>
+  <script src="../javascript/navbar.js"></script>
+  <script type="text/javascript" src="recipes_2.json"></script>
 </html>
