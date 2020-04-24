@@ -242,3 +242,25 @@ fieldset > div > input {
   background-color: var(--color_active_nav_text);
   max-width: 40%;
 }
+
+
+
+/***********
+ * preview *
+ ***********/
+
+
+.preview {
+  visibility: hidden;
+  background-image: linear-gradient(to right, #eff,  #555);
+  width: 98%;
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  padding-right: 2%;
+  color: var(--color_active_nav_text);
+}
+
+.rezept_des_tages {
+  position: relative;
+}

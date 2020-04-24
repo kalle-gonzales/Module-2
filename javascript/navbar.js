@@ -1,5 +1,5 @@
 const body            = document.getElementById("body"),
-      login_modal     = document.getElementById("login_modal" ),
+      login_modal     = document.getElementById("login_modal"),
       logout_modal    = document.getElementById("logout_modal"),
       nav_login       = document.getElementById("nav_login"),
       nav_login_text  = document.getElementById("nav_login_text"),
@@ -44,9 +44,7 @@ menu_items.forEach(function (item) {
   add_hover_listeners(item);
 });
 
-["nav_login", "nav_logout"].forEach(function (item) {
-  add_hover_listeners_login_logout(item);
-});
+["nav_login", "nav_logout"].forEach(add_hover_listeners_login_logout);
 
 function add_hover_listeners(element) {
   document.getElementById(element).addEventListener("mouseover", function(){
@@ -78,10 +76,10 @@ function add_hover_listeners_login_logout(element) {
 
 nav_login.addEventListener("click", function(){
   showModal(login_modal, "login_modal_close");
-})
+});
 nav_logout.addEventListener("click", function(){
   showModal(logout_modal, "logout_modal_close");
-})
+});
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
@@ -90,25 +88,25 @@ window.onclick = function(event) {
   } else if (event.target == logout_modal) {
     hideModal(logout_modal);
   }
-}
+};
 
-Array.from(document.getElementsByClassName("submit_button")).forEach(function (item) {
+[...document.querySelectorAll('submit_button')].forEach(item =>
   item.onclick = function() {
     hideModal(login_modal);
     nav_login.style.display = "none";
     nav_logout.style.display = "inline";
   }
-})
+);
 
 document.getElementById("yes").onclick = function() {
   hideModal(logout_modal);
   nav_logout.style.display = "none";
   nav_login.style.display = "inline";
-}
+};
 
 document.getElementById("no").onclick = function() {
   hideModal(logout_modal);
-}
+};
 
 function showModal(modal, close_dom) {
   modal.style.display = "inline";
@@ -121,4 +119,22 @@ function showModal(modal, close_dom) {
 function hideModal(modal) {
   modal.style.display = "none";
   page_wrapper.classList.remove("grey_out"); 
+}
+
+/***********
+ * preview *
+ ***********/
+// [...document.querySelectorAll("rezept_des_tages")].forEach(function (item) {
+Array.from(document.getElementsByClassName("rezept_des_tages")).forEach(function (item) {
+  preview_add_hover_listeners(item);
+});
+
+function preview_add_hover_listeners(element) {
+  element.addEventListener("mouseover", function(){
+    document.getElementById("preview_" + element.id).style.visibility = "visible";
+  });
+
+  element.addEventListener("mouseout", function(){
+    document.getElementById("preview_" + element.id).style.visibility = "hidden";
+  });
 }

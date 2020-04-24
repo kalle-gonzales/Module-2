@@ -142,9 +142,10 @@
         <div class="double_col">    <!-- Initiiere Doppelte Spalte in der ersten Position der Reihen --> 
 
           <div class="hauptgericht_of_the_day" onclick="window.location.href ='Rezept.html';">
-            <div class="rezept_des_tages">
+            <div class="rezept_des_tages" id="main_daily">
               <div class="hauptgericht" id="daily_main">
-                <div class="module-border-wrap"><h3 id="text_daily_main">Hauptgericht: </h3></div>
+                <div class="module-border-wrap"><h3 id="text_daily_main"></h3></div>
+                  <p class="preview" id="preview_main_daily"></p>
               </div>
             </div> 
           </div>   <!-- Hauptpeise--> 
@@ -152,30 +153,35 @@
           <div class="double_row"> <!-- Inittiere Doppelte Reihe für erstes Spaltenelement in unterer Spaltenposition -->
 
             <div class="vorspeise_of_the_day" onclick="window.location.href ='Rezept.html';">
-              <div class="rezept_des_tages">
+              <div class="rezept_des_tages" id="first_daily">
                 <div class="vorspeise" id="daily_first">
-                <h3 id="text_daily_first">Vorspeise</h3>
+                <h3 id="text_daily_first"></h3>
+                  <p class="preview" id="preview_first_daily"></p>
                 </div>
               </div>
             </div><!-- Vorspeise--> 
 
             <div class="dessert_of_the_day" onclick="window.location.href ='Rezept.html';">
-              <div class="rezept_des_tages">
+              <div class="rezept_des_tages" id="dessert_daily">
                 <div class="dessert" id="daily_dessert">
-                <h3 id="text_daily_dessert">Dessert</h3>
+                <h3 id="text_daily_dessert"></h3>
+                  <p class="preview" id="preview_dessert_daily"></p>
                 </div>
               </div>
             </div><!-- Nachpeise--> 
 
           </div> <!-- ende von Essen -->
-        </div>    
+        </div>
+
         <div class="drink_of_the_day" onclick="window.location.href ='Rezept.html';">
-          <div class="rezept_des_tages" id="daily_drink">
-            <div class="drink">
-            <h3 id="text_daily_drink">Drink</h3>
-              </div>
+          <div class="rezept_des_tages" id="drink_daily">
+            <div class="drink" id="daily_drink">
+            <h3 id="text_daily_drink"></h3>
+              <p class="preview" id="preview_drink_daily"></p>
+            </div>
           </div>
-        </div>  <!-- Getränk              -->
+        </div>  <!-- daily_drink          -->
+
       </div>    <!-- Flexbox Reihe zuende -->
     </div>      <!-- Food of the day      -->
   </div>        <!-- page_wrapper         -->
