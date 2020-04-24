@@ -124,8 +124,8 @@ function hideModal(modal) {
 /***********
  * preview *
  ***********/
-
-Array.from(document.getElementsByClassName("daily")).forEach(function (item) {
+// [...document.querySelectorAll("rezept_des_tages")].forEach(function (item) {
+Array.from(document.getElementsByClassName("rezept_des_tages")).forEach(function (item) {
   preview_add_hover_listeners(item);
 });
 

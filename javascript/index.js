@@ -2,20 +2,39 @@ let first   = getRandomRecipe("first"  ),
     main    = getRandomRecipe("main"   ),
     dessert = getRandomRecipe("dessert"),
     drink   = getRandomRecipe("drink"  ),
-    output_Hauptspeise_otd = document.getElementById("text_daily_main"   ),
-    output_Vorspeise_otd   = document.getElementById("text_daily_first"  ),
-    output_Dessert_otd     = document.getElementById("text_daily_dessert"),
-    output_Drink_otd       = document.getElementById("text_daily_drink"  );
+    preview_first   = document.getElementById("preview_first_daily"  ),
+    preview_main    = document.getElementById("preview_main_daily"   ),
+    preview_dessert = document.getElementById("preview_dessert_daily"),
+    preview_drink   = document.getElementById("preview_drink_daily"  ),
+    icon_full_star  = '<i class="fa fa-star" aria-hidden="true"></i>',
+    icon_half_star  = '<i class="fa fa-star-half-o" aria-hidden="true"></i>',
+    icon_empty_star = '<i class="fa fa-star-o" aria-hidden="true"></i>';
 
-output_Vorspeise_otd.innerHTML   = "Vorspeise: "   + first["name"];
-output_Hauptspeise_otd.innerHTML = "Hauptspeise: " + main["name"]
-output_Dessert_otd.innerHTML     = "Dessert: "     + dessert["name"]
-output_Drink_otd.innerHTML       = "Drink: "       + drink["name"]
+document.getElementById("text_daily_first"  ).innerHTML = "Vorspeise: "   + first["name"];
+document.getElementById("text_daily_main"   ).innerHTML = "Hauptspeise: " + main["name"]
+document.getElementById("text_daily_dessert").innerHTML = "Dessert: "     + dessert["name"]
+document.getElementById("text_daily_drink"  ).innerHTML = "Drink: "       + drink["name"]
 
 document.getElementById("daily_first"  ).style.backgroundImage = 'url("' + first.picture   + '")';
 document.getElementById("daily_main"   ).style.backgroundImage = 'url("' + main.picture    + '")';
 document.getElementById("daily_dessert").style.backgroundImage = 'url("' + dessert.picture + '")';
 document.getElementById("daily_drink"  ).style.backgroundImage = 'url("' + drink.picture   + '")';
+
+getPreview(first["rating"], first["time"], preview_first);
+getPreview(main["rating"], main["time"], preview_main);
+getPreview(dessert["rating"], dessert["time"], preview_dessert);
+getPreview(drink["rating"], drink["time"], preview_drink);
+
+function getPreview(rating, time, preview_dom) {
+  let num_full_stars  = Math.floor(rating),
+      num_empty_stars = 5 - Math.ceil(rating),
+      num_half_stars  = 5 - num_full_stars - num_empty_stars;
+
+  preview_dom.innerHTML = icon_full_star.repeat(num_full_stars)   +
+                          icon_half_star.repeat(num_half_stars)   +
+                          icon_empty_star.repeat(num_empty_stars) +
+                          '<i class="fa fa-clock-o" aria-hidden="true"></i>' + time;
+}
 
 function getRandomRecipe(category) {
   let ids_in_category = JSON.parse(localStorage.getItem(category)),
