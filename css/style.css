@@ -81,7 +81,7 @@ a:hover{
 }
 
 .hauptgericht{
-    background-image: url("../images/nudel_tomate.jpg");
+    /* background-image: url("../images/nudel_tomate.jpg"); */
     background-size: cover;
     background-position: center center;
     height: 100%;
@@ -96,7 +96,7 @@ a:hover{
 }
 
 .drink{
-    background-image: url("../images/white_russin.jpg"); 
+    /* background-image: url("../images/white_russin.jpg");  */
     background-size: cover;
     background-position: center center; 
     height: 100%;
@@ -111,7 +111,7 @@ a:hover{
 }
 
 .dessert{
-    background-image: url("../images/tera.jpg");
+    /* background-image: url("../images/tera.jpg"); */
     background-size: cover;
     background-position: center center;
     height: 100%;
@@ -126,7 +126,7 @@ a:hover{
 }
 
 .vorspeise{
-    background-image: url("../images/tomatensuppe.jpg");
+    /* background-image: url("../images/tomatensuppe.jpg"); */
     background-size: cover;
     background-position: center center;
     height: 100%;

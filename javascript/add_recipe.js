@@ -6,8 +6,6 @@ var   readout            = JSON.parse(localStorage.getItem("recipes")),
       recipes            = readout ? readout : [],
       ingredient_counter = 0;
 
-console.log(recipes);
-
 add_btn.addEventListener("click", function(event){
   event.preventDefault();
   let input                = [],
@@ -60,7 +58,6 @@ addEventListeners(
 function addEventListeners(dom, category, text, counter, limit, limit_text){
   dom.addEventListener("click", function(){
     if (counter <= limit) {
-      console.log("input_box_" + category + (counter-1).toString());
       var div   = document.getElementById("input_box_" + category + (counter-1).toString()),
           clone = div.cloneNode(true);
       clone.id = "input_box_" + category + counter;
@@ -81,8 +78,6 @@ function addEventListeners(dom, category, text, counter, limit, limit_text){
         this.parentElement.remove();
         // todo: adjust numbers...
       })
-
-      console.log(dom.childNodes);
     } else {
       alert(limit_text);
     }
@@ -90,11 +85,37 @@ function addEventListeners(dom, category, text, counter, limit, limit_text){
   });
 };
 
-
-
-
-document.onkeypress = function(event){
-  if (event.ctrlKey && event.key == "p"){
-    console.log("hi");
-  }
-};
+document.addEventListener("keydown", function(event) {
+  if (event.ctrlKey && event.key == "0") {
+    let rawFile = new XMLHttpRequest();
+    rawFile.open("GET", "../JSON_files/recipes_2.json", false);
+    rawFile.onreadystatechange = function () {
+      if(rawFile.readyState === 4) {
+        if(rawFile.status === 200 || rawFile.status == 0) {
+          let recipes_raw = JSON.parse(rawFile.responseText),
+              recipes     = {"Vorspeise": [], "Hauptspeise": [], "Dessert": [], "Drink": []},
+              base        = {},
+              raw_recipe  = {},
+              id;
+          recipes_raw.forEach(function(recipe) {
+            id = recipe.id;
+            recipes[recipe.type].push(id);
+            raw_recipe[id] = recipe;
+            if (Object.keys(base).includes(recipe.base)) {
+              base[recipe.base].push(id);
+            } else {
+              base[recipe.base] = [id];
+            };
+          });
+          localStorage.setItem("recipes", JSON.stringify(recipes_raw)           );
+          localStorage.setItem("first",   JSON.stringify(recipes["Vorspeise"])  );
+          localStorage.setItem("main",    JSON.stringify(recipes["Hauptspeise"]));
+          localStorage.setItem("dessert", JSON.stringify(recipes["Dessert"])    );
+          localStorage.setItem("drink",   JSON.stringify(recipes["Drink"])      );
+          localStorage.setItem("base",    JSON.stringify(base)                  );
+        };
+      };
+    };
+    rawFile.send(null);
+  };
+});

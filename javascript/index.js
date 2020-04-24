@@ -1,54 +1,24 @@
-    function loadRecipe(){
-        return fetch("../JSON_files/recipes.json")
-        .then(function(response) {
-            //console.log(response)
-            return response.json()
-        }).then(function(json) {
-            //console.log('parsed json', json);
-            return json;
-        }).catch(function(ex) {
-            //console.log('parsing failed', ex)
-        })
-    }
+let first   = getRandomRecipe("first"  ),
+    main    = getRandomRecipe("main"   ),
+    dessert = getRandomRecipe("dessert"),
+    drink   = getRandomRecipe("drink"  ),
+    output_Hauptspeise_otd = document.getElementById("text_daily_main"   ),
+    output_Vorspeise_otd   = document.getElementById("text_daily_first"  ),
+    output_Dessert_otd     = document.getElementById("text_daily_dessert"),
+    output_Drink_otd       = document.getElementById("text_daily_drink"  );
 
-    async function getRecipes(){
-        const data = await loadRecipe();
-        //console.log(data[0]["ingredients"]);
-        numberRezepte = data.length;
+output_Vorspeise_otd.innerHTML   = "Vorspeise: "   + first["name"];
+output_Hauptspeise_otd.innerHTML = "Hauptspeise: " + main["name"]
+output_Dessert_otd.innerHTML     = "Dessert: "     + dessert["name"]
+output_Drink_otd.innerHTML       = "Drink: "       + drink["name"]
 
-        // const Liste_Hauptspeisen = 
-        // const Liste_Vorspeise =
-        // Liste_Dessert =
-        // Liste_Drink =
+document.getElementById("daily_first"  ).style.backgroundImage = 'url("' + first.picture   + '")';
+document.getElementById("daily_main"   ).style.backgroundImage = 'url("' + main.picture    + '")';
+document.getElementById("daily_dessert").style.backgroundImage = 'url("' + dessert.picture + '")';
+document.getElementById("daily_drink"  ).style.backgroundImage = 'url("' + drink.picture   + '")';
 
-        const output_Hauptspeise_otd = document.getElementById("output_Hauptspeise_otd")
-        const output_Vorspeise_otd = document.getElementById("output_Vorspeise_otd")
-        const output_Dessert_otd = document.getElementById("output_Dessert_otd")
-        const output_Drink_otd = document.getElementById("output_Drink_otd")
-
-
-        output_Hauptspeise_otd.innerHTML = data[0]["name"]
-        output_Vorspeise_otd.innerHTML = data[3]["name"]
-        output_Dessert_otd.innerHTML = data[6]["name"]
-        output_Drink_otd.innerHTML = data[2]["name"]
-
-    }
-
-    getRecipes();
-
-
-
-// const output_Hauptspeise_otd = document.getElementById("output_Hauptspeise_otd")
-// const output_Vorspeise_otd = document.getElementById("output_Vorspeise_otd")
-// const output_Dessert_otd = document.getElementById("output_Dessert_otd")
-// const output_Drink_otd = document.getElementById("output_Drink_otd")
-
-
-// output_Hauptspeise_otd.innerHTML = recipes.name
-// output_Vorspeise_otd.innerHTML = recipes.name
-// output_Dessert_otd.innerHTML = recipes.name
-// output_Drink_otd.innerHTML = recipes.name
-
-
-
-
+function getRandomRecipe(category) {
+  let ids_in_category = JSON.parse(localStorage.getItem(category)),
+      random_id       = ids_in_category[Math.floor(Math.random() * ids_in_category.length)]; //random returns a number x with 0 <= x < 1, so we need to adjust downward to stay within array range
+  return JSON.parse(localStorage.getItem("recipes"))[random_id];
+}
