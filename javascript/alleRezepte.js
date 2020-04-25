@@ -48,31 +48,68 @@ let targetId = localStorage.getItem("food_filter_id_from_index");
 
 // foodFilter(window.onload)
 
-function foodFilter(event) {
-    // if (!targetId){
-        // targetId = localStorage.getItem("food_filter_id_from_index");
-        // console.log(targetId)
-    // } else {
-        //console.log(event.target);
-        targetId = event.target.dataset.kathegorie;
-        //console.log(targetId)
-        localStorage.setItem("food_filter_id_from_index", targetId);
-        //console.log(alleRezepte)
-        //console.log
+var rezeptArray = JSON.parse(localStorage.getItem("recipes"))
+//console.log(rezeptArray[0].type)
 
-        alleRezepte.forEach(function(rezept) {
-          if (targetId === "cookbook"){
-              rezept.style.display = "block";
-          } else if (rezept.dataset.kathegorie !== targetId) {
-              rezept.style.display = "none";
-          } else {
-              rezept.style.display = "block";
-          }
-        });
-    // }
+
+
+document.body.onload = addElement();
+
+
+function foodFilter(event) {
+    clearDivs()
+    targetId = event.target.dataset.kathegorie;
+    //console.log(targetId)
+    addElement(targetId)
+// }
 }
 
+function clearDivs(){
+    var existingDivs = document.getElementsByClassName("rezepte")
+    console.log(existingDivs)
+    //existingDivs.removeChild()
+    
+    
+}
+
+function addElement(){
+    var alleRezepte = JSON.parse(localStorage.getItem("recipes"))
+    var rezeptArray = JSON.parse(localStorage.getItem(targetId))
+    
+    for (var i=0; i<rezeptArray.length; i++){
+        //console.log(alleRezepte[rezeptArray[i]])
+
+        var newDiv = document.createElement("div");
+        //var anchor = document.createElement("a");
+        var foodImage = alleRezepte[rezeptArray[i]].picture;
+        Name = alleRezepte[rezeptArray[i]].name;
+        newDiv.style.backgroundImage = 'url("' + foodImage   + '")';
+        newDiv.id = alleRezepte[rezeptArray[i]].id;
+        newDiv.className = "rezept";
+        newDiv.setAttribute("data-kathegorie", alleRezepte[rezeptArray[i]].type)
+        //anchor.className = "rezept";
+        //anchor.setAttribute("href", "Rezept.html?ab=2")
+        //anchor.style.background = "none"
+        
+        var foodName = document.createTextNode(Name)
+        newDiv.appendChild(foodName);
+        //newDiv.appendChild(anchor);
+        //console.log(newDiv)
+
+        document.getElementById("div1").appendChild(newDiv);
 
 
-// if (!localStorage.getItem("food_filter_id_from_index")):
-//     targetId = localStorage.getItem("food_filter_id_from_index")
+
+        //var currentDiv = document.getElementById("div1");
+        //document.body.insertBefore(newDiv, currentDiv)
+    }
+}
+
+//document.getElementsByClassName("rezept").setAttribute('onclick', 'location.href = /html/Rezept.html');
+
+//document.addEventListener("click", function(){
+//  getElementsByClassName("rezept") = link("/html/Rezept.html");
+//  });
+
+
+
