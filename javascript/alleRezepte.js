@@ -76,3 +76,12 @@ function foodFilter(event) {
 
 // if (!localStorage.getItem("food_filter_id_from_index")):
 //     targetId = localStorage.getItem("food_filter_id_from_index")
+var button = document.getElementById('test');
+var i = button.value;
+
+button.addEventListener('click', test);
+
+function test() {
+    document.getElementById('test').open = true;
+}
+

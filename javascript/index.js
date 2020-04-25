@@ -48,7 +48,3 @@
 // output_Vorspeise_otd.innerHTML = recipes.name
 // output_Dessert_otd.innerHTML = recipes.name
 // output_Drink_otd.innerHTML = recipes.name
-
-
-
-
