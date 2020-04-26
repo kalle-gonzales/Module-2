@@ -91,14 +91,14 @@ function addEventListeners(dom, category, counter, limit, limit_text){
 };
 
 document.addEventListener("keydown", function(event) {
-  if (event.key == "0") {
+  if (event.ctrlKey && event.key == "0") {
     let rawFile = new XMLHttpRequest();
     rawFile.open("GET", "../JSON_files/recipes_2.json", false);
     rawFile.onreadystatechange = function () {
       if(rawFile.readyState === 4) {
         if(rawFile.status === 200 || rawFile.status == 0) {
           let recipes_raw = JSON.parse(rawFile.responseText),
-              recipes     = {"first": [], "main": [], "dessert": [], "drink": []},
+              recipes     = {"first": [], "haupt": [], "dessert": [], "drink": []},
               base        = {},
               raw_recipe  = {},
               id;
@@ -114,7 +114,7 @@ document.addEventListener("keydown", function(event) {
           });
           localStorage.setItem("recipes", JSON.stringify(recipes_raw)       );
           localStorage.setItem("first",   JSON.stringify(recipes["first"])  );
-          localStorage.setItem("main",    JSON.stringify(recipes["main"])   );
+          localStorage.setItem("haupt",   JSON.stringify(recipes["haupt"])   );
           localStorage.setItem("dessert", JSON.stringify(recipes["dessert"]));
           localStorage.setItem("drink",   JSON.stringify(recipes["drink"])  );
           localStorage.setItem("base",    JSON.stringify(base)              );

@@ -13,7 +13,7 @@ const body            = document.getElementById("body"),
       page_wrapper    = document.getElementById("page_wrapper");
 
 var showing_menu = false
-let menu_items = ["add_recipe", "cookbook", "drink", "dessert", "main", "first"]
+let menu_items = ["add_recipe", "cookbook", "drink", "dessert", "haupt", "first"]
 
 document.getElementById("burger_menu").onclick = function(){
   showing_menu = !showing_menu;
