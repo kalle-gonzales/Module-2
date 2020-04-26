@@ -93,7 +93,7 @@ document.addEventListener("keydown", function(event) {
       if(rawFile.readyState === 4) {
         if(rawFile.status === 200 || rawFile.status == 0) {
           let recipes_raw = JSON.parse(rawFile.responseText),
-              recipes     = {"Vorspeise": [], "Hauptspeise": [], "Dessert": [], "Drink": []},
+              recipes     = {"first": [], "main": [], "dessert": [], "drink": []},
               base        = {},
               raw_recipe  = {},
               id;
@@ -107,12 +107,12 @@ document.addEventListener("keydown", function(event) {
               base[recipe.base] = [id];
             };
           });
-          localStorage.setItem("recipes", JSON.stringify(recipes_raw)           );
-          localStorage.setItem("first",   JSON.stringify(recipes["Vorspeise"])  );
-          localStorage.setItem("main",    JSON.stringify(recipes["Hauptspeise"]));
-          localStorage.setItem("dessert", JSON.stringify(recipes["Dessert"])    );
-          localStorage.setItem("drink",   JSON.stringify(recipes["Drink"])      );
-          localStorage.setItem("base",    JSON.stringify(base)                  );
+          localStorage.setItem("recipes", JSON.stringify(recipes_raw)       );
+          localStorage.setItem("first",   JSON.stringify(recipes["first"])  );
+          localStorage.setItem("main",    JSON.stringify(recipes["main"])   );
+          localStorage.setItem("dessert", JSON.stringify(recipes["dessert"]));
+          localStorage.setItem("drink",   JSON.stringify(recipes["drink"])  );
+          localStorage.setItem("base",    JSON.stringify(base)              );
         };
       };
     };
