@@ -23,9 +23,6 @@
 
 #nav_search_text > input[type=text] {
   height: 1.7rem;
-}
-
-input[type=text] {
   border-radius: 50px;
   border: 1px solid red;
   padding: .2rem 1rem;
@@ -244,4 +241,26 @@ fieldset > div > input {
   margin: 5px 0 0 5px;
   background-color: var(--color_active_nav_text);
   max-width: 40%;
+}
+
+
+
+/***********
+ * preview *
+ ***********/
+
+
+.preview {
+  visibility: hidden;
+  background-image: linear-gradient(to right, #eff,  #555);
+  width: 98%;
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  padding-right: 2%;
+  color: var(--color_active_nav_text);
+}
+
+.rezept_des_tages {
+  position: relative;
 }

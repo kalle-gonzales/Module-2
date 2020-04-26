@@ -6,7 +6,7 @@
 //         name: document.getElementById('name').value,
 //         type: document.getElementById('type').value,
 //         severity: document.getElementById('severity').value,
-//         ingrediants: document.getElementById('ingrediants').value,
+//         ingredients: document.getElementById('ingredients').value,
 //         description: document.getElementById('description').value
 //     }
 //     neeu.push(add)
@@ -55,7 +55,7 @@ const addRecipe = async (ev) => {
         name: document.getElementById('name').value,
         type: document.getElementById('type').value,
         severity: document.getElementById('severity').value,
-        ingrediants: document.getElementById('ingrediants').value,
+        ingredients: document.getElementById('ingredients').value,
         description: document.getElementById('description').value
     }
     //var name_k = document.getElementById('name').value;
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 //     "base": "Noodles",
 //     "type": "Hauptspeise",
 //     "severity": 3.8,
-//     "ingrediants": ["Spagetthi", "Tomaten"],
+//     "ingredients": ["Spagetthi", "Tomaten"],
 //     "description": "First you have to..."
 //   },
 //   {

@@ -1,50 +1,43 @@
-    function loadRecipe(){
-        return fetch("../JSON_files/recipes.json")
-        .then(function(response) {
-            //console.log(response)
-            return response.json()
-        }).then(function(json) {
-            //console.log('parsed json', json);
-            return json;
-        }).catch(function(ex) {
-            //console.log('parsing failed', ex)
-        })
-    }
+let first   = getRandomRecipe("first"  ),
+    main    = getRandomRecipe("main"   ),
+    dessert = getRandomRecipe("dessert"),
+    drink   = getRandomRecipe("drink"  ),
+    preview_first   = document.getElementById("preview_first_daily"  ),
+    preview_main    = document.getElementById("preview_main_daily"   ),
+    preview_dessert = document.getElementById("preview_dessert_daily"),
+    preview_drink   = document.getElementById("preview_drink_daily"  ),
+    icon_full_star  = '<i class="fa fa-star" aria-hidden="true"></i>',
+    icon_half_star  = '<i class="fa fa-star-half-o" aria-hidden="true"></i>',
+    icon_empty_star = '<i class="fa fa-star-o" aria-hidden="true"></i>';
 
-    async function getRecipes(){
-        const data = await loadRecipe();
-        //console.log(data[0]["ingrediants"]);
-        numberRezepte = data.length;
+document.getElementById("text_daily_first"  ).innerHTML = "Vorspeise: "   + first["name"];
+document.getElementById("text_daily_main"   ).innerHTML = "Hauptspeise: " + main["name"]
+document.getElementById("text_daily_dessert").innerHTML = "Dessert: "     + dessert["name"]
+document.getElementById("text_daily_drink"  ).innerHTML = "Drink: "       + drink["name"]
 
-        // const Liste_Hauptspeisen = 
-        // const Liste_Vorspeise =
-        // Liste_Dessert =
-        // Liste_Drink =
+document.getElementById("daily_first"  ).style.backgroundImage = 'url("' + first.picture   + '")';
+document.getElementById("daily_main"   ).style.backgroundImage = 'url("' + main.picture    + '")';
+document.getElementById("daily_dessert").style.backgroundImage = 'url("' + dessert.picture + '")';
+document.getElementById("daily_drink"  ).style.backgroundImage = 'url("' + drink.picture   + '")';
 
-        const output_Hauptspeise_otd = document.getElementById("output_Hauptspeise_otd")
-        const output_Vorspeise_otd = document.getElementById("output_Vorspeise_otd")
-        const output_Dessert_otd = document.getElementById("output_Dessert_otd")
-        const output_Drink_otd = document.getElementById("output_Drink_otd")
+getPreview(first["rating"], first["time"], preview_first);
+getPreview(main["rating"], main["time"], preview_main);
+getPreview(dessert["rating"], dessert["time"], preview_dessert);
+getPreview(drink["rating"], drink["time"], preview_drink);
 
+function getPreview(rating, time, preview_dom) {
+  let num_full_stars  = Math.floor(rating),
+      num_empty_stars = 5 - Math.ceil(rating),
+      num_half_stars  = 5 - num_full_stars - num_empty_stars;
 
-        output_Hauptspeise_otd.innerHTML = data[0]["name"]
-        output_Vorspeise_otd.innerHTML = data[3]["name"]
-        output_Dessert_otd.innerHTML = data[6]["name"]
-        output_Drink_otd.innerHTML = data[2]["name"]
+  preview_dom.innerHTML = icon_full_star.repeat(num_full_stars)   +
+                          icon_half_star.repeat(num_half_stars)   +
+                          icon_empty_star.repeat(num_empty_stars) +
+                          '<i class="fa fa-clock-o" aria-hidden="true"></i>' + time;
+}
 
-    }
-
-    getRecipes();
-
-
-
-// const output_Hauptspeise_otd = document.getElementById("output_Hauptspeise_otd")
-// const output_Vorspeise_otd = document.getElementById("output_Vorspeise_otd")
-// const output_Dessert_otd = document.getElementById("output_Dessert_otd")
-// const output_Drink_otd = document.getElementById("output_Drink_otd")
-
-
-// output_Hauptspeise_otd.innerHTML = recipes.name
-// output_Vorspeise_otd.innerHTML = recipes.name
-// output_Dessert_otd.innerHTML = recipes.name
-// output_Drink_otd.innerHTML = recipes.name
+function getRandomRecipe(category) {
+  let ids_in_category = JSON.parse(localStorage.getItem(category)),
+      random_id       = ids_in_category[Math.floor(Math.random() * ids_in_category.length)]; //random returns a number x with 0 <= x < 1, so we need to adjust downward to stay within array range
+  return JSON.parse(localStorage.getItem("recipes"))[random_id];
+}
