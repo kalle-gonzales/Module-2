@@ -141,62 +141,60 @@
 
     <div class="neues_Rezept">
       <form name="new_recipe" action="#">
+        <h4 for="name">Name</h4>
         <div class="input_box">
-          <label for="name">Name</label>
           <input type="text" id="name" placeholder="Wie heißt es?">
         </div>
+        <h4 for="type">Kategorie</h4>
         <div class="input_box">
-          <label for="type">Kategorie</label>
           <select id="type" placeholder="Was ist es?">
-            <option value="Hauptspeise"> Hauptspeise </option>
-            <option value="Vorspeise">   Vorspeise   </option>
-            <option value="Dessert">     Dessert     </option>
-            <option value="Drink">       Drink       </option>
+            <option value="main"   > Hauptspeise </option>
+            <option value="first"  > Vorspeise   </option>
+            <option value="dessert"> Dessert     </option>
+            <option value="drink"  > Drink       </option>
           </select>
         </div>
+        <h4 for="severity">Schwierigkeitsgrad</h4>
         <div class="input_box">
-          <label for="severity">Schwierigkeitsgrad</label>
           <input type="number" min="1" max="5" id="severity" placeholder="Wie schwer ist es?">
         </div>
+        <h4 for="base">Grundzutat</h4>
         <div class="input_box">
-          <label for="base">Grundzutat</label>
           <input type="text" id="base" placeholder="Worauf basiert es?">
         </div>
+        <h4 for="servings">Portionen</h4>
         <div class="input_box">
-          <label for="servings">Portionen</label>
           <input type="text" id="servings" placeholder="Wie viele werden satt?">
         </div>
 
-        <h5>Zutaten</h5>
+        <h4>Zutaten</h4>
         <div class="input_box" id="input_box_ingredient_0">
-          <label for="ingredient_0">Zutat 1</label>
           <input type="text" class="ingredient" id="ingredient_0" placeholder="Was wird gebraucht?">
           <i class="fa fa-plus"  id="ingredient_add_btn_0" aria-hidden="true"></i>
           <i class="fa fa-minus ingredient_remove fa_hidden" id="ingredient_remove_btn_0" aria-hidden="true"></i>
         </div>
 
+        <h4 for="prep_time">Zubereitungszeit</h4>
         <div class="input_box">
-          <label for="prep_time">Zubereitungszeit</label>
           <input type="number" min="1" max="300" id="prep_time" placeholder="Wie lange dauert es?">
         </div>
 
-        <h5>Zubereitung</h5>
-        <div class="input_box" id="input_box_zubereitung_0">
-          <label for="step_0">Schritt 1</label>
+        <h4>Zubereitung</h4>
+        <div class="input_box" id="input_box_step_0">
           <input type="text" class="instruction" id="step_0" placeholder="Was ist zu tun?">
           <i class="fa fa-plus"  id="step_add_btn_0" aria-hidden="true"></i>
           <i class="fa fa-minus step_remove fa_hidden" id="step_remove_btn_0" aria-hidden="true"></i>
         </div>
 
+        <h4 for="pic">Bild</h4>
         <div class="input_box">
-          <label for="pic">Bild</label>
           <input type="text" id="pic" placeholder="Link zu Bild" placeholder="Wie sieht es aus?">
         </div>
         <div class="input box">
           <input type="submit" id="add_btn" value="Einreichen">
         </div> 
       </form>
-    </div>  <!-- neues_Rezept -->
+    </div>    <!-- neues_Rezept -->
 
 
   </body>

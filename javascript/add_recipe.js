@@ -8,40 +8,50 @@ var   readout            = JSON.parse(localStorage.getItem("recipes")),
 
 add_btn.addEventListener("click", function(event){
   event.preventDefault();
-  let input                = [],
-      ingredients          = [],
-      instructions         = [],
-      ingredients_to_push  = false,
-      instructions_to_push = false;
+  let input                 = document.forms["new_recipe"],
+      type                  = input[1].value,
+      recipes               = JSON.parse(localStorage.getItem("recipes")),
+      bases                 = JSON.parse(localStorage.getItem("base")),
+      types                 = JSON.parse(localStorage.getItem(type)),
+      recipe                = {},
+      id                    = recipes.length,
+      base                  = input[3].value;
 
-  Array.from(document.forms["new_recipe"]).forEach(function(element){
-    if (element.classList.contains("ingredient")) {
-      ingredients_to_push = true;
-      ingredients.push(element.value);
-    } else if (element.classList.contains("instruction")) {
-      instructions_to_push = true;
-      instructions.push(element.value);
-    } else {
-      if (ingredients_to_push){
-        input.push(JSON.stringify(ingredients));
-        ingredients_to_push = false;
-      } else if (instructions_to_push) {
-        input.push(JSON.stringify(instructions));
-        instructions_to_push = false;
-      };
-      input.push(element.value);
-    }
-  });
-  recipes.push(input);
-  window.localStorage.setItem("recipes", JSON.stringify(input));
+  recipe["id"]          = id;
+  recipe["name"]        = input[0].value;
+  recipe["base"]        = base;
+  recipe["type"]        = type;
+  recipe["rating"]      = 0;
+  recipe["time"]        = input[6].value;
+  recipe["servings"]    = input[4].value;
+  recipe["severity"]    = input[2].value;
+  recipe["picture"]     = input[8].value;
+
+  Array.from(input[5]).forEach(function(element){
+    recipe["ingredients"].push(element.value);
+  })
+
+  Array.from(input[7]).forEach(function(element){
+    recipe["descirption"].push(element.value);
+  })
+
+  if (Object.keys(bases).includes(recipe.base)) {
+    bases[base].push(id);
+  } else {
+    bases[base] = [id];
+  }
+  localStorage.setItem("base", JSON.stringify(bases));
+  recipes.push(recipe);
+  types.push(id);
+  localStorage.setItem(type, JSON.stringify(types));
+  localStorage.setItem("recipes", JSON.stringify(recipes));
 })
 
 
 addEventListeners(
   document.getElementById("ingredient_add_btn_0"),
   "ingredient_",
-  "Zutat ",
-  1,
+  0,
   ingredient_limit,
   "So viel Zeug brauchst Du nicht, Paul Bucouse!"
 );
@@ -49,34 +59,30 @@ addEventListeners(
 addEventListeners(
   document.getElementById("step_add_btn_0"),
   "step_",
-  "Schritt ",
-  1,
+  0,
   step_limit,
   "Das wird zu kompliziert..."
 );
 
-function addEventListeners(dom, category, text, counter, limit, limit_text){
+function addEventListeners(dom, category, counter, limit, limit_text){
   dom.addEventListener("click", function(){
-    if (counter <= limit) {
-      var div   = document.getElementById("input_box_" + category + (counter-1).toString()),
+    if (counter < limit) {
+      var div   = document.getElementById("input_box_" + category + counter),
           clone = div.cloneNode(true);
-      clone.id = "input_box_" + category + counter;
-      clone.childNodes[1].innerHTML = text + (counter+1);
-      clone.childNodes[3].id        = category + counter;
-      clone.childNodes[5].id        = category + "add_btn_" + counter;
-      clone.childNodes[7].id        = category + "remove_btn_" + counter;
-
+      clone.id               = "input_box_" + category + (counter + 1);
+      clone.childNodes[1].id = category + (counter + 1);
+      clone.childNodes[3].id = category + "add_btn_" + (counter + 1);
+      clone.childNodes[5].id = category + "remove_btn_" + (counter + 1);
 
       div.parentNode.insertBefore(clone, div.nextSibling);
 
-      addEventListeners(clone.childNodes[5], category, text, counter + 1, limit, limit_text);
+      addEventListeners(clone.childNodes[3], category, counter + 1, limit, limit_text);
 
-      let remove = document.getElementById(category + "remove_btn_" + (counter-1).toString());
+      let remove = document.getElementById(category + "remove_btn_" + counter);
       remove.classList.remove("fa_hidden");
 
       remove.addEventListener("click", function(){
         this.parentElement.remove();
-        // todo: adjust numbers...
       })
     } else {
       alert(limit_text);
