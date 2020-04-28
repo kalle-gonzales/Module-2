@@ -67,8 +67,14 @@ function addElement(){
         var foodName = document.createTextNode(Name)
         h3.appendChild(foodName)
         newDiv.appendChild(h3);
+        // linkref= "window.location.href = 'Rezept.html#";
+        // num_ref = i.toString();
+        // console.log(i)
+        // linkref.concat(num_ref)
 
-        newDiv.setAttribute("onclick", "window.location.href = 'Rezept.html';") //works as well
+        // console.log(linkref)
+        newDiv.setAttribute("onclick", "window.location.href = 'Rezept.html'") //works as well
+
         //var anchor = document.createElement("a");
         //anchor.className = "rezept";
         //anchor.setAttribute("href", "../html/Rezept.html?ab=2")
