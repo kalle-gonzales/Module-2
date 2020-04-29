@@ -152,83 +152,6 @@ a:hover{
     flex-direction: column;
 }
 
-@media (max-width: 800px){
-    body{
-        font-size: .75rem;
-    }
-
-    .hauptgericht_of_the_day{
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        width: 80vw;   
-        height: 200px; 
-    }
-
-    .vorspeise_of_the_day{
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        width: 40vw;   
-        height: 200px; 
-    }
-
-    .dessert_of_the_day{
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        width: 40vw;   
-        height: 200px; 
-    }
-
-    .drink_of_the_day{
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        width: 80vw;   
-        height: 200px; 
-    }
-}
-
-@media (max-width: 400px){
-
-    .hauptgericht_of_the_day{
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        width: 100vw;    
-        height: 150px;  
-    }  
-
-    .double_row {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-
-    .dessert_of_the_day{
-        display: flex;
-        width: 100vw;   
-        height: 150px;  
-    }
-
-    .vorspeise_of_the_day{
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        width: 100vw;   
-        height: 150px;   
-    }
-
-    .drink_of_the_day{
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        width: 100vw;   
-        height: 150px; 
-    }
-}
-
 
 /* +++++++++++++++++++++++++++++++++ */
 /*          Alle Rezepte             */
@@ -270,17 +193,6 @@ a:hover{
     font-family: "Gayathri", sans-serif;
     padding-top: 50px;
     color: #eef;
-}
-
-@media (max-width: 768px){
-    .rezept{
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        width: 60vw;   
-        height: 100px; 
-        position: relative;
-    }
 }
 
 
