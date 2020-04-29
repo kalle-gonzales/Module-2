@@ -6,6 +6,7 @@ var   readout            = JSON.parse(localStorage.getItem("recipes")),
       recipes            = readout ? readout : [],
       ingredient_counter = 0;
 
+/*
 add_btn.addEventListener("click", function(event){
   event.preventDefault();
   let input                = [],
@@ -35,6 +36,39 @@ add_btn.addEventListener("click", function(event){
   recipes.push(input);
   window.localStorage.setItem("recipes", JSON.stringify(input));
 })
+*/
+var recipes = JSON.parse(localStorage.getItem("recipes"))
+var i= 9;
+
+const addRecipe = (ev) => {
+  ev.preventDefault(); //stop the form submitting
+  let add = {
+      id: i,
+      name: document.getElementById('name').value,
+      type: document.getElementById('type').value,
+      severity: document.getElementById('severity').value,
+      base: document.getElementById('base').value,
+      servings: document.getElementById('servings').value,
+      ingredients: document.getElementById('ingredient_0').value,
+      description: document.getElementById('input_box_zubereitung_0').value,
+      time: document.getElementById('prep_time').value,
+      picture: document.getElementById('pic').value
+  }
+  //var name_k = document.getElementById('name').value;
+
+  //console.log(add)
+
+  recipes.push(add)
+  i++
+  document.forms[0].reset(); //clear form for next entries   
+  localStorage.setItem('recipes', JSON.stringify(recipes));
+}
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  document.getElementById('add_btn').addEventListener('click', addRecipe);
+  //var actual = JSON.parse(localStorage.getItem(recipes));
+}); 
+
 
 
 addEventListeners(

@@ -88,7 +88,7 @@ function addElement(){
         newDiv.className = "rezept";
         newDiv.setAttribute("data-kathegorie", alleRezepte[rezeptArray[i]].type)
         anchor.className = "rezept";
-        anchor.setAttribute("href", "../html/Rezept.html?2")
+        anchor.setAttribute("href", "../html/Rezept.html?" +ID)
         anchor.style.background = "none"
         anchor.style.maxWidth= "96%"
         
