@@ -158,5 +158,39 @@ if (logged_in_user) {
   });
 }
 
+function addElement(){
+    var alleRezepte = JSON.parse(localStorage.getItem("recipes"))
+    var rezeptArray = JSON.parse(localStorage.getItem(targetId))
+    
+    for (var i=0; i<rezeptArray.length; i++){
+        //console.log(alleRezepte[rezeptArray[i]])
+        var ID = alleRezepte[i].id;
+        var newDiv = document.createElement("div");
+        var anchor = document.createElement("a");
+        var foodImage = alleRezepte[rezeptArray[i]].picture;
+        Name = alleRezepte[rezeptArray[i]].name;
+        newDiv.style.backgroundImage = 'url("' + foodImage   + '")';
+        newDiv.id = alleRezepte[rezeptArray[i]].id;
+        newDiv.className = "rezept";
+        newDiv.setAttribute("data-kathegorie", alleRezepte[rezeptArray[i]].type)
+        anchor.className = "rezept";
+        anchor.setAttribute("href", "../html/Rezept.html?" +ID)
+        anchor.style.background = "none"
+        anchor.style.maxWidth= "96%"
+        
+        var foodName = document.createTextNode(Name)
+        newDiv.appendChild(foodName);
+        newDiv.appendChild(anchor);
+        //console.log(newDiv)
 
+        document.getElementById("div1").appendChild(newDiv);
+
+
+
+        //var currentDiv = document.getElementById("div1");
+        //document.body.insertBefore(newDiv, currentDiv)
+    }
+}
+
+//document.getElementsByClassName("rezept").setAttribute('onclick', 'location.href = /html/Rezept.html');
 
