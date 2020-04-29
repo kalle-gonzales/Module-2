@@ -98,6 +98,15 @@ window.onclick = function(event) {
   }
 );
 
+document.getElementById("register-button").addEventListener("click",
+  function(event) {
+    event.preventDefault();
+    showModal(register_modal, "register_modal_close");
+    login_modal.style.display = "none";
+  }
+);
+
+
 document.getElementById("yes").onclick = function() {
   hideModal(logout_modal);
   nav_logout.style.display = "none";
