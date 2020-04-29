@@ -9,30 +9,28 @@ var   readout            = JSON.parse(localStorage.getItem("recipes")),
 add_btn.addEventListener("click", function(event){
   event.preventDefault();
   let input                 = document.forms["new_recipe"],
-      type                  = input[1].value,
-      recipes               = JSON.parse(localStorage.getItem("recipes")),
       bases                 = JSON.parse(localStorage.getItem("base")),
-      types                 = JSON.parse(localStorage.getItem(type)),
+      types                 = JSON.parse(localStorage.getItem(input[1].value)),
       recipe                = {},
       id                    = recipes.length,
       base                  = input[3].value;
 
   recipe["id"]          = id;
-  recipe["name"]        = input[0].value;
-  recipe["base"]        = base;
-  recipe["type"]        = type;
   recipe["rating"]      = 0;
-  recipe["time"]        = input[6].value;
-  recipe["servings"]    = input[4].value;
-  recipe["severity"]    = input[2].value;
-  recipe["picture"]     = input[8].value;
+  recipe["ingredients"] = [];
+  recipe["descirption"] = [];
 
-  Array.from(input[5]).forEach(function(element){
-    recipe["ingredients"].push(element.value);
-  })
 
-  Array.from(input[7]).forEach(function(element){
-    recipe["descirption"].push(element.value);
+  Array.from(input).forEach(function(element){
+    if(element.id.includes("ingredient")) {
+      recipe["ingredients"].push(element.value);
+    } else if(element.id.includes("step")) {
+      recipe["descirption"].push(element.value);
+    } else if (element.value === "Einreichen"){
+      return;  // no need to get the submit button in the recipes
+    } else {
+      recipe[element.id] = element.value;
+    }
   })
 
   if (Object.keys(bases).includes(recipe.base)) {
@@ -69,10 +67,11 @@ function addEventListeners(dom, category, counter, limit, limit_text){
     if (counter < limit) {
       var div   = document.getElementById("input_box_" + category + counter),
           clone = div.cloneNode(true);
-      clone.id               = "input_box_" + category + (counter + 1);
-      clone.childNodes[1].id = category + (counter + 1);
-      clone.childNodes[3].id = category + "add_btn_" + (counter + 1);
-      clone.childNodes[5].id = category + "remove_btn_" + (counter + 1);
+      clone.id                  = "input_box_" + category + (counter + 1);
+      clone.childNodes[1].id    = category + (counter + 1);
+      clone.childNodes[1].value = ""
+      clone.childNodes[3].id    = category + "add_btn_" + (counter + 1);
+      clone.childNodes[5].id    = category + "remove_btn_" + (counter + 1);
 
       div.parentNode.insertBefore(clone, div.nextSibling);
 
