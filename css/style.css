@@ -33,11 +33,12 @@ h1{
 
 h3{
     background-image: linear-gradient(to right, #555, #eff);
+    height: 20px;
     /* background-color: white; */
     color: #bcf;
     opacity: 0.8;
     background-blend-mode: screen;
-    padding: .1rem 1rem;
+    padding: .1rem 1rem .3rem 1rem;
 }
 
 a:link{
@@ -152,12 +153,79 @@ a:hover{
 }
 
 @media (max-width: 800px){
+    body{
+        font-size: .75rem;
+    }
+
+    .hauptgericht_of_the_day{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 80vw;   
+        height: 200px; 
+    }
+
+    .vorspeise_of_the_day{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 40vw;   
+        height: 200px; 
+    }
+
+    .dessert_of_the_day{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 40vw;   
+        height: 200px; 
+    }
+
     .drink_of_the_day{
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
-        width: 60vw;   
+        width: 80vw;   
         height: 200px; 
+    }
+}
+
+@media (max-width: 400px){
+
+    .hauptgericht_of_the_day{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 100vw;    
+        height: 150px;  
+    }  
+
+    .double_row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .dessert_of_the_day{
+        display: flex;
+        width: 100vw;   
+        height: 150px;  
+    }
+
+    .vorspeise_of_the_day{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 100vw;   
+        height: 150px;   
+    }
+
+    .drink_of_the_day{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 100vw;   
+        height: 150px; 
     }
 }
 
@@ -181,8 +249,8 @@ a:hover{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    width: 90vw;
-    text-align: center;
+    /*width: 90vw;*/
+    /*text-align: center;*/
 }
 
 .rezept{
@@ -195,6 +263,7 @@ a:hover{
     width: 20vw;
     height: 10vw;
     background-color: grey;
+    position: relative;
 }
 
 .btn_choice{
@@ -202,6 +271,18 @@ a:hover{
     padding-top: 50px;
     color: #eef;
 }
+
+@media (max-width: 768px){
+    .rezept{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 60vw;   
+        height: 100px; 
+        position: relative;
+    }
+}
+
 
 /* +++++++++++++++++++++++++++++++++ */
 /*          Rezept Hinzufügen        */

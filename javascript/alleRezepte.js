@@ -22,6 +22,7 @@ if (url.includes("#") && counter == 0)  {
     targetId = url.split("#")[1];
     counter +=1;
     document.body.onload = addElement();
+    addPreview();
 }
 
 // Foodfilter Funktion die beim Klicken einer Auswahl durchläuft
@@ -29,6 +30,7 @@ function foodFilter(event) {
     clearDivs()
     targetId = event.target.dataset.kathegorie; 
     addElement(targetId)
+    addPreview();
 }
 
 // Löscht alle bestehenden Divs in dem alle_rezepte Div aka id="div1"
@@ -67,12 +69,14 @@ function addElement(){
         var foodName = document.createTextNode(Name)
         h3.appendChild(foodName)
         newDiv.appendChild(h3);
+
+        var p_preview = document.createElement("p");
+        p_preview.id = "p" + alleRezepte[rezeptAuswahl[i]].id ;
+        p_preview.className = "preview_alleRezepte";        
+        newDiv.appendChild(p_preview);
         // linkref= "window.location.href = 'Rezept.html#";
         // num_ref = i.toString();
-        // console.log(i)
         // linkref.concat(num_ref)
-
-        // console.log(linkref)
         newDiv.setAttribute("onclick", "window.location.href = 'Rezept.html'") //works as well
 
         //var anchor = document.createElement("a");
@@ -85,6 +89,48 @@ function addElement(){
         document.getElementById("div1").appendChild(newDiv);
     }
 }
+
+
+function addPreview(){
+    filteredDivs = [];
+    var alleRezepte = JSON.parse(localStorage.getItem("recipes"))
+    var allDivs = document.getElementsByClassName("rezept")
+
+    for (var i=0; i<allDivs.length; i++){
+        var p_preview = document.getElementById("p" + allDivs[i].id)
+        getPreview(alleRezepte[allDivs[i].id]["rating"], alleRezepte[allDivs[i].id]["time"], p_preview);
+    }
+    
+
+    function getPreview(rating, time, preview_dom) {
+    let num_full_stars  = Math.floor(rating),
+        num_empty_stars = 5 - Math.ceil(rating),
+        num_half_stars  = 5 - num_full_stars - num_empty_stars;
+        icon_full_star  = '<i class="fa fa-star" aria-hidden="true"></i>',
+        icon_half_star  = '<i class="fa fa-star-half-o" aria-hidden="true"></i>',
+        icon_empty_star = '<i class="fa fa-star-o" aria-hidden="true"></i>';
+
+    preview_dom.innerHTML = icon_full_star.repeat(num_full_stars)   +
+                            icon_half_star.repeat(num_half_stars)   +
+                            icon_empty_star.repeat(num_empty_stars) +
+                            '<i class="fa fa-clock-o" aria-hidden="true"></i>' + time;
+    }
+
+    Array.from(document.getElementsByClassName("rezept")).forEach(function (item) {
+        preview_add_hover_listeners(item);
+      });
+      
+      function preview_add_hover_listeners(element) {
+        element.addEventListener("mouseover", function(){
+          document.getElementById("p" + element.id).style.visibility = "visible";
+        });
+      
+        element.addEventListener("mouseout", function(){
+          document.getElementById("p" + element.id).style.visibility = "hidden";
+        });
+      }
+}
+
 
 
 

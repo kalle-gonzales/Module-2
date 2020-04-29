@@ -261,6 +261,17 @@ fieldset > div > input {
   color: var(--color_active_nav_text);
 }
 
+.preview_alleRezepte {
+  visibility: hidden;
+  background-image: linear-gradient(to right, #eff,  #555);
+  width: 98%;
+  position: absolute;
+  text-align: right;
+  bottom: 0px;
+  padding-right: 2%;
+  color: var(--color_active_nav_text);
+}
+
 .rezept_des_tages {
   position: relative;
 }
