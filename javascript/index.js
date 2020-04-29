@@ -1,9 +1,9 @@
 let first   = getRandomRecipe("first"  ),
-    main    = getRandomRecipe("main"   ),
+    haupt   = getRandomRecipe("haupt"  ),
     dessert = getRandomRecipe("dessert"),
     drink   = getRandomRecipe("drink"  ),
     preview_first   = document.getElementById("preview_first_daily"  ),
-    preview_main    = document.getElementById("preview_main_daily"   ),
+    preview_haupt    = document.getElementById("preview_haupt_daily"   ),
     preview_dessert = document.getElementById("preview_dessert_daily"),
     preview_drink   = document.getElementById("preview_drink_daily"  ),
     icon_full_star  = '<i class="fa fa-star" aria-hidden="true"></i>',
@@ -11,17 +11,17 @@ let first   = getRandomRecipe("first"  ),
     icon_empty_star = '<i class="fa fa-star-o" aria-hidden="true"></i>';
 
 document.getElementById("text_daily_first"  ).innerHTML = "Vorspeise: "   + first["name"];
-document.getElementById("text_daily_main"   ).innerHTML = "Hauptspeise: " + main["name"]
+document.getElementById("text_daily_haupt"   ).innerHTML = "Hauptspeise: " + haupt["name"]
 document.getElementById("text_daily_dessert").innerHTML = "Dessert: "     + dessert["name"]
 document.getElementById("text_daily_drink"  ).innerHTML = "Drink: "       + drink["name"]
 
 document.getElementById("daily_first"  ).style.backgroundImage = 'url("' + first.picture   + '")';
-document.getElementById("daily_main"   ).style.backgroundImage = 'url("' + main.picture    + '")';
+document.getElementById("daily_haupt"   ).style.backgroundImage = 'url("' + haupt.picture    + '")';
 document.getElementById("daily_dessert").style.backgroundImage = 'url("' + dessert.picture + '")';
 document.getElementById("daily_drink"  ).style.backgroundImage = 'url("' + drink.picture   + '")';
 
 getPreview(first["rating"], first["time"], preview_first);
-getPreview(main["rating"], main["time"], preview_main);
+getPreview(haupt["rating"], haupt["time"], preview_haupt);
 getPreview(dessert["rating"], dessert["time"], preview_dessert);
 getPreview(drink["rating"], drink["time"], preview_drink);
 

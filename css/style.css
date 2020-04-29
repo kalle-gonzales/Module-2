@@ -33,11 +33,12 @@ h1{
 
 h3{
     background-image: linear-gradient(to right, #555, #eff);
+    height: 20px;
     /* background-color: white; */
     color: #bcf;
     opacity: 0.8;
     background-blend-mode: screen;
-    padding: .1rem 1rem;
+    padding: .1rem 1rem .3rem 1rem;
 }
 
 a:link{
@@ -151,16 +152,6 @@ a:hover{
     flex-direction: column;
 }
 
-@media (max-width: 800px){
-    .drink_of_the_day{
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        width: 60vw;   
-        height: 200px; 
-    }
-}
-
 
 /* +++++++++++++++++++++++++++++++++ */
 /*          Alle Rezepte             */
@@ -181,8 +172,8 @@ a:hover{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    width: 90vw;
-    text-align: center;
+    /*width: 90vw;*/
+    /*text-align: center;*/
 }
 
 .rezept{
@@ -195,6 +186,7 @@ a:hover{
     width: 20vw;
     height: 10vw;
     background-color: grey;
+    position: relative;
 }
 
 .btn_choice{
@@ -202,6 +194,7 @@ a:hover{
     padding-top: 50px;
     color: #eef;
 }
+
 
 /* +++++++++++++++++++++++++++++++++ */
 /*          Rezept Hinzufügen        */

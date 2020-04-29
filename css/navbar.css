@@ -97,7 +97,7 @@ nav {
   to   { transform: translateX(    0%); }
 }
 
-@keyframes slidein_main {
+@keyframes slidein_haupt {
   from { transform: translateX(-1060%); } /* -1850% -110% */
   to   { transform: translateX(    0%); }
 }
@@ -141,10 +141,10 @@ nav {
   animation-name: slidein_dessert;
 }
 
-.slidein_main {
+.slidein_haupt {
   visibility: visible;
   animation-duration: var(--slide_in_time);
-  animation-name: slidein_main;
+  animation-name: slidein_haupt;
 }
 
 .slidein_first {
@@ -257,6 +257,17 @@ fieldset > div > input {
   text-align: right;
   position: absolute;
   bottom: 0;
+  padding-right: 2%;
+  color: var(--color_active_nav_text);
+}
+
+.preview_alleRezepte {
+  visibility: hidden;
+  background-image: linear-gradient(to right, #eff,  #555);
+  width: 98%;
+  position: absolute;
+  text-align: right;
+  bottom: 0px;
   padding-right: 2%;
   color: var(--color_active_nav_text);
 }
