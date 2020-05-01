@@ -10,7 +10,8 @@ const body            = document.getElementById("body"),
       nav_search      = document.getElementById("nav_search"),
       nav_search_text = document.getElementById("nav_search_text"),
       nav_search_icon = document.getElementById("nav_search_icon"),
-      page_wrapper    = document.getElementById("page_wrapper");
+      page_wrapper    = document.getElementById("page_wrapper"),
+      welcome_modal   = document.getElementById("welcome_modal");
 
 var showing_menu = false
 let menu_items = ["add_recipe", "cookbook", "drink", "dessert", "haupt", "first"]
@@ -76,7 +77,20 @@ function add_hover_listeners_login_logout(element) {
 
 nav_login.addEventListener("click", function(){
   showModal(login_modal, "login_modal_close");
+  document.getElementById("login_btn").onclick = function() {
+    // event.preventDefault();
+    let input    = document.forms["login"],
+        user     = input[1].value,
+        password = input[2].value,
+        users    = JSON.parse(localStorage.getItem("users"));
+    if (Object.keys(users).includes(user) && users[user].password === password) {
+      handle_login(user, users[user].admin);
+    } else {
+      document.getElementById("no_match").style.display = "block";
+    }
+  }
 });
+
 nav_logout.addEventListener("click", function(){
   showModal(logout_modal, "logout_modal_close");
 });
@@ -90,28 +104,41 @@ window.onclick = function(event) {
   }
 };
 
-[...document.querySelectorAll('submit_button')].forEach(item =>
-  item.onclick = function() {
-    hideModal(login_modal);
-    nav_login.style.display = "none";
-    nav_logout.style.display = "inline";
-  }
-);
+function handle_login(user, is_admin) {
+  localStorage.setItem("logged_in_user",          JSON.stringify(user)    );
+  localStorage.setItem("logged_in_user_is_admin", JSON.stringify(is_admin));
+  show_welcome(user);
+  nav_login.style.display  = "none";
+  nav_logout.style.display = "inline";
+}
+
+function handle_logout() {
+  localStorage.setItem("logged_in_user",          JSON.stringify(nil)    );
+  localStorage.setItem("logged_in_user_is_admin", JSON.stringify(false));
+  hideModal(logout_modal);
+  nav_login.style.display  = "inline";
+  nav_logout.style.display = "none";
+}
+
+function show_welcome(user) {
+  hideModal(login_modal);
+  document.getElementById("welcome_user").innerHTML  = user;
+  showModal(welcome_modal, "welcome_modal_close");
+  setTimeout(function() {hideModal(welcome_modal)}, 1000);
+};
 
 document.getElementById("yes").onclick = function() {
-  hideModal(logout_modal);
-  nav_logout.style.display = "none";
-  nav_login.style.display = "inline";
+  handle_logout()
 };
 
 document.getElementById("no").onclick = function() {
   hideModal(logout_modal);
 };
 
-function showModal(modal, close_dom) {
+function showModal(modal, close_dom_id) {
   modal.style.display = "inline";
   page_wrapper.classList.add("grey_out");
-  document.getElementById(close_dom).onclick = function() {
+  document.getElementById(close_dom_id).onclick = function() {
     hideModal(modal);
   };
 }
@@ -124,8 +151,7 @@ function hideModal(modal) {
 /***********
  * preview *
  ***********/
-// [...document.querySelectorAll("rezept_des_tages")].forEach(function (item) {
-Array.from(document.getElementsByClassName("rezept_des_tages")).forEach(function (item) {
+[...document.querySelectorAll("rezept_des_tages")].forEach(function (item) {
   preview_add_hover_listeners(item);
 });
 

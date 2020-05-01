@@ -184,9 +184,9 @@ nav {
 }
 
 
-/******************************
- * logi-logout-register modal *
- ******************************/
+/*******************************
+ * login-logout-register modal *
+ *******************************/
 .modal {
   display: none;
   position: fixed;
@@ -243,6 +243,9 @@ fieldset > div > input {
   max-width: 40%;
 }
 
+#no_match {
+  display: none;
+}
 
 
 /***********
