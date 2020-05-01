@@ -278,3 +278,9 @@ fieldset > div > input {
 .rezept_des_tages {
   position: relative;
 }
+
+.like{
+  float: right;
+  color: black;
+  padding-top: .1rem;
+}
