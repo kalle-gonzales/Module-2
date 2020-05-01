@@ -1,0 +1,42 @@
+[
+  {
+    "name":          "admin",
+    "liked_recipes": [1, 2, 4],
+    "notes":         {"1": "gut", "3": "zuwenig Zwiebeln"},
+    "email":         "admin@mail.de",
+    "password":      "1",
+    "admin":         true
+  },
+  {
+    "name":          "user_1",
+    "liked_recipes": [8],
+    "notes":         {"8": "prost"},
+    "email":         "user_1@mail.de",
+    "password":      "also super secure",
+    "admin":         false
+  },
+  {
+    "name":          "user_2",
+    "liked_recipes": [7],
+    "notes":         {},
+    "email":         "user_2@mail.de",
+    "password":      "not secure",
+    "admin":         false
+  },
+  {
+    "name":          "user_3",
+    "liked_recipes": [],
+    "notes":         {},
+    "email":         "user_3@mail.de",
+    "password":      "1234",
+    "admin":         false
+  },
+  {
+    "name":          "last default",
+    "liked_recipes": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+    "notes":         {},
+    "email":         "last_default@mail.de",
+    "password":      "default",
+    "admin":         true
+  }
+]

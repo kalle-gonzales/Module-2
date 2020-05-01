@@ -18,10 +18,10 @@ let targetId;
 let counter = 0;
 
 // Läd die gefilterte Auswahl von der Index Seite
-if (url.includes("#") && counter == 0)  {
-    targetId = url.split("#")[1];
+if (url.includes("?") && counter == 0)  {
+    targetId = url.split("?")[1];
     counter +=1;
-    document.body.onload = addElement();
+    addElement(targetId);
     addPreview();
 }
 
@@ -29,7 +29,7 @@ if (url.includes("#") && counter == 0)  {
 function foodFilter(event) {
     clearDivs()
     targetId = event.target.dataset.kathegorie; 
-    addElement(targetId)
+    addElement(targetId);
     addPreview();
 }
 
@@ -42,23 +42,22 @@ function clearDivs(){
 }
 
 // Fügt Divs je nach Filterauswahl aus dem localStorage hinzu
-function addElement(){
-    var alleRezepte = JSON.parse(localStorage.getItem("recipes"))
+function addElement(targetId){
+  console.log(targetId);
+    var alleRezepte = JSON.parse(localStorage.getItem("recipes")),
+        rezeptAuswahl;
 
     // Für den Button Alle Rezepte muss neuer Array mit allen Indizies erstellt werden. Ansonsten gilt targetId aus der foodFilter Funktion
-    if(targetId == "Alle"){
-        rezeptAuswahl = [];
-        for(i=0;i<alleRezepte.length;i++){
-            rezeptAuswahl.push(i)
-        } 
+    if(targetId == "cookbook"){
+      rezeptAuswahl = JSON.parse(localStorage.getItem("users"))[JSON.parse(localStorage.getItem("logged_in_user"))].liked_recipes
+    } else if (targetId === "Alle") {
+      rezeptAuswahl = Object.keys(JSON.parse(localStorage.getItem("recipes")));
     } else {
-        var rezeptAuswahl = JSON.parse(localStorage.getItem(targetId))
+        rezeptAuswahl = JSON.parse(localStorage.getItem(targetId))
     }
-    
     for (var i=0; i<rezeptAuswahl.length; i++){
         var newDiv = document.createElement("div");        
         var foodImage = alleRezepte[rezeptAuswahl[i]].picture;
-        Name = alleRezepte[rezeptAuswahl[i]].name;
         newDiv.style.backgroundImage = 'url("' + foodImage   + '")';
         newDiv.style.backgroundSize = "cover";
         newDiv.style.backgroundPosition = "center center";
@@ -66,7 +65,7 @@ function addElement(){
         newDiv.className = "rezept";
         newDiv.setAttribute("data-kathegorie", alleRezepte[rezeptAuswahl[i]].type)
         var h3 = document.createElement("H3")
-        var foodName = document.createTextNode(Name)
+        var foodName = document.createTextNode(alleRezepte[rezeptAuswahl[i]].name)
         h3.appendChild(foodName)
         newDiv.appendChild(h3);
 

@@ -16,6 +16,7 @@ add_btn.addEventListener("click", function(event){
       base                  = input[3].value;
 
   recipe["id"]          = id;
+  recipe["creator"]     = JSON.parse(localStorage.getItem("logged_in_user"));
   recipe["rating"]      = 0;
   recipe["ingredients"] = [];
   recipe["descirption"] = [];
@@ -118,9 +119,34 @@ document.addEventListener("keydown", function(event) {
           localStorage.setItem("dessert", JSON.stringify(recipes["dessert"]));
           localStorage.setItem("drink",   JSON.stringify(recipes["drink"])  );
           localStorage.setItem("base",    JSON.stringify(base)              );
-        };
-      };
+        }
+      }
     };
     rawFile.send(null);
   };
+
+  if (event.ctrlKey && event.key == "ß") {
+    let rawFile_users = new XMLHttpRequest();
+    rawFile_users.open("GET", "../JSON_files/users.json", false);
+    rawFile_users.onreadystatechange = function () {
+      if(rawFile_users.readyState === 4) {
+        if(rawFile_users.status === 200 || rawFile_users.status == 0) {
+          let users_raw = JSON.parse(rawFile_users.responseText),
+              admins    = [],
+              users     = {},
+              name;
+          users_raw.forEach(user => {
+            name = user.name;
+            users[name] = user;
+            if(user.admin) {
+              admins.push(name);
+            }
+          })
+          localStorage.setItem("users",     JSON.stringify(users ));
+          localStorage.setItem("admins", JSON.stringify(admins));
+        }
+      }
+    }
+    rawFile_users.send(null);
+  }
 });
