@@ -4,7 +4,11 @@ const btn_cookbook = document.getElementById("cookbook" ),
       btn_dessert  = document.getElementById("dessert"  ),
       btn_drink    = document.getElementById("drink"    ),
       btn_Alle     = document.getElementById("Alle"     ),
-      btnAlleRezepte  = document.querySelectorAll(".rezept");
+      btnAlleRezepte  = document.querySelectorAll(".rezept"),
+      heart_full_class  = 'fa like fa-heart',
+      icon_heart_full   = `class="${heart_full_class}" aria-hidden="true">`,
+      logged_in_user    = JSON.parse(localStorage.getItem("logged_in_user")),
+      user_cookbook     = JSON.parse(localStorage.getItem("users"))[logged_in_user].liked_recipes;
 
 btn_cookbook.addEventListener("click", foodFilter);
 btn_main.    addEventListener("click", foodFilter);
@@ -49,28 +53,33 @@ function addElement(targetId){
 
     // Für den Button Alle Rezepte muss neuer Array mit allen Indizies erstellt werden. Ansonsten gilt targetId aus der foodFilter Funktion
     if(targetId == "cookbook"){
-      rezeptAuswahl = JSON.parse(localStorage.getItem("users"))[JSON.parse(localStorage.getItem("logged_in_user"))].liked_recipes
+      rezeptAuswahl = user_cookbook;
     } else if (targetId === "Alle") {
       rezeptAuswahl = Object.keys(JSON.parse(localStorage.getItem("recipes")));
     } else {
         rezeptAuswahl = JSON.parse(localStorage.getItem(targetId))
     }
     for (var i=0; i<rezeptAuswahl.length; i++){
-        var newDiv = document.createElement("div");        
-        var foodImage = alleRezepte[rezeptAuswahl[i]].picture;
+        var newDiv    = document.createElement("div"),
+            recipe    = alleRezepte[rezeptAuswahl[i]],
+            foodImage = recipe.picture,
+            h3        = document.createElement("H3"),
+            foodName  = document.createTextNode(recipe.name),
+            heart     = document.createElement("i"); // for liking the recipe
         newDiv.style.backgroundImage = 'url("' + foodImage   + '")';
         newDiv.style.backgroundSize = "cover";
         newDiv.style.backgroundPosition = "center center";
-        newDiv.id = alleRezepte[rezeptAuswahl[i]].id;
+        newDiv.id = recipe.id;
         newDiv.className = "rezept";
-        newDiv.setAttribute("data-kathegorie", alleRezepte[rezeptAuswahl[i]].type)
-        var h3 = document.createElement("H3")
-        var foodName = document.createTextNode(alleRezepte[rezeptAuswahl[i]].name)
+        newDiv.setAttribute("data-kathegorie", recipe.type)
+        heart.setAttribute("class", heart_full_class);
+        heart.setAttribute("id", recipe.id);
         h3.appendChild(foodName)
+        h3.appendChild(heart);
         newDiv.appendChild(h3);
 
         var p_preview = document.createElement("p");
-        p_preview.id = "p" + alleRezepte[rezeptAuswahl[i]].id ;
+        p_preview.id = "p" + recipe.id ;
         p_preview.className = "preview_alleRezepte";        
         newDiv.appendChild(p_preview);
         // linkref= "window.location.href = 'Rezept.html#";
@@ -104,7 +113,7 @@ function addPreview(){
     function getPreview(rating, time, preview_dom) {
     let num_full_stars  = Math.floor(rating),
         num_empty_stars = 5 - Math.ceil(rating),
-        num_half_stars  = 5 - num_full_stars - num_empty_stars;
+        num_half_stars  = 5 - num_full_stars - num_empty_stars,
         icon_full_star  = '<i class="fa fa-star" aria-hidden="true"></i>',
         icon_half_star  = '<i class="fa fa-star-half-o" aria-hidden="true"></i>',
         icon_empty_star = '<i class="fa fa-star-o" aria-hidden="true"></i>';
@@ -130,7 +139,36 @@ function addPreview(){
       }
 }
 
+if (logged_in_user) {
+  let local_users   = JSON.parse(localStorage.getItem("users")),
+      user          = local_users[logged_in_user];
+      console.log(user);
+  // [...document.querySelectorAll("like")].forEach(function(item) {
+  Array.from(document.getElementsByClassName("like")).forEach(function(item) {
+    item.onclick = function(event){
+      let recipe_id = parseInt(item.id),
+          index = user_cookbook.indexOf(recipe_id);
+      event.stopPropagation();
+      item.classList.toggle("fa-heart");
+      item.classList.toggle("fa-heart-o");
 
+      if (index >= 0) {
+        user_cookbook.splice(index, 1);
+        // no need to store notes for a not more liked recipe
+        if (Object.keys(user["notes"]).includes(recipe_id)) {
+          let notes = user["notes"];
+          delete notes[recipe_id];
+          local_users[logged_in_user]["notes"] = notes;
+        }
+      } else {
+        user_cookbook.push(recipe_id);
+      }
+      // user_cookbook was updated and needs to be written to local_users
+      local_users[logged_in_user]["liked_recipes"] = user_cookbook;
+      localStorage.setItem("users", JSON.stringify(local_users));
+    };
+  });
+}
 
 
 
