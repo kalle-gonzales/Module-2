@@ -19,35 +19,32 @@ btn_Alle.    addEventListener("click", foodFilter);
 
 let url =  window.location.href;
 let targetId;
-let counter = 0;
 
 // Läd die gefilterte Auswahl von der Index Seite
-if (url.includes("?") && counter == 0)  {
-    targetId = url.split("?")[1];
-    counter +=1;
-    addElement(targetId);
-    addPreview();
-}
+window.addEventListener("load", function() {
+  if (url.includes("?"))  {
+      targetId = url.split("?")[1];
+      addRelevantRecipeDivs(targetId);
+      addPreview();
+  }
+});
 
 // Foodfilter Funktion die beim Klicken einer Auswahl durchläuft
 function foodFilter(event) {
-    clearDivs()
+    delteRecipesFromPage();
     targetId = event.target.dataset.kathegorie; 
-    addElement(targetId);
+    addRelevantRecipeDivs(targetId);
     addPreview();
 }
 
-// Löscht alle bestehenden Divs in dem alle_rezepte Div aka id="div1"
-function clearDivs(){
-    var existingDivs = document.getElementById("div1");
-    while(existingDivs.firstChild){
-        existingDivs.removeChild(existingDivs.firstChild)
-        }
+// Löscht alle bestehenden Divs in dem alle_rezepte Div aka id="recipe_wrapper"
+function delteRecipesFromPage(){
+    var existingDivs = document.getElementById("recipe_wrapper");
+    Array.from(existingDivs.children).forEach(function(recipe) {existingDivs.removeChild(recipe)})
 }
 
 // Fügt Divs je nach Filterauswahl aus dem localStorage hinzu
-function addElement(targetId){
-  console.log(targetId);
+function addRelevantRecipeDivs(targetId){
     var alleRezepte = JSON.parse(localStorage.getItem("recipes")),
         rezeptAuswahl;
 
@@ -65,11 +62,13 @@ function addElement(targetId){
             foodImage = recipe.picture,
             h3        = document.createElement("H3"),
             foodName  = document.createTextNode(recipe.name),
-            heart     = document.createElement("i"); // for liking the recipe
-        newDiv.style.backgroundImage = 'url("' + foodImage   + '")';
-        newDiv.style.backgroundSize = "cover";
-        newDiv.style.backgroundPosition = "center center";
-        newDiv.id = recipe.id;
+            heart     = document.createElement("i"), // for liking the recipe
+            p_preview = document.createElement("p");
+
+        newDiv.style.backgroundImage    = `url("${foodImage}")`;
+        newDiv.style.backgroundSize     = "cover";
+        newDiv.style.backgroundPosition = "center";
+        newDiv.id        = recipe.id;
         newDiv.className = "rezept";
         newDiv.setAttribute("data-kathegorie", recipe.type);
         if(user_cookbook.includes(recipe.id)){
@@ -82,35 +81,22 @@ function addElement(targetId){
         h3.appendChild(heart);
         newDiv.appendChild(h3);
 
-        var p_preview = document.createElement("p");
-        p_preview.id = "p" + recipe.id ;
-        p_preview.className = "preview_alleRezepte";        
+        p_preview.id        = "p" + recipe.id ;
+        p_preview.className = "preview_alleRezepte";
         newDiv.appendChild(p_preview);
-        // linkref= "window.location.href = 'Rezept.html#";
-        // num_ref = i.toString();
-        // linkref.concat(num_ref)
-        newDiv.setAttribute("onclick", "window.location.href = 'Rezept.html'") //works as well
-
-        //var anchor = document.createElement("a");
-        //anchor.className = "rezept";
-        //anchor.setAttribute("href", "../html/Rezept.html?ab=2")
-        //anchor.style.background = "none"
-        //newDiv.appendChild(anchor);
-        //console.log(newDiv)
-
-        document.getElementById("div1").appendChild(newDiv);
+        newDiv.setAttribute("onclick", `window.location.href = 'Rezept.html?${recipe.id}'`)
+        document.getElementById("recipe_wrapper").appendChild(newDiv);
     }
 }
 
-
 function addPreview(){
-    filteredDivs = [];
-    var alleRezepte = JSON.parse(localStorage.getItem("recipes"))
-    var allDivs = document.getElementsByClassName("rezept")
+    var alleRezepte = JSON.parse(localStorage.getItem("recipes")),
+        allDivs     = document.getElementsByClassName("rezept"),
+        recipe      = alleRezepte[allDivs[i].id];
 
     for (var i=0; i<allDivs.length; i++){
         var p_preview = document.getElementById("p" + allDivs[i].id)
-        getPreview(alleRezepte[allDivs[i].id]["rating"], alleRezepte[allDivs[i].id]["time"], p_preview);
+        getPreview(recipe["rating"], recipe["time"], p_preview);
     }
     
 
@@ -146,7 +132,6 @@ function addPreview(){
 if (logged_in_user) {
   let local_users   = JSON.parse(localStorage.getItem("users")),
       user          = local_users[logged_in_user];
-      console.log(user);
   // [...document.querySelectorAll("like")].forEach(function(item) {
   Array.from(document.getElementsByClassName("like")).forEach(function(item) {
     item.onclick = function(event){

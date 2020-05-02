@@ -19,10 +19,10 @@ document.getElementById("text_daily_haupt"  ).innerHTML = "Hauptspeise: " + haup
 document.getElementById("text_daily_dessert").innerHTML = "Dessert: "     + dessert["name"] + dessert_heart;
 document.getElementById("text_daily_drink"  ).innerHTML = "Drink: "       + drink["name"  ] + drink_heart;
 
-document.getElementById("daily_first"  ).style.backgroundImage = 'url("' + first.picture   + '")';
-document.getElementById("daily_haupt"  ).style.backgroundImage = 'url("' + haupt.picture   + '")';
-document.getElementById("daily_dessert").style.backgroundImage = 'url("' + dessert.picture + '")';
-document.getElementById("daily_drink"  ).style.backgroundImage = 'url("' + drink.picture   + '")';
+document.getElementById("daily_first"  ).style.backgroundImage = `url("${first.picture}  ")`;
+document.getElementById("daily_haupt"  ).style.backgroundImage = `url("${haupt.picture}  ")`;
+document.getElementById("daily_dessert").style.backgroundImage = `url("${dessert.picture}")`;
+document.getElementById("daily_drink"  ).style.backgroundImage = `url("${drink.picture}  ")`;
 
 getPreview(first["rating"],   first["time"],   preview_first);
 getPreview(haupt["rating"],   haupt["time"],   preview_haupt);
