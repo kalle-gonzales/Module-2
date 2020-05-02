@@ -91,14 +91,13 @@ function addRelevantRecipeDivs(targetId){
 
 function addPreview(){
     var alleRezepte = JSON.parse(localStorage.getItem("recipes")),
-        allDivs     = document.getElementsByClassName("rezept"),
-        recipe      = alleRezepte[allDivs[i].id];
+        allDivs     = document.getElementsByClassName("rezept");
 
     for (var i=0; i<allDivs.length; i++){
-        var p_preview = document.getElementById("p" + allDivs[i].id)
-        getPreview(recipe["rating"], recipe["time"], p_preview);
+      var p_preview = document.getElementById("p" + allDivs[i].id),
+          recipe    = alleRezepte[allDivs[i].id];
+      getPreview(recipe["rating"], recipe["time"], p_preview);
     }
-    
 
     function getPreview(rating, time, preview_dom) {
     let num_full_stars  = Math.floor(rating),
