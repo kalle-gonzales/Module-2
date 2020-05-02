@@ -57,7 +57,6 @@ if (logged_in_user) {
   let local_users   = JSON.parse(localStorage.getItem("users")),
       user          = local_users[logged_in_user],
       liked_recipes = user["liked_recipes"];
-      console.log(user);
   // [...document.querySelectorAll("like")].forEach(function(item) {
   Array.from(document.getElementsByClassName("like")).forEach(function(item) {
     item.onclick = function(event){

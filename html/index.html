@@ -21,16 +21,16 @@
           <legend>Login</legend>
           <p id="no_match">Nutzername und Password stimmen nicht überein.</p>
           <div>
-            <label for="user-name">Emailadresse:</label>
-            <input name="user-name" type="email" placeholder="Max.Mustermann@mail.de" required autofocus>
+            <label for="user-name">Nutzername:</label>
+            <input id="user_name_login" name="user-name" type="text" placeholder="Max Mustermann" required autofocus>
           </div>
           <div>
             <label for="password">Password:</label>
-            <input name="password" type="password" placeholder="******" required>
+            <input id="password_login" name="password" type="password" placeholder="******" required>
           </div>
           <div>
             <input class="submit_button" id="login_btn" name="login" value="Login">
-            <input class="submit_button" name="register" value="Registrieren">
+            <input class="submit_button" id="register_btn" name="register" value="Registrieren">
           </div>
         </fieldset>
       </form>
@@ -74,6 +74,36 @@
     <!-- ^^^^^ Logout Dialog ^^^^^ -->
   </div> 
   <!-- ^^^^^ Logout Modal ^^^^^ -->
+
+  <!-- vvvvv Register Modal vvvvv -->
+  <div id="register_modal" class="modal">
+
+    <!-- vvvv Register Dialog vvvvv -->
+    <div class="modal-content">
+      <span class="modal_close" id="register_modal_close">&times;</span>
+        <fieldset>
+          <legend>Registrieren</legend>
+          <div>
+            <label for="usename">Nutzername</label>
+            <p id="username_taken">Name bereits vergeben.</p>
+            <input id="register_username" name="username" type="text" placeholder="Max Mustermann" required>
+          </div>
+          <div>
+            <label for="email">Email-Adresse</label>
+            <input id="register_email" name="email" type="email" placeholder="max.mustermann@mail.de" required>
+          </div>
+          <div>
+            <label for="password">Password</label>
+            <input id="register_password" name="password" type="password" placeholder="******" required>
+          </div>
+          <div>
+            <button class="submit_button" id="register_form_btn">Registrieren</button>
+          </div>
+        </fieldset>
+    </div> 
+    <!-- ^^^^^ Register Dialog ^^^^^ -->
+  </div> 
+  <!-- ^^^^^ Register Modal ^^^^^ -->
 
   <div id="page_wrapper">
     <div class="background_image" id="background_image_index"></div>

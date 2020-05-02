@@ -1,6 +1,8 @@
 const body            = document.getElementById("body"),
       login_modal     = document.getElementById("login_modal"),
       logout_modal    = document.getElementById("logout_modal"),
+      welcome_modal   = document.getElementById("welcome_modal"),
+      register_modal  = document.getElementById("register_modal"),
       nav_login       = document.getElementById("nav_login"),
       nav_login_text  = document.getElementById("nav_login_text"),
       nav_login_icon  = document.getElementById("nav_login_icon"),
@@ -11,7 +13,9 @@ const body            = document.getElementById("body"),
       nav_search_text = document.getElementById("nav_search_text"),
       nav_search_icon = document.getElementById("nav_search_icon"),
       page_wrapper    = document.getElementById("page_wrapper"),
-      welcome_modal   = document.getElementById("welcome_modal");
+      username_taken  = document.getElementById("username_taken"),
+      users           = JSON.parse(localStorage.getItem("users")),
+      user_names      = Object.keys(users);
 
 var showing_menu = false
 let menu_items = ["add_recipe", "cookbook", "drink", "dessert", "haupt", "first"]
@@ -81,14 +85,35 @@ nav_login.addEventListener("click", function(){
     // event.preventDefault();
     let input    = document.forms["login"],
         user     = input[1].value,
-        password = input[2].value,
-        users    = JSON.parse(localStorage.getItem("users"));
-    if (Object.keys(users).includes(user) && users[user].password === password) {
+        password = input[2].value;
+    if (user_names.includes(user) && users[user].password === password) {
       handle_login(user, users[user].admin);
     } else {
       document.getElementById("no_match").style.display = "block";
     }
   }
+
+  document.getElementById("register_btn").onclick = () => {
+    showModal(register_modal, "register_modal_close");
+    let user_name_login    = document.getElementById("user_name_login").value,
+        user_name_register = document.getElementById("register_username"),
+        password           = document.getElementById("password_login").value;
+    login_modal.style.display = "none";
+    if (user_name_login != "") {
+      user_name_register.value = user_name_login;
+    };
+    if (password != "") {
+      document.getElementById("register_password").value = password;
+    };
+
+    user_name_register.oninput = () => {
+      if (user_names.includes(user_name_register.value)) {
+        username_taken.style.display = "inline-block";
+      } else {
+        username_taken.style.display = "none";
+      }
+    }
+  };
 });
 
 nav_logout.addEventListener("click", function(){
@@ -146,6 +171,26 @@ function showModal(modal, close_dom_id) {
 function hideModal(modal) {
   modal.style.display = "none";
   page_wrapper.classList.remove("grey_out"); 
+}
+
+document.getElementById("register_form_btn").onclick = () => {
+  let user     = {},
+      name     = document.getElementById("register_username").value;
+  if (!user_names.includes(name)) {
+    user["name"]          = name;
+    user["liked_recipes"] = [];
+    user["notes"]         = [];
+    user["email"]         = document.getElementById("register_email"   ).value;
+    user["password"]      = document.getElementById("register_password").value;
+    users[name] = user;
+    localStorage.setItem("users", JSON.stringify(users));
+    hideModal(register_modal);
+    document.getElementById("welcome_user").innerHTML  = name;
+    showModal(welcome_modal, "welcome_modal_close");
+    setTimeout(function() {hideModal(welcome_modal)}, 1000);
+    nav_login.style.display  = "none";
+    nav_logout.style.display = "inline";
+  }
 }
 
 /***********
