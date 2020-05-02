@@ -7,8 +7,8 @@ const btn_cookbook = document.getElementById("cookbook" ),
       btnAlleRezepte  = document.querySelectorAll(".rezept"),
       heart_full_class  = 'fa like fa-heart',
       heart_empty_class = 'fa like fa-heart-o',
-      logged_in_user    = JSON.parse(localStorage.getItem("logged_in_user")),
-      user_cookbook     = JSON.parse(localStorage.getItem("users"))[logged_in_user].liked_recipes;
+      logged_in_user    = JSON.parse(localStorage.getItem("logged_in_user"));//,
+      //user_cookbook     = JSON.parse(localStorage.getItem("users"))[logged_in_user].liked_recipes;
 
 btn_cookbook.addEventListener("click", foodFilter);
 btn_main.    addEventListener("click", foodFilter);
@@ -24,6 +24,7 @@ let targetId;
 window.addEventListener("load", function() {
   if (url.includes("?"))  {
       targetId = url.split("?")[1];
+      addHeader(targetId);
       addRelevantRecipeDivs(targetId);
       addPreview();
   }
@@ -33,14 +34,39 @@ window.addEventListener("load", function() {
 function foodFilter(event) {
     delteRecipesFromPage();
     targetId = event.target.dataset.kathegorie; 
+    addHeader(targetId);
     addRelevantRecipeDivs(targetId);
     addPreview();
 }
+
+
+// Header für den ausgewählten Filter
+function addHeader(targetId){
+if (targetId == "haupt"){
+  header = " Alle Hauptspeisen"
+} else if (targetId == "first"){
+  header = "Alle Vorspeisen"
+} else if (targetId == "dessert"){
+  header = "Alle Desserts"
+} else if (targetId == "drink"){
+  header = "Alle Drinks"
+} else if (targetId == "Alle"){
+  header = "Alle Rezepte"
+}
+var h2 = document.createElement("H2")
+var nameFilter = document.createTextNode(header)
+h2.appendChild(nameFilter)
+filterHeader.appendChild(h2);
+}
+
+
 
 // Löscht alle bestehenden Divs in dem alle_rezepte Div aka id="recipe_wrapper"
 function delteRecipesFromPage(){
     var existingDivs = document.getElementById("recipe_wrapper");
     Array.from(existingDivs.children).forEach(function(recipe) {existingDivs.removeChild(recipe)})
+    var existingDivs = document.getElementById("filterHeader");
+    Array.from(existingDivs.children).forEach(function(header) {existingDivs.removeChild(header)})
 }
 
 // Fügt Divs je nach Filterauswahl aus dem localStorage hinzu
@@ -71,12 +97,12 @@ function addRelevantRecipeDivs(targetId){
         newDiv.id        = recipe.id;
         newDiv.className = "rezept";
         newDiv.setAttribute("data-kathegorie", recipe.type);
-        if(user_cookbook.includes(recipe.id)){
-          heart.setAttribute("class", heart_full_class);
-        } else {
-          heart.setAttribute("class", heart_empty_class);
-        }
-        heart.setAttribute("id", recipe.id);
+        //if(user_cookbook.includes(recipe.id)){
+        //  heart.setAttribute("class", heart_full_class);
+        //} else {
+        //  heart.setAttribute("class", heart_empty_class);
+        //}
+        //heart.setAttribute("id", recipe.id);
         h3.appendChild(foodName)
         h3.appendChild(heart);
         newDiv.appendChild(h3);
