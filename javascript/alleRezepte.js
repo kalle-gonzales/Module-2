@@ -6,7 +6,7 @@ const btn_cookbook = document.getElementById("cookbook" ),
       btn_Alle     = document.getElementById("Alle"     ),
       btnAlleRezepte  = document.querySelectorAll(".rezept"),
       heart_full_class  = 'fa like fa-heart',
-      icon_heart_full   = `class="${heart_full_class}" aria-hidden="true">`,
+      heart_empty_class = 'fa like fa-heart-o',
       logged_in_user    = JSON.parse(localStorage.getItem("logged_in_user")),
       user_cookbook     = JSON.parse(localStorage.getItem("users"))[logged_in_user].liked_recipes;
 
@@ -71,8 +71,12 @@ function addElement(targetId){
         newDiv.style.backgroundPosition = "center center";
         newDiv.id = recipe.id;
         newDiv.className = "rezept";
-        newDiv.setAttribute("data-kathegorie", recipe.type)
-        heart.setAttribute("class", heart_full_class);
+        newDiv.setAttribute("data-kathegorie", recipe.type);
+        if(user_cookbook.includes(recipe.id)){
+          heart.setAttribute("class", heart_full_class);
+        } else {
+          heart.setAttribute("class", heart_empty_class);
+        }
         heart.setAttribute("id", recipe.id);
         h3.appendChild(foodName)
         h3.appendChild(heart);
