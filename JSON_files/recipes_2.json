@@ -1,6 +1,7 @@
 [
   {
     "id"  :        0,
+    "creator":     "admin",
     "name":        "Pizza",
     "base":        "Dough",
     "type":        "haupt",
@@ -14,6 +15,7 @@
   },
   {
     "id"  :        1,
+    "creator":     "user_1",
     "name":        "Spagehtthi Bollo",
     "base":        "Noodles",
     "type":        "haupt",
@@ -27,6 +29,7 @@
   },
   {
     "id"  :        2,
+    "creator":     "user_1",
     "name":        "Mushroom Risotto",
     "base":        "Rice",
     "type":        "haupt",
@@ -40,6 +43,7 @@
   },
   {
     "id"  :        3,
+    "creator":     "user_2",
     "name":        "Vodka Martini",
     "base":        "Vodka",
     "type":        "drink",
@@ -53,6 +57,7 @@
   },
   {
     "id"  :        4,
+    "creator":     "user_2",
     "name":        "Tomatensuppe",
     "base":        "Tomaten",
     "type":        "first",
@@ -66,6 +71,7 @@
   },
   {
     "id"  :        5,
+    "creator":     "user_2",
     "name":        "Spargelsuppe",
     "base":        "Spargel",
     "type":        "first",
@@ -79,6 +85,7 @@
   },
   {
     "id"  :        6,
+    "creator":     "user_2",
     "name":        "Bier",
     "base":        "Bier",
     "type":        "drink",
@@ -105,6 +112,7 @@
   },
   {
     "id"  :        8,
+    "creator":     "user_2",
     "name":        "Teramisu",
     "base":        "Teig",
     "type":        "dessert",
