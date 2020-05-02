@@ -151,8 +151,9 @@ function hideModal(modal) {
 /***********
  * preview *
  ***********/
-[...document.querySelectorAll("rezept_des_tages")].forEach(function (item) {
-  preview_add_hover_listeners(item);
+// [...document.querySelectorAll("rezept_des_tages")].forEach(function (item) {
+  Array.from(document.getElementsByClassName("rezept_des_tages")).forEach(function(item) {
+    preview_add_hover_listeners(item);
 });
 
 function preview_add_hover_listeners(element) {
