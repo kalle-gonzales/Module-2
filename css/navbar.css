@@ -247,6 +247,11 @@ fieldset > div > input {
   display: none;
 }
 
+#username_taken {
+  display: none;
+  color: red;
+  margin-left: 5rem;
+}
 
 /***********
  * preview *
