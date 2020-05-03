@@ -164,7 +164,7 @@ function addElement(){
     
     for (var i=0; i<rezeptArray.length; i++){
         //console.log(alleRezepte[rezeptArray[i]])
-        var ID = alleRezepte[i].id;
+        var ID = alleRezepte[rezeptArray[[i]]].id;
         var newDiv = document.createElement("div");
         var anchor = document.createElement("a");
         var foodImage = alleRezepte[rezeptArray[i]].picture;

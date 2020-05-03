@@ -1,3 +1,4 @@
+
 //get the actual recipes from local Storage 
 var fillin = JSON.parse(localStorage.getItem('recipes'));
 
@@ -20,13 +21,73 @@ document.getElementById('base').value = base;
 prep_time
 var prep_time = fillin[r_IDa].time;
 document.getElementById('prep_time').value = prep_time;
-var ingredients = fillin[r_IDa].ingredients;
-document.getElementById('ingredient_0').value = ingredients;
+
+/*var ingredients = fillin[r_IDa].ingredients;
+document.getElementById('ingredient_0').value = ingredients[1];
 var description = fillin[r_IDa].description;
-document.getElementById('step_0').value = description;
+document.getElementById('step_0').value = description;*/
 
 
-//veränderte Einträge abspeichern 
+//Zutaten zählen und Parameter festlegen
+var ingredients_i = fillin[r_IDa].ingredients,
+    ingred_counter = ingredients_i.length,
+    counterbox_i = 0,
+    i = 0;
+    i_r = 0; 
+
+//Zutatenboxen ausfüllen 
+function fill_i(ingred_counter, counterbox_i, i, i_r) {
+  if (ingred_counter > 1) {
+    for(i; i < ingred_counter; i++, i_r++) {
+      var div   = document.getElementById("input_box_ingredient_0"),
+          clone = div.cloneNode(true);
+          //test  = ingredients[1];
+      clone.id                  = "ingredient_" + (counterbox_i + 1);
+      //clone.value = "";
+
+      var ingredients = fillin[r_IDa].ingredients;
+      document.getElementById('ingredient_'+ counterbox_i).value = ingredients[i_r];
+
+      div.parentNode.insertBefore(clone, div.nextSibling);
+      console.log(ingredients[i_r]);
+
+    }
+  }
+}
+  
+fill_i(ingred_counter, counterbox_i, i, i_r,);
+
+/*
+//Steps zählen und Parameter festlegen
+var step_f = fillin[r_IDa].description,
+    step_counter = step_f.length,
+    counterbox_s = 0,
+    s = 0;
+    i_s = 0;
+
+//Stepboxen ausfüllen 
+function fill_s(step_counter, counterbox_s, s, i_s) {
+  if (ingred_counter > 1) {
+    for(s; s < step_counter; i++, i_s++) {
+      var div   = document.getElementById("step_0"),
+          clone = div.cloneNode(true);
+          
+      clone.id                  = "step_" + (counterbox_s + 1);
+      
+      var steps = fillin[r_IDa].description;
+      document.getElementById('ingredient_'+ counterbox_s).value = steps[i_r];
+
+      div.parentNode.insertBefore(clone, div.nextSibling);
+      console.log(steps[i_r]);
+
+    }
+  }
+}
+
+fill_s(step_counter, counterbox_s, s, i_s);
+*/
+
+
 
 const add_btn            = document.getElementById("add_btn"),
       add_ingredient_btn_0 = document.getElementById("add_ingredient_btn_0"),
@@ -42,7 +103,7 @@ add_btn.addEventListener("click", function(event){
       bases                 = JSON.parse(localStorage.getItem("base")),
       types                 = JSON.parse(localStorage.getItem(input[1].value)),
       recipe                = {},
-      id                    = r_IDa,
+      id                    = recipes.length,
       base                  = input[3].value;
 
   recipe["id"]          = id;
@@ -69,8 +130,7 @@ add_btn.addEventListener("click", function(event){
     bases[base] = [id];
   }
   localStorage.setItem("base", JSON.stringify(bases));
-  recipes.splice(r_IDa, 1, recipe);
-  //recipes.push(recipe);
+  recipes.push(recipe);
   types.push(id);
   localStorage.setItem(type, JSON.stringify(types));
   localStorage.setItem("recipes", JSON.stringify(recipes));
@@ -120,38 +180,3 @@ function addEventListeners(dom, category, counter, limit, limit_text){
     this.style.display = "none";
   });
 };
-
-document.addEventListener("keydown", function(event) {
-  if (event.ctrlKey && event.key == "0") {
-    let rawFile = new XMLHttpRequest();
-    rawFile.open("GET", "../JSON_files/recipes_2.json", false);
-    rawFile.onreadystatechange = function () {
-      if(rawFile.readyState === 4) {
-        if(rawFile.status === 200 || rawFile.status == 0) {
-          let recipes_raw = JSON.parse(rawFile.responseText),
-              recipes     = {"Vorspeise": [], "Hauptspeise": [], "Dessert": [], "Drink": []},
-              base        = {},
-              raw_recipe  = {},
-              id;
-          recipes_raw.forEach(function(recipe) {
-            id = recipe.id;
-            recipes[recipe.type].push(id);
-            raw_recipe[id] = recipe;
-            if (Object.keys(base).includes(recipe.base)) {
-              base[recipe.base].push(id);
-            } else {
-              base[recipe.base] = [id];
-            };
-          });
-          localStorage.setItem("recipes", JSON.stringify(recipes_raw)           );
-          localStorage.setItem("first",   JSON.stringify(recipes["Vorspeise"])  );
-          localStorage.setItem("main",    JSON.stringify(recipes["Hauptspeise"]));
-          localStorage.setItem("dessert", JSON.stringify(recipes["Dessert"])    );
-          localStorage.setItem("drink",   JSON.stringify(recipes["Drink"])      );
-          localStorage.setItem("base",    JSON.stringify(base)                  );
-        };
-      };
-    };
-    rawFile.send(null);
-  };
-});
