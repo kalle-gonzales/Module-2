@@ -1,5 +1,5 @@
 
-//get the actual recipes from local Storage 
+//get the actual recipes from local Storage
 var fillin = JSON.parse(localStorage.getItem('recipes'));
 
 //die richtige ID des richtigen ReZepts übergeben 
@@ -14,73 +14,71 @@ var name = fillin[r_IDa].name;
 document.getElementById('name').value = name;
 var type = fillin[r_IDa].type;
 document.getElementById('type').value = type;
+console.log(type);
 var severity = fillin[r_IDa].severity;
 document.getElementById('severity').value = severity;
 var base = fillin[r_IDa].base;
 document.getElementById('base').value = base;
-prep_time
 var prep_time = fillin[r_IDa].time;
 document.getElementById('prep_time').value = prep_time;
+var ingredients = fillin[r_IDa].ingredients;
 
 
 //Zutaten zählen und Parameter festlegen
-var ingredients_i = fillin[r_IDa].ingredients,
-    ingred_counter = ingredients_i.length,
-    counterbox_i = 0,
-    i = 0;
-    i_r = 0; 
+var ingredients_i = fillin[r_IDa].ingredients;
 
 //Zutatenboxen ausfüllen 
-function fill_i(ingred_counter, counterbox_i, i, i_r) {
-  if (ingred_counter > 1) {
-    for(i; i < ingred_counter; i++, i_r++) {
-      var div   = document.getElementById("input_box_ingredient_0"),
-          clone = div.cloneNode(true);
-          //test  = ingredients[1];
-      clone.id                  = "ingredient_" + (counterbox_i + 1);
-      //clone.value = "";
+function fill_i(number_of_ingredients) {
+  for(var i = 1; i < number_of_ingredients; i++) {
+    console.log(i);
+    var div   = document.getElementById("input_box_ingredient_" + parseInt(i - 1));
+    var clone = div.cloneNode(true);
+    clone.id = "input_box_ingredient_" + parseInt(i);
+    
+    div.childNodes.forEach(child => {
+      if(child.id) {
+        let sub_strings = child.id.split("_")
+        sub_strings[sub_strings.length - 1] = i
+        child.id = sub_strings.join("_");
+      }
+    })
 
-      var ingredients = fillin[r_IDa].ingredients;
-      document.getElementById('ingredient_'+ counterbox_i).value = ingredients[i_r];
-
-      div.parentNode.insertBefore(clone, div.nextSibling);
-      console.log(ingredients[i_r]);
-
-    }
+    div.parentNode.insertBefore(clone, div.nextSibling);
+    document.getElementById('ingredient_'+ i).value = ingredients[i - 1];
   }
 }
-  
-fill_i(ingred_counter, counterbox_i, i, i_r,);
+
+document.getElementById('ingredient_0').value = ingredients[ingredients.length - 1];
+fill_i(ingredients_i.length);
 
 
 //Steps zählen und Parameter festlegen
-var step_f = fillin[r_IDa].description,
-    step_counter = step_f.length,
-    counterbox_s = 0,
-    s = 0;
-    i_s = 0;
+var step_f = fillin[r_IDa].description;
 
 //Stepboxen ausfüllen 
-function fill_s(step_counter, counterbox_s, s, i_s) {
-  if (ingred_counter > 1) {
-    for(s; s < step_counter; i++, i_s++) {
-      var div   = document.getElementById("step_0"),
-          clone = div.cloneNode(true);
-          
-      clone.id                  = "step_" + (counterbox_s + 1);
-      
-      var steps = fillin[r_IDa].description;
-      document.getElementById('ingredient_'+ counterbox_s).value = steps[i_r];
+function fill_s(step_counter) {
+  for(var s = 1; s < step_counter; s++) {
+    console.log(s);
+    var div   = document.getElementById("input_box_step_" + parseInt(s - 1));
+    var clone = div.cloneNode(true);
+    clone.id = "input_box_step_" + parseInt(s);
+    
+    div.childNodes.forEach(child => {
+      if(child.id) {
+        let sub_strings = child.id.split("_")
+        sub_strings[sub_strings.length - 1] = s
+        child.id = sub_strings.join("_");
+      }
+    })
 
-      div.parentNode.insertBefore(clone, div.nextSibling);
-      console.log(steps[i_r]);
-
-    }
+    div.parentNode.insertBefore(clone, div.nextSibling);
+    document.getElementById('step_' + s).value = step_f[s - 1];
   }
 }
+document.getElementById('step_0').value = step_f[step_f.length - 1];
 
-fill_s(step_counter, counterbox_s, s, i_s);
-
+fill_s(step_f.length);
+console.log(step_f);
 
 
 const add_btn            = document.getElementById("add_btn"),
@@ -103,14 +101,14 @@ add_btn.addEventListener("click", function(event){
   recipe["id"]          = id;
   recipe["rating"]      = 0;
   recipe["ingredients"] = [];
-  recipe["descirption"] = [];
+  recipe["description"] = [];
 
 
   Array.from(input).forEach(function(element){
     if(element.id.includes("ingredient")) {
       recipe["ingredients"].push(element.value);
     } else if(element.id.includes("step")) {
-      recipe["descirption"].push(element.value);
+      recipe["description"].push(element.value);
     } else if (element.value === "Einreichen"){
       return;  // no need to get the submit button in the recipes
     } else {
@@ -132,7 +130,7 @@ add_btn.addEventListener("click", function(event){
 
 
 addEventListeners(
-  document.getElementById("ingredient_add_btn_0"),
+  document.getElementById("ingredient_add_btn"),
   "ingredient_",
   0,
   ingredient_limit,
@@ -140,7 +138,7 @@ addEventListeners(
 );
 
 addEventListeners(
-  document.getElementById("step_add_btn_0"),
+  document.getElementById("step_add_btn"),
   "step_",
   0,
   step_limit,

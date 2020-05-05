@@ -19,14 +19,14 @@ add_btn.addEventListener("click", function(event){
   recipe["creator"]     = JSON.parse(localStorage.getItem("logged_in_user"));
   recipe["rating"]      = 0;
   recipe["ingredients"] = [];
-  recipe["descirption"] = [];
+  recipe["description"] = [];
 
 
   Array.from(input).forEach(function(element){
     if(element.id.includes("ingredient")) {
       recipe["ingredients"].push(element.value);
     } else if(element.id.includes("step")) {
-      recipe["descirption"].push(element.value);
+      recipe["description"].push(element.value);
     } else if (element.value === "Einreichen"){
       return;  // no need to get the submit button in the recipes
     } else {
@@ -41,6 +41,7 @@ add_btn.addEventListener("click", function(event){
   }
   localStorage.setItem("base", JSON.stringify(bases));
   recipes.push(recipe);
+  console.log(types);
   types.push(id);
   localStorage.setItem(type, JSON.stringify(types));
   localStorage.setItem("recipes", JSON.stringify(recipes));
@@ -94,7 +95,7 @@ function addEventListeners(dom, category, counter, limit, limit_text){
 document.addEventListener("keydown", function(event) {
   if (event.key == "0") {
     let rawFile = new XMLHttpRequest();
-    rawFile.open("GET", "../JSON_files/recipes_2.json", false);
+    rawFile.open("GET", "../JSON_files/recipes.json", false);
     rawFile.onreadystatechange = function () {
       if(rawFile.readyState === 4) {
         if(rawFile.status === 200 || rawFile.status == 0) {

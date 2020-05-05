@@ -18,14 +18,16 @@ document.getElementById("instructions").textContent = actual.description;
 document.getElementById("time").textContent = actual.time;
 document.getElementById("rating").textContent = actual.rating;
 
+console.log(ins);
+
 ing.forEach((element) => {
-  console.log(element)
+  // console.log(element)
   document.getElementById("ing").textContent = ing;
   numCallbackRuns++
 })
 
 ins.forEach((element) => {
-  console.log(element)
+  // console.log(element)
   document.getElementById("instructions").textContent = ins;
   numCallbackRuns++
 })
