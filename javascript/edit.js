@@ -22,11 +22,6 @@ prep_time
 var prep_time = fillin[r_IDa].time;
 document.getElementById('prep_time').value = prep_time;
 
-/*var ingredients = fillin[r_IDa].ingredients;
-document.getElementById('ingredient_0').value = ingredients[1];
-var description = fillin[r_IDa].description;
-document.getElementById('step_0').value = description;*/
-
 
 //Zutaten zählen und Parameter festlegen
 var ingredients_i = fillin[r_IDa].ingredients,
@@ -57,7 +52,7 @@ function fill_i(ingred_counter, counterbox_i, i, i_r) {
   
 fill_i(ingred_counter, counterbox_i, i, i_r,);
 
-/*
+
 //Steps zählen und Parameter festlegen
 var step_f = fillin[r_IDa].description,
     step_counter = step_f.length,
@@ -85,7 +80,6 @@ function fill_s(step_counter, counterbox_s, s, i_s) {
 }
 
 fill_s(step_counter, counterbox_s, s, i_s);
-*/
 
 
 

@@ -125,7 +125,7 @@ document.addEventListener("keydown", function(event) {
     rawFile.send(null);
   };
 
-  if (event.ctrlKey && event.key == "ß") {
+  if (event.key == "9") {
     let rawFile_users = new XMLHttpRequest();
     rawFile_users.open("GET", "../JSON_files/users.json", false);
     rawFile_users.onreadystatechange = function () {
