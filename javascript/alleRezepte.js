@@ -159,38 +159,27 @@ if (logged_in_user) {
 }
 
 function addElement(){
-    var alleRezepte = JSON.parse(localStorage.getItem("recipes"))
-    var rezeptArray = JSON.parse(localStorage.getItem(targetId))
+    var alleRezepte    = JSON.parse(localStorage.getItem("recipes")),
+        rezeptArray    = JSON.parse(localStorage.getItem(targetId)),
+        current_recipe = alleRezepte[rezeptArray[[i]]];
     
     for (var i=0; i<rezeptArray.length; i++){
-        //console.log(alleRezepte[rezeptArray[i]])
-        var ID = alleRezepte[rezeptArray[[i]]].id;
+        var ID = current_recipe.id;
         var newDiv = document.createElement("div");
         var anchor = document.createElement("a");
-        var foodImage = alleRezepte[rezeptArray[i]].picture;
-        Name = alleRezepte[rezeptArray[i]].name;
+        var foodImage = current_recipe.picture;
         newDiv.style.backgroundImage = 'url("' + foodImage   + '")';
-        newDiv.id = alleRezepte[rezeptArray[i]].id;
+        newDiv.id = current_recipe.id;
         newDiv.className = "rezept";
-        newDiv.setAttribute("data-kathegorie", alleRezepte[rezeptArray[i]].type)
+        newDiv.setAttribute("data-kathegorie", current_recipe.type)
         anchor.className = "rezept";
         anchor.setAttribute("href", "../html/Rezept.html?" +ID)
         anchor.style.background = "none"
-        anchor.style.maxWidth= "96%"
+        anchor.style.maxWidth = "96%"
         
-        var foodName = document.createTextNode(Name)
-        newDiv.appendChild(foodName);
+        newDiv.appendChild(document.createTextNode(current_recipe.name));
         newDiv.appendChild(anchor);
-        //console.log(newDiv)
 
         document.getElementById("div1").appendChild(newDiv);
-
-
-
-        //var currentDiv = document.getElementById("div1");
-        //document.body.insertBefore(newDiv, currentDiv)
     }
 }
-
-//document.getElementsByClassName("rezept").setAttribute('onclick', 'location.href = /html/Rezept.html');
-

@@ -41,7 +41,6 @@ add_btn.addEventListener("click", function(event){
   }
   localStorage.setItem("base", JSON.stringify(bases));
   recipes.push(recipe);
-  console.log(types);
   types.push(id);
   localStorage.setItem(type, JSON.stringify(types));
   localStorage.setItem("recipes", JSON.stringify(recipes));
