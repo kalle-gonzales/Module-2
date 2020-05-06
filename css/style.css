@@ -65,20 +65,6 @@ a:hover{
 /* Startseite mit Rezepten des Tages */
 /* +++++++++++++++++++++++++++++++++ */
 
-.food_of_the_day{
-    padding: 0 50px;
-}
-
-.rezept_des_tages {
-    margin: 5px; 
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    /* box-sizing: border-box;
-    border: 2px;
-    border-style: solid; */
-}
-
 .hauptgericht_of_the_day{
     display: flex;
     flex-direction: column;
@@ -95,69 +81,10 @@ a:hover{
     width: 100%;
 }
 
-.drink_of_the_day{
-    display: flex;
-    flex-direction: column;
-    width: 20vw;
-    justify-content: flex-start;  
-}
-
-.drink{
-    /* background-image: url("../images/white_russin.jpg");  */
-    background-size: cover;
-    background-position: center center; 
-    height: 100%;
-    width: 100%;  
-}
-
-.dessert_of_the_day{
-    display: flex;
-    flex-direction: column;
-    width: 30vw;
-    height: 200px;   
-}
-
-.dessert{
-    /* background-image: url("../images/tera.jpg"); */
-    background-size: cover;
-    background-position: center center;
-    height: 100%;
-    width: 100%;
-}
-
-.vorspeise_of_the_day{
-    display: flex;
-    flex-direction: column;
-    width: 30vw;
-    height: 200px;  
-}
-
-.vorspeise{
-    /* background-image: url("../images/tomatensuppe.jpg"); */
-    background-size: cover;
-    background-position: center center;
-    height: 100%;
-    width: 100%;
-}
-
 .flex_container_reihe{
     display: flex;
-    flex: 1;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    align-items: center;
 }
-
-.double_row {
-    display: flex;
-    flex-direction: row;
-}
-
-.double_col {
-    display: flex;
-    flex-direction: column;
-}
-
 
 /* +++++++++++++++++++++++++++++++++ */
 /*          Alle Rezepte             */
@@ -176,35 +103,47 @@ a:hover{
 }
 
 .alle_rezepte{
-    padding: 50px;
+    
     display: flex;
-    flex: 1;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
     /*width: 90vw;*/
     /*text-align: center;*/
 }
 
 .rezept{
-    margin: 5px; 
+    margin: 10px; 
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
     border: 2px;
     border-style: solid; 
-    width: 20vw;
-    height: 10vw;
+    width: 80vw;
+    height: 40vw;
     background-color: grey;
     position: relative;
 }
 
+
+
+
+
 .btn_choice{
     font-family: "Gayathri", sans-serif;
-    margin-top: 50px;
-    padding: 10px;
+    margin: 50px 0px 10px 30px;
     color: #eef;
     border-style: solid;
+    font-size: 20px;
+    padding: 5%;
+    
+
+}
+
+.header {
+    margin-top: 40px;
+    display: flex;
+    
 }
 
 
@@ -357,4 +296,139 @@ h4 {
 @font-face {
   font-family: Tradewinds;
   src: url(https://fonts.gstatic.com/s/tradewinds/v8/AYCPpXPpYNIIT7h8-QenM0Jt5vM.woff2);
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+
+@media only screen and (min-width: 1000px) {
+
+    .alle_rezepte{
+        padding: 50px;
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        /*width: 90vw;*/
+        /*text-align: center;*/
+    }
+
+    .rezept{
+        margin: 5px; 
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        border: 2px;
+        border-style: solid; 
+        width: 20vw;
+        height: 10vw;
+        background-color: grey;
+        position: relative;
+    }
+
+    .btn_choice{
+        font-family: "Gayathri", sans-serif;
+        margin-top: 50px;
+        padding: 10px;
+        color: #eef;
+        border-style: solid;
+    }
+    
+    .food_of_the_day{
+        padding: 0 50px;
+    }
+    
+    .rezept_des_tages {
+        margin: 5px; 
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        /* box-sizing: border-box;
+        border: 2px;
+        border-style: solid; */
+    }
+    
+    .hauptgericht_of_the_day{
+        display: flex;
+        flex-direction: column;
+        width: 60vw;
+        height: 200px;
+        align-self: start;
+    }
+    
+    .hauptgericht{
+        /* background-image: url("../images/nudel_tomate.jpg"); */
+        background-size: cover;
+        background-position: center center;
+        height: 100%;
+        width: 100%;
+    }
+    
+    .drink_of_the_day{
+        display: flex;
+        flex-direction: column;
+        width: 20vw;
+        justify-content: flex-start;  
+    }
+    
+    .drink{
+        /* background-image: url("../images/white_russin.jpg");  */
+        background-size: cover;
+        background-position: center center; 
+        height: 100%;
+        width: 100%;  
+    }
+    
+    .dessert_of_the_day{
+        display: flex;
+        flex-direction: column;
+        width: 30vw;
+        height: 200px;   
+    }
+    
+    .dessert{
+        /* background-image: url("../images/tera.jpg"); */
+        background-size: cover;
+        background-position: center center;
+        height: 100%;
+        width: 100%;
+    }
+    
+    .vorspeise_of_the_day{
+        display: flex;
+        flex-direction: column;
+        width: 30vw;
+        height: 200px;  
+    }
+    
+    .vorspeise{
+        /* background-image: url("../images/tomatensuppe.jpg"); */
+        background-size: cover;
+        background-position: center center;
+        height: 100%;
+        width: 100%;
+    }
+    
+    .flex_container_reihe{
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .double_row {
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .double_col {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    
+    
 }
