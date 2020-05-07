@@ -99,6 +99,7 @@
   },
   {
     "id"  :        7,
+    "creator":     "admin",
     "name":        "Mamorkuchen",
     "base":        "Teig",
     "type":        "dessert",

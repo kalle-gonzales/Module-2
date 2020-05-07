@@ -8,6 +8,7 @@ const btn_cookbook = document.getElementById("cookbook" ),
       heart_full_class  = 'fa like fa-heart',
       heart_empty_class = 'fa like fa-heart-o',
       logged_in_user    = JSON.parse(localStorage.getItem("logged_in_user")),
+      own_recipes       = get_own_recipes(JSON.parse(localStorage.getItem("recipes")), logged_in_user),
       user_cookbook     = JSON.parse(localStorage.getItem("users"))[logged_in_user].liked_recipes;
 
 btn_cookbook.addEventListener("click", foodFilter);
@@ -19,6 +20,20 @@ btn_Alle.    addEventListener("click", foodFilter);
 
 let url =  window.location.href;
 let targetId;
+
+
+function get_own_recipes(recipe_array) {
+  let own_recipes_array = []
+  if(logged_in_user){
+    recipe_array.forEach(function(recipe) {
+      console.log(recipe.creator == logged_in_user);
+      console.log(recipe.name);
+      console.log(recipe.creator);
+      console.log(logged_in_user);
+    });
+  }
+  return own_recipes_array;
+}
 
 // Läd die gefilterte Auswahl von der Index Seite
 window.addEventListener("load", function() {
