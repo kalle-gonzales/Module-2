@@ -158,5 +158,28 @@ if (logged_in_user) {
   });
 }
 
+function addElement(){
+    var alleRezepte    = JSON.parse(localStorage.getItem("recipes")),
+        rezeptArray    = JSON.parse(localStorage.getItem(targetId)),
+        current_recipe = alleRezepte[rezeptArray[[i]]];
+    
+    for (var i=0; i<rezeptArray.length; i++){
+        var ID = current_recipe.id;
+        var newDiv = document.createElement("div");
+        var anchor = document.createElement("a");
+        var foodImage = current_recipe.picture;
+        newDiv.style.backgroundImage = 'url("' + foodImage   + '")';
+        newDiv.id = current_recipe.id;
+        newDiv.className = "rezept";
+        newDiv.setAttribute("data-kathegorie", current_recipe.type)
+        anchor.className = "rezept";
+        anchor.setAttribute("href", "../html/Rezept.html?" +ID)
+        anchor.style.background = "none"
+        anchor.style.maxWidth = "96%"
+        
+        newDiv.appendChild(document.createTextNode(current_recipe.name));
+        newDiv.appendChild(anchor);
 
-
+        document.getElementById("div1").appendChild(newDiv);
+    }
+}

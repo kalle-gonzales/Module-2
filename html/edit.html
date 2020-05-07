@@ -1,68 +1,258 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rezept Bearbeiten</title>
-    <link rel="stylesheet" href="../css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Rezept bearbeiten</title>
 </head>
-<body>
 
-  <div class="background_image" id="background_image_edit"></div>
+<body id="body">
+  <!-- vvvvv Login Modal vvvvv -->
+  <div id="login_modal" class="modal">
 
-  <div class="nav_bar">
-    <li><a class="actual" href="index.html">Tagesgerichte</a></li>
-    <li><a href="alleRezepte.html">Alle Rezepte</a></li>
-    <li><a href="add_recipe.html">Rezept Hinzufügen</a></li>
-    <li><a href="edit.html">Rezept Bearbeiten</a></li>
-    <li><a href="contact.html">Kontakt</a></li>
-  </div>
+    <!-- vvvv Login Maske vvvvv -->
+    <div class="modal-content">
+      <span class="modal_close" id="login_modal_close">&times;</span>
+      <form id="login" action="">
+        <fieldset>
+          <legend>Login</legend>
+          <p id="no_match">Nutzername und Password stimmen nicht überein.</p>
+          <div>
+            <label for="user-name">Nutzername:</label>
+            <input id="user_name_login" name="user-name" type="text" placeholder="Max Mustermann" required autofocus>
+          </div>
+          <div>
+            <label for="password">Password:</label>
+            <input id="password_login" name="password" type="password" placeholder="******" required>
+          </div>
+          <div>
+            <input class="submit_button" id="login_btn" name="login" value="Login">
+            <input class="submit_button" id="register_btn" name="register" value="Registrieren">
+          </div>
+        </fieldset>
+      </form>
+    </div> 
+    <!-- ^^^^^ Login Maske ^^^^^ -->
+  </div> 
+  <!-- ^^^^^ Login Modal ^^^^^ -->
 
-  <div class="header">
-    <h1>Rezept Bearbeiten</h1>
-</div>
+  
 
-<div class="search_box">
-    <p>Suche ein Rezept:</p><input type="text" placeholder="Search Here" id="search_text">
-    <i class="fas fa-search"></i>   
-</div>
+  <!-- vvvvv Welcome Modal vvvvv -->
+  <div id="welcome_modal" class="modal">
 
-<p id="search_text_stored"></p>
+    <!-- vvvv Welcome Maske vvvvv -->
+    <div class="modal-content">
+      <span class="modal_close" id="welcome_modal_close">&times;</span>
+
+      <p id="welcome_user"></p>
+      , willkommen zurück!
+    </div> 
+    <!-- ^^^^^ Welcome Maske ^^^^^ -->
+  </div> 
+  <!-- ^^^^^ Welcome Modal ^^^^^ -->
 
 
 
-<div class="neues_Rezept">
-    <form>
+  <!-- vvvvv Logout Modal vvvvv -->
+  <div id="logout_modal" class="modal">
+
+    <!-- vvvv Logout Dialog vvvvv -->
+    <div class="modal-content">
+      <span class="modal_close" id="logout_modal_close">&times;</span>
+        <fieldset>
+          <legend>Wollen Sie sich auslogen?</legend>
+          <div>
+            <button class="submit_button" id="no">Nein</button>
+            <button class="submit_button" id="yes">Ja</button>
+          </div>
+        </fieldset>
+    </div> 
+    <!-- ^^^^^ Logout Dialog ^^^^^ -->
+  </div> 
+  <!-- ^^^^^ Logout Modal ^^^^^ -->
+
+  <!-- vvvvv Register Modal vvvvv -->
+  <div id="register_modal" class="modal">
+
+    <!-- vvvv Register Dialog vvvvv -->
+    <div class="modal-content">
+      <span class="modal_close" id="register_modal_close">&times;</span>
+        <fieldset>
+          <legend>Registrieren</legend>
+          <div>
+            <label for="usename">Nutzername</label>
+            <p id="username_taken">Name bereits vergeben.</p>
+            <input id="register_username" name="username" type="text" placeholder="Max Mustermann" required>
+          </div>
+          <div>
+            <label for="email">Email-Adresse</label>
+            <input id="register_email" name="email" type="email" placeholder="max.mustermann@mail.de" required>
+          </div>
+          <div>
+            <label for="password">Password</label>
+            <input id="register_password" name="password" type="password" placeholder="******" required>
+          </div>
+          <div>
+            <button class="submit_button" id="register_form_btn">Registrieren</button>
+          </div>
+        </fieldset>
+    </div> 
+    <!-- ^^^^^ Register Dialog ^^^^^ -->
+  </div> 
+  <!-- ^^^^^ Register Modal ^^^^^ -->
+
+  <div id="page_wrapper">
+    <div class="background_image" id="background_image_index"></div>
+
+    <nav>
+      <a href="index.html" class="nav_item" id="home">
+        <i class="fa fa-home" id="home_icon" aria-hidden="true"></i>
+      </a>
+  
+      <div id="burger_menu" class="nav_item">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </div>
+    
+      <div class="drop_right menu nav_item" id="menu">
+        <div id="flex_container">
+  
+          <a href="alleRezepte.html?first" class="flex_item menu_item nav_item" id="first">
+            <i class="fa fa-spoon" aria-hidden="true" id="menu_item_icon_first"></i>
+            <div class="menu_item_text" id="menu_item_text_first" data-kathegorie="first">
+              Vorspeise
+            </div>
+          </a>
+          
+          <a href="alleRezepte.html?haupt" class="flex_item menu_item nav_item" id="haupt">
+            <i class="fa fa-cutlery" aria-hidden="true" id="menu_item_icon_haupt"></i>
+            <div class="menu_item_text" id="menu_item_text_haupt" data-kathegorie="haupt">
+              Hauptspeise
+            </div>
+          </a>
+  
+          <a href="alleRezepte.html?dessert" class="flex_item menu_item nav_item" id="dessert">
+            <i class="fa fa-pie-chart " aria-hidden="true" id="menu_item_icon_dessert"></i>
+            <div class="menu_item_text" id="menu_item_text_dessert" data-kathegorie="dessert">
+              Dessert
+            </div>
+          </a>
+  
+          <a href="alleRezepte.html?drink" class="flex_item menu_item nav_item" id="drink">
+            <i class="fa fa-glass" aria-hidden="true" id="menu_item_icon_drink"></i>
+            <div class="menu_item_text" id="menu_item_text_drink" data-kathegorie="drink">
+              Drink
+            </div>
+          </a>
+          
+          <a href="alleRezepte.html?cookbook" class="flex_item menu_item nav_item" id="cookbook">
+            <i class="fa fa-book" aria-hidden="true" id="menu_item_icon_cookbook"></i>
+            <div class="menu_item_text" id="menu_item_text_cookbook">
+              Mein Kochbuch
+            </div>
+          </a>
+    
+          <a href="add_recipe.html" class="flex_item menu_item nav_item" id="add_recipe">
+            <i class="fa fa-plus-circle" aria-hidden="true" id="menu_item_icon_add_recipe"></i>
+            <div class="menu_item_text" id="menu_item_text_add_recipe">
+              Rezept verändern
+            </div>
+          </a>
+        </div>
+      </div>  
+    
+      <div class="right nav_log" id="nav_logout"> 
+        <i class="fa fa-sign-out" aria-hidden="true" id="nav_logout_icon"></i>
+        <div class="nav_login_out_text" id="nav_logout_text">Logout</div>
+      </div>
+    
+      <div class="right nav_log" id="nav_login"> 
+        <i class="fa fa-sign-in" aria-hidden="true" id="nav_login_icon"></i>
+        <div class="nav_login_out_text" id="nav_login_text">Login</div>
+      </div>
+    
+      <div class="right" id="nav_search">
+        <i class="fa fa-search" aria-hidden="true" id="nav_search_icon"></i>
+        <div class="input-wrapper" id="nav_search_text">
+        <input type="text" placeholder="Suche" />
+        </div>
+      </div>
+    </nav>
+
+    <div class="header">
+        <h1>Rezept bearbeiten</h1>
+    </div>
+
+    <div class="neues_Rezept">
+      <form name="new_recipe" action="#">
+        <h4 for="name">Name</h4>
         <div class="input_box">
-            <label for="name">Name</label>
-            <input type="text" id="name" placeholder="name of recipe">
+          <input type="text" id="name" placeholder="Wie heißt es?">
         </div>
+        <h4 for="type">Kategorie</h4>
         <div class="input_box">
-            <label for="type">Type</label>
-            <select id="type" placeholder="Wähle aus">
-                <option value="Hauptspeise">Hauptspeise</option>
-                <option value="Vorspeise">Vorspeise</option>
-                <option value="Dessert">Dessert</option>
-                <option value="Drink">Drink</option>
-            </select>
+          <select id="type" placeholder="Was ist es?">
+            <option value="main"   > Hauptspeise </option>
+            <option value="first"  > Vorspeise   </option>
+            <option value="dessert"> Dessert     </option>
+            <option value="drink"  > Drink       </option>
+          </select>
         </div>
+        <h4 for="severity">Schwierigkeitsgrad</h4>
         <div class="input_box">
-            <label for="severity">Severity</label>
-            <input type="number" id="severity" placeholder="severity rating">
+          <input type="number" min="1" max="5" id="severity" placeholder="Wie schwer ist es?">
         </div>
+        <h4 for="base">Grundzutat</h4>
         <div class="input_box">
-            <label for="ingredients">Ingrediants</label>
-            <input type="text" id="ingredients" placeholder="What's needed">
+          <input type="text" id="base" placeholder="Worauf basiert es?">
         </div>
-        <div class="input_box_zubereitung">
-            <label for="description">Description</label>
-            <input type="text" id="description" placeholder="What to do" class="input_box_zubereitung">
-        </div>
+        <h4 for="servings">Portionen</h4>
         <div class="input_box">
-            <button id="btn">Add!</button>
+          <input type="text" id="servings" placeholder="Wie viele werden satt?">
         </div>
-    </form>
-</div>
-</body>
+
+        <h4>Zutaten</h4>
+        <div class="input_box ingredient_input_box" id="input_box_ingredient_0">
+          <input type="text" class="ingredient" id="ingredient_0" placeholder="Was wird gebraucht?">
+          <i class="fa fa-minus ingredient_remove" id="ingredient_remove_btn_0" aria-hidden="true"></i>
+        </div>
+        <div id="ingredient_add_btn">
+          <i class="fa fa-plus" aria-hidden="true"> weitere Zutat hinzufügen</i>
+        </div>
+        <br>
+        <br>
+
+        <h4 for="prep_time">Zubereitungszeit</h4>
+        <div class="input_box">
+          <input type="number" min="1" max="300" id="prep_time" placeholder="Wie lange dauert es?">
+        </div>
+
+        <h4>Zubereitung</h4>
+        <div class="input_box step_input_box" id="input_box_step_0">
+          <input type="text" class="instruction" id="step_0" placeholder="Was ist zu tun?">
+          <i class="fa fa-minus step_remove" id="step_remove_btn_0" aria-hidden="true"></i>
+        </div>
+        <div id="step_add_btn">
+          <i class="fa fa-plus"aria-hidden="true"> weiteren Schritt hinzufügen</i>
+        </div>
+        <br>
+        <br>
+
+        <h4 for="pic">Bild</h4>
+        <div class="input_box">
+          <input type="text" id="pic" placeholder="Link zu Bild" placeholder="Wie sieht es aus?">
+        </div>
+        <div class="input box">
+          <input type="submit" id="add_btn" value="Einreichen">
+        </div> 
+      </form>
+    </div>    <!-- neues_Rezept -->
+
+
+  </body>
 <script src="../javascript/edit.js"></script>
+<script src="../javascript/navbar.js"></script>
 </html>
