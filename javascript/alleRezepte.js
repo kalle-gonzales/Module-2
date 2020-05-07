@@ -8,6 +8,7 @@ const btn_cookbook = document.getElementById("cookbook" ),
       heart_full_class  = 'fa like fa-heart',
       heart_empty_class = 'fa like fa-heart-o',
       logged_in_user    = JSON.parse(localStorage.getItem("logged_in_user")),
+      own_recipes       = get_own_recipes(JSON.parse(localStorage.getItem("recipes"))),
       user_cookbook     = JSON.parse(localStorage.getItem("users"))[logged_in_user].liked_recipes;
 
 btn_cookbook.addEventListener("click", foodFilter);
@@ -19,6 +20,20 @@ btn_Alle.    addEventListener("click", foodFilter);
 
 let url =  window.location.href;
 let targetId;
+let recipe_wrapper = document.getElementById("recipe_wrapper");
+
+
+function get_own_recipes(recipe_array) {
+  let own_recipes_array = []
+  if(logged_in_user){
+    recipe_array.forEach(function(recipe) {
+      if(recipe.creator == logged_in_user) {
+        own_recipes_array.push(recipe.id);
+      }
+    });
+  }
+  return own_recipes_array;
+}
 
 // Läd die gefilterte Auswahl von der Index Seite
 window.addEventListener("load", function() {
@@ -39,8 +54,7 @@ function foodFilter(event) {
 
 // Löscht alle bestehenden Divs in dem alle_rezepte Div aka id="recipe_wrapper"
 function delteRecipesFromPage(){
-    var existingDivs = document.getElementById("recipe_wrapper");
-    Array.from(existingDivs.children).forEach(function(recipe) {existingDivs.removeChild(recipe)})
+    Array.from(recipe_wrapper.children).forEach(function(recipe) {existingDivs.removeChild(recipe)})
 }
 
 // Fügt Divs je nach Filterauswahl aus dem localStorage hinzu
@@ -48,9 +62,17 @@ function addRelevantRecipeDivs(targetId){
     var alleRezepte = JSON.parse(localStorage.getItem("recipes")),
         rezeptAuswahl;
 
+    if (own_recipes.length > 0 && targetId == "cookbook") {
+      let own_recipe_wrapper = document.getElementById("own_recipe_wrapper"),
+          recipe_wrapper_header = document.createElement("h3");
+      own_recipe_wrapper.style.display = "block";
+      own_recipe_wrapper.appendChild(recipe_wrapper_header);
+      recipe_wrapper_header.innerHTML = "Eigene Rezepte";
+      console.log(own_recipes);
+    }
     // Für den Button Alle Rezepte muss neuer Array mit allen Indizies erstellt werden. Ansonsten gilt targetId aus der foodFilter Funktion
     if(targetId == "cookbook"){
-      rezeptAuswahl = user_cookbook;
+      rezeptAuswahl = user_cookbook.concat(own_recipes);
     } else if (targetId === "Alle") {
       rezeptAuswahl = Object.keys(JSON.parse(localStorage.getItem("recipes")));
     } else {
@@ -85,7 +107,12 @@ function addRelevantRecipeDivs(targetId){
         p_preview.className = "preview_alleRezepte";
         newDiv.appendChild(p_preview);
         newDiv.setAttribute("onclick", `window.location.href = 'Rezept.html?${recipe.id}'`)
-        document.getElementById("recipe_wrapper").appendChild(newDiv);
+        if(own_recipes.includes(recipe.id)) {
+          own_recipe_wrapper.appendChild(newDiv);
+        } else {
+          console.log(recipe.id);
+          recipe_wrapper.appendChild(newDiv);
+        }
     }
 }
 
