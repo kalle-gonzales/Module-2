@@ -26,7 +26,7 @@ body {
 
 h1{
     font-family: "Gayathri", sans-serif;
-    padding: 6rem 0 0 1rem;
+    padding: 1rem 0 0 1rem;
     display: inline-block;
     color: #eef;
 }
@@ -65,12 +65,55 @@ a:hover{
 /* Startseite mit Rezepten des Tages */
 /* +++++++++++++++++++++++++++++++++ */
 
-.hauptgericht_of_the_day{
+.alle_rezepte{
+    padding: 50px;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    
+    /*width: 90vw;*/
+    /*text-align: center;*/
+}
+
+.rezept{
+    margin: 5px; 
     display: flex;
     flex-direction: column;
-    width: 60vw;
+    box-sizing: border-box;
+    border: 2px;
+    border-style: solid; 
+    width: 20vw;
+    height: 10vw;
+    background-color: grey;
+    position: relative;
+}
+
+.btn_choice{
+    font-family: "Gayathri", sans-serif;
+    margin-top: 50px;
+    padding: 10px;
+    color: #eef;
+    border-style: solid;
+}
+
+.food_of_the_day{
+    padding: 0 50px;
+}
+
+.rezept_des_tages {
+    margin: 5px; 
+    display: flex;
+    flex: 1;
+
+    /* box-sizing: border-box;
+    border: 2px;
+    border-style: solid; */
+}
+
+.hauptgericht_of_the_day{
+    display: flex;
+    width: 80vw;
     height: 200px;
-    align-self: start;
 }
 
 .hauptgericht{
@@ -81,8 +124,52 @@ a:hover{
     width: 100%;
 }
 
+.drink_of_the_day{
+    display: flex;
+    width: 80vw;
+    height: 200px;
+
+}
+
+.drink{
+    /* background-image: url("../images/white_russin.jpg");  */
+    background-size: cover;
+    background-position: center center; 
+    height: 100%;
+    width: 100%;  
+}
+
+.dessert_of_the_day{
+    display: flex;
+    width: 80vw;
+    height: 200px;   
+}
+
+.dessert{
+    /* background-image: url("../images/tera.jpg"); */
+    background-size: cover;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+}
+
+.vorspeise_of_the_day{
+    display: flex;
+    width: 80vw;
+    height: 200px;  
+}
+
+.vorspeise{
+    /* background-image: url("../images/tomatensuppe.jpg"); */
+    background-size: cover;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+}
+
 .flex_container_reihe{
     display: flex;
+    flex: 1;
     align-items: center;
 }
 
@@ -91,7 +178,6 @@ a:hover{
 /* +++++++++++++++++++++++++++++++++ */
 
 .header{
-    padding: 0;
     margin-left: 10%;
     text-align: left;
     align-items: center;
@@ -219,11 +305,11 @@ h4 {
 
 
 .show_Rezept{
-    padding: 50px;
+    padding: 10px;
     margin: auto;
     display: flex;
-    width: 60vw;
-    height: 40vw;
+    width: 80vw;
+    height: 90%;
     background-image: url("../images/cutting_board.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -232,11 +318,10 @@ h4 {
 
 .flex_container_reihe{
     display: flex;
-    flex: 1;
-    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
     width: 100%;
+    align-items: center;
+    justify-content: center;
 }
 
 .show_Rezept {
@@ -246,35 +331,61 @@ h4 {
 
 .zubereitung{
     margin: 5px; 
+    padding: 0 5% 5% 5%;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
     border: 2px;
     border-style: solid; 
-    width: 30vw;
-    height: 30vw;
+    width: 70vw;
+    height: auto;
 }
+
 
 
 .edit_bar {
     margin: 5px; 
+    padding: 0 5% 5% 5%;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
     border: 2px;
     border-style: solid; 
-    width: 30vw;
-    height: 10vw;
+    width: 70vw;
+    height: auto;
 }
 
-.zutaten {
+.edit_buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5%;
+}
+
+.zutaten_mobile {
     margin: 5px; 
+    padding: 0 5% 5% 5%;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
     border: 2px;
     border-style: solid; 
-    width: 10vw;
+    width: 70vw;
+    height: auto
+    
+}
+
+/*
+.ingredients_column {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+*/
+
+.zutaten { 
+    display: none;
+    
 }
 
 .fa_hidden {
@@ -298,11 +409,24 @@ h4 {
   src: url(https://fonts.gstatic.com/s/tradewinds/v8/AYCPpXPpYNIIT7h8-QenM0Jt5vM.woff2);
 }
 
+/*Responsive Design*/
+
 @media only screen and (min-width: 768px) {
 
 }
 
 @media only screen and (min-width: 1000px) {
+
+    /* +++++++++++++++++++++++++++++++++ */
+    /*          Alle Rezepte             */
+    /* +++++++++++++++++++++++++++++++++ */
+
+    h1{
+        font-family: "Gayathri", sans-serif;
+        padding: 6rem 0 0 1rem;
+        display: inline-block;
+        color: #eef;
+    }
 
     .alle_rezepte{
         padding: 50px;
@@ -336,6 +460,10 @@ h4 {
         border-style: solid;
     }
     
+    /* +++++++++++++++++++++++++++++++++ */
+    /* Startseite mit Rezepten des Tages */
+    /* +++++++++++++++++++++++++++++++++ */
+
     .food_of_the_day{
         padding: 0 50px;
     }
@@ -370,6 +498,7 @@ h4 {
         display: flex;
         flex-direction: column;
         width: 20vw;
+        height: 400px;
         justify-content: flex-start;  
     }
     
@@ -429,6 +558,80 @@ h4 {
         flex-direction: column;
     }
     
-    
+    /* +++++++++++++++++++++++++++++++++ */
+    /*          Rezept                   */
+    /* +++++++++++++++++++++++++++++++++ */
+
+
+    .show_Rezept{
+        padding: 50px;
+        margin: auto;
+        display: flex;
+        width: 60vw;
+        height: auto;
+        background-image: url("../images/cutting_board.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+
+    .flex_container_reihe{
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .show_Rezept {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .zubereitung{
+        margin: 5px; 
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        border: 2px;
+        border-style: solid; 
+        width: 30vw;
+        height: auto;
+    }
+
+
+    .edit_bar {
+        margin: 5px; 
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        border: 2px;
+        border-style: solid; 
+        width: 30vw;
+        height: auto;
+    }
+
+    .zutaten {
+        margin: 5px; 
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        border: 2px;
+        border-style: solid; 
+        height: auto;
+        width: 10vw;
+    }
+
+    .fa_hidden {
+    display: none !important;
+    }
+
+    .zutaten_mobile {
+        display: none;
+        
+    }
+
+        
     
 }
